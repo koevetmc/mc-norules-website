@@ -73,7 +73,6 @@ One object per player who has ever joined. **Never coordinates, never dimension,
     "name": "Player",
     "firstSeen": "2026-10-29",
     "lastSeen": "2026-11-03",
-    "votes": 12,
     "stats": {
       "kills": 10, "deaths": 4, "playtimeHours": 12.5,
       "distanceKm": 40.0, "mined": 1000, "placed": 200,
@@ -84,6 +83,8 @@ One object per player who has ever joined. **Never coordinates, never dimension,
 ```
 
 ### `votetop.json`
+
+Public list-site vote counts. Support only — **not** a loot/reward board.
 
 ```json
 { "updated": "…", "entries": [{ "name": "Player", "votes": 40 }] }
@@ -103,7 +104,7 @@ This is anarchy. The site must not give a gameplay advantage:
 
 - Live **player count** and up/down from https://api.mcsrvstat.us/3/76.176.218.251 (CORS, no key). If the API is down, the status degrades. The API’s online-name list is **never rendered**.
 - No map, no coordinates, no “who is online where”.
-- Leaderboards, profiles, vote counts, and posted clips are fine — they are public in-game.
+- Leaderboards, profiles, and posted clips are fine — they are public in-game. Voting is support only (no loot or in-game advantage).
 
 ## Brand
 

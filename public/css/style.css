@@ -554,7 +554,7 @@ h2 {
 }
 .lightbox-nav { display: flex; gap: 0.4rem; }
 
-/* ---------- vote / loot ---------- */
+/* ---------- vote (support only, no loot) ---------- */
 .odds { width: 100%; border-collapse: collapse; margin: 1rem 0 1.5rem; }
 .odds th, .odds td {
   padding: 0.5rem 0.6rem;

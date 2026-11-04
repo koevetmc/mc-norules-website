@@ -1,7 +1,7 @@
 {
   "updated": "2026-11-03T19:00:00Z",
   "sample": true,
-  "comment": "Mirror of /votetop. Cron: dump the VoteRewards leaderboard. votes = lifetime rewarded votes.",
+  "comment": "2026-11-03: public list-site vote counts (support only, not a reward). Cron: scrape listing sites or a vote plugin that does NOT grant loot.",
   "entries": [
     {"name": "Raidless", "votes": 40},
     {"name": "DirtHog", "votes": 31},

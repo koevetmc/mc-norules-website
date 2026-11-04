@@ -1,4 +1,5 @@
-/* 2026-11-03: /votetop mirror from data/votetop.json. */
+/* 2026-11-03: public list-vote counts from data/votetop.json.
+   Support only — not a reward board. */
 (function () {
   const root = document.getElementById("votetop");
   if (!root) return;

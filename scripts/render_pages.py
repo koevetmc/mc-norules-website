@@ -125,7 +125,7 @@ PAGES["index.html"] = (
         <article class="card"><div class="icon-pill">;</div><h3>VGS quick-chat</h3><p>Tribes-style voice-game-soundboard. Press <code>;</code> for a sidebar of 70+ tactical callouts (attack / defend / need / taunts), or fire a code like <code>;af</code>. Plays a sound to everyone.</p></article>
         <article class="card"><div class="icon-pill">→</div><h3>/autofollow</h3><p><code>/autofollow &lt;player&gt;</code> follows a nearby player hands-free. Must be within 5 blocks. Sneak or damage cancels.</p></article>
         <article class="card"><div class="icon-pill">◉</div><h3>Party locator bar</h3><p>Party members see each other on the vanilla locator bar. <code>/wp</code> waypoints render as icons. Outsiders see nothing.</p></article>
-        <article class="card"><div class="icon-pill">★</div><h3>Vote rewards</h3><p>Each vote = 3 weighted loot rolls (totems, netherite scrap, shulkers, gapples, pearls…). Offline votes bank until you log in. Cap 8 rewarded votes / day. <a href="/vote.html">Vote for rewards</a>.</p></article>
+        <article class="card"><div class="icon-pill">★</div><h3>Vote the lists</h3><p>Seven public server lists. Voting is support only — no loot, crates, keys, or ranks. It just keeps the IP visible. <a href="/vote.html">Vote</a>.</p></article>
         <article class="card"><div class="icon-pill">!</div><h3>Report &amp; suggest</h3><p><code>/report</code>, <code>/suggest</code>, and <code>/feedback</code> with anti-spam cooldowns. Still anarchy — these are optional, not a ticket system that will save your base.</p></article>
         <article class="card"><div class="icon-pill">▶</div><h3>Flashback killcams</h3><p>Server records a rolling 60-second clip. Deaths auto-clip from both victim and killer perspectives. Posted after the fact in <a href="/media.html">Media</a>.</p></article>
         <article class="card"><div class="icon-pill">文</div><h3>Chat translator</h3><p>Incoming chat is translated per-viewer. Whispers too. Pregenned world (Chunky r=3000). WorldGuard spawn protection. Daily restart ~4am PT with warnings, daily backups.</p></article>
@@ -161,7 +161,7 @@ PAGES["players.html"] = (
     <section class="page-hero wrap">
       <p class="kicker">Roster</p>
       <h2>Player profiles</h2>
-      <p class="lede">Everyone who has ever joined. Skins, Hall of Legends badges, vanilla stats, vote counts. No coordinates, no live location, no base intel — this is anarchy, the site is not an ESP.</p>
+      <p class="lede">Everyone who has ever joined. Skins, Hall of Legends badges, vanilla stats. No coordinates, no live location, no base intel — this is anarchy, the site is not an ESP.</p>
       <p class="lede" id="players-updated"></p>
     </section>
     <section class="section wrap">
@@ -186,14 +186,14 @@ PAGES["player.html"] = (
 )
 
 PAGES["vote.html"] = (
-    "Vote for rewards · NO RULES SURVIVAL",
-    "Seven vote links. Each vote is three weighted loot rolls, banked if you are offline. Daily cap 8.",
+    "Vote · NO RULES SURVIVAL",
+    "Seven public list links. Voting is support only — no loot, crates, keys, ranks, or other in-game rewards.",
     "/vote.html",
     """
     <section class="page-hero wrap">
-      <p class="kicker">Vote for rewards</p>
-      <h2>Seven sites. Three rolls. Banked if you are offline.</h2>
-      <p class="lede">Each successful vote pays three weighted loot rolls on next login if you are offline. Hard cap: 8 rewarded votes per day. Milestones broadcast in chat. Leaderboard is <code>/votetop</code> in game.</p>
+      <p class="kicker">Support the lists</p>
+      <h2>Vote. That is the whole thing.</h2>
+      <p class="lede">These seven links keep NO RULES SURVIVAL on public server lists. Voting is support only. There is no loot table, no crate, no key, no rank, no in-game item. You get nothing back except the server staying findable.</p>
     </section>
     <section class="section wrap">
       <div class="grid">
@@ -207,18 +207,8 @@ PAGES["vote.html"] = (
       </div>
     </section>
     <section class="section wrap">
-      <h2>Loot table</h2>
-      <p class="lede">Rough odds per roll. Three independent rolls per vote. This is the public table — not a secret.</p>
-      <table class="odds">
-        <thead><tr><th>Tier</th><th>Weight (approx.)</th><th>Examples</th></tr></thead>
-        <tbody>
-          <tr><td>Common</td><td>~55%</td><td>Cooked beef, obsidian, ender pearls, arrows, iron ingots</td></tr>
-          <tr><td>Uncommon</td><td>~30%</td><td>Golden apples, diamonds, XP bottles, shulker boxes</td></tr>
-          <tr><td>Rare</td><td>~15%</td><td>Netherite scrap, enchanted golden apples, totems of undying</td></tr>
-        </tbody>
-      </table>
-      <p class="lede">Milestones shout in chat as you climb /votetop. Cheating vote sites is still cheating.</p>
-      <h2>/votetop</h2>
+      <h2>Who has listed us</h2>
+      <p class="lede">Public count of list-site votes. Not a rank, not a reward — just who clicked. Cheating vote sites is still cheating.</p>
       <p class="lede" id="votetop-updated"></p>
       <div class="card" id="votetop" style="padding:0"></div>
     </section>
@@ -340,7 +330,7 @@ PAGES["join.html"] = (
           <p>The cobble ring is a WorldGuard pocket: no build, no pvp. The greeting is literal — beyond that line there are no rules. Do not stand in spawn forever expecting a tutorial.</p>
         </li>
       </ol>
-      <p><a class="btn" href="/vote.html">Vote for rewards</a> <a class="btn btn-ghost" href="/legends.html">Hall of Legends</a></p>
+      <p><a class="btn" href="/vote.html">Vote</a> <a class="btn btn-ghost" href="/legends.html">Hall of Legends</a></p>
     </section>
     """,
     "",

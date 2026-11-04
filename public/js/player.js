@@ -66,8 +66,8 @@
         ["Blocks mined", s.mined],
         ["Blocks placed", s.placed],
         ["Totems popped", s.totems],
-        ["Crystals placed", s.crystals],
-        ["Votes", p.votes]
+        ["Crystals placed", s.crystals]
+        // 2026-11-03: vote counts are not a player stat — voting is support only, no loot.
       ];
 
       mount.innerHTML =

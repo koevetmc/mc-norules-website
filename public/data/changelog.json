@@ -3,6 +3,13 @@
   "entries": [
     {
       "date": "2026-11-03",
+      "version": "web-1.1",
+      "tags": ["WEBSITE"],
+      "title": "Vote page is support only",
+      "body": "Loot table, crate/key/rank copy, and 'vote for rewards' claims removed. The seven list links stay. Voting does not grant in-game items or advantage."
+    },
+    {
+      "date": "2026-11-03",
       "version": "web-1.0",
       "tags": ["WEBSITE"],
       "title": "Public website launched",
@@ -63,10 +70,9 @@
     },
     {
       "date": "2026-10-29",
-      "version": "voterewards",
-      "tags": ["PLUGIN"],
-      "title": "VoteRewards: daily cap 8, milestone broadcasts",
-      "body": "Each vote rolls 3 weighted loot tables. Offline votes bank and deliver on next login. 8 rewarded votes per day. /votetop for the leaderboard."
+      "tags": ["SERVER"],
+      "title": "Listed on seven public vote sites",
+      "body": "Support-only list links. No loot, crates, keys, or ranks for voting."
     }
   ]
 }
