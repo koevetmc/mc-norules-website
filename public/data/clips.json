@@ -1,0 +1,20 @@
+{
+  "comment": "Flashback killcams posted AFTER the fight. Never a live feed. Drop mp4s in /clips/ and add {file, title, killer, victim, date, poster?}.",
+  "items": [
+    {
+      "file": "/clips/sample-killcam.mp4",
+      "poster": "/img/og-image.jpg",
+      "title": "Sample clip — replace this file with a real Flashback export",
+      "killer": "CrystlQueen",
+      "victim": "WitheredSteve",
+      "date": "2026-11-03"
+    },
+    {
+      "file": "",
+      "title": "Empty slot — add an mp4 and set file",
+      "killer": "?",
+      "victim": "?",
+      "date": ""
+    }
+  ]
+}

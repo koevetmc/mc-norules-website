@@ -1,0 +1,13 @@
+# 2026-11-03: Cloudflare Worker static-assets site (not Pages).
+# Pages still serves static files but is in maintenance mode; new hosting
+# goes to Workers. No Worker script on purpose — omit `main` / `binding`.
+# Deploy: npx wrangler deploy
+# Local:  npx wrangler dev   OR   python3 -m http.server 8788 --directory public
+
+name = "no-rules-survival"
+compatibility_date = "2026-11-03"
+
+[assets]
+directory = "./public"
+html_handling = "auto-trailing-slash"
+not_found_handling = "404-page"

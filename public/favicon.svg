@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <!-- 2026-11-03: 16px-readable grass cube + circled A (matches header logo). -->
+  <rect width="16" height="16" fill="#0a0908"/>
+  <polygon points="8,1 15,5 8,9 1,5" fill="#4f7a32"/>
+  <polygon points="1,5 8,9 8,15 1,11" fill="#6a4a2e"/>
+  <polygon points="15,5 8,9 8,15 15,11" fill="#3d2a18"/>
+  <path d="M8 2 L7 6 L8 9" fill="none" stroke="#e85d04" stroke-width="1"/>
+  <circle cx="8" cy="8" r="4.2" fill="none" stroke="#c43a22" stroke-width="1.15"/>
+  <path d="M8 5.2 L6.2 11 M8 5.2 L9.8 11 M6.9 8.6 H9.1" fill="none" stroke="#e85d04" stroke-width="1.15"/>
+</svg>

@@ -1,0 +1,72 @@
+{
+  "comment": "Newest first is fine; the page also sorts by date descending. tags: PLUGIN | SERVER | WEBSITE | FIX",
+  "entries": [
+    {
+      "date": "2026-11-03",
+      "version": "web-1.0",
+      "tags": ["WEBSITE"],
+      "title": "Public website launched",
+      "body": "Static Cloudflare Workers site with Hall of Legends, player profiles, vote page, gallery, and killcam archive. Regenerates from JSON — no database."
+    },
+    {
+      "date": "2026-11-03",
+      "version": "smpchat-1.1.1",
+      "tags": ["PLUGIN"],
+      "title": "Veteran badge in chat and tab",
+      "body": "Players with 5+ hours playtime get the anarchy-A glyph before their name. Pack-loaded clients see the custom font; everyone else gets a text fallback."
+    },
+    {
+      "date": "2026-11-02",
+      "version": "legends-1.1.0",
+      "tags": ["PLUGIN", "SERVER"],
+      "title": "Second ring of Hall of Legends statues",
+      "body": "Cross-aisle pedestals added for bunny hopper, angler, villager trader, elytra pilot, diamond miner, ancient debris, golden apples, chest looter, animal breeder, boss slayer, raid winner, and climber. /legends still prints the top 10."
+    },
+    {
+      "date": "2026-11-02",
+      "version": "locatorbar-1.1.0",
+      "tags": ["PLUGIN"],
+      "title": "Party locator bar and waypoint icons",
+      "body": "Party members see each other on the vanilla locator bar. /wp waypoints render as bowtie icons tinted by dye color. No extra commands — SMPChat still owns /party."
+    },
+    {
+      "date": "2026-11-02",
+      "tags": ["SERVER"],
+      "title": "Spawn lively pass — tavern, market, hall pavilion",
+      "body": "Protected spawn gained the Broken Crown tavern, scrap market, smithy, and the red-nether Hall of Legends pavilion over the statue hall. WorldGuard still denies build/pvp inside the zone."
+    },
+    {
+      "date": "2026-11-01",
+      "version": "vgs-1.2.0",
+      "tags": ["PLUGIN", "FIX"],
+      "title": "VGS menu moved to ';' prefix",
+      "body": "Tribes-style voice-game-soundboard no longer steals V (Simple Voice Chat). Press ; for the sidebar of 70+ callouts, or fire a quick code like ;af."
+    },
+    {
+      "date": "2026-10-31",
+      "version": "packselect-1.0.0",
+      "tags": ["PLUGIN"],
+      "title": "PackSelect: 3-tier anarchy resource pack",
+      "body": "Optional UI pack in low / medium / high. In game: /pack low|medium|high. Chunky 2-color iron, worn iron + oxblood, or extra rust, rivets, and ember trim."
+    },
+    {
+      "date": "2026-10-30",
+      "tags": ["PLUGIN", "SERVER"],
+      "title": "Simple Voice Chat proximity voice enabled",
+      "body": "Server plugin voicechat-bukkit 2.6.25. Java clients need the matching SVC mod (Fabric / NeoForge / Forge / Quilt). Vanilla Java and Bedrock get no voice — that is upstream, not a server setting."
+    },
+    {
+      "date": "2026-10-29",
+      "tags": ["SERVER"],
+      "title": "Bedrock crossplay via Geyser + floodgate",
+      "body": "Java 76.176.218.251:25565. Bedrock same host, UDP 19132. ViaVersion + ViaBackwards let older and newer Java clients join Paper 26.3."
+    },
+    {
+      "date": "2026-10-29",
+      "version": "voterewards",
+      "tags": ["PLUGIN"],
+      "title": "VoteRewards: daily cap 8, milestone broadcasts",
+      "body": "Each vote rolls 3 weighted loot tables. Offline votes bank and deliver on next login. 8 rewarded votes per day. /votetop for the leaderboard."
+    }
+  ]
+}
