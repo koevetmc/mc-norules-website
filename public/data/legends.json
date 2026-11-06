@@ -1,7 +1,7 @@
 {
   "updated": "2026-11-03T19:00:00Z",
   "sample": true,
-  "comment": "2026-11-03 schema matches plugins/Legends. keys = statue config keys. value is the RAW vanilla stat the plugin reads (ticks, cm, damage points). Cron: dump top-10 per category from world/players/stats. Empty entries = unclaimed.",
+  "comment": "2026-11-06 schema still matches plugins/Legends (24 cats). Server Firsts (/firsts) are a separate plugin in the same hall — do not add them here. value is the RAW vanilla stat. Cron: dump top-10 per category from world/players/stats. Empty entries = unclaimed.",
   "order": [
     "kills", "deaths", "damage", "mobs", "crystals", "totems",
     "playtime", "life", "distance", "pearls", "mined", "placed",

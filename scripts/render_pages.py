@@ -1,5 +1,8 @@
 #!/usr/bin/env python3
-"""2026-11-03: stamp shared chrome onto every HTML page so header/footer stay in sync."""
+"""Stamp shared chrome onto every HTML page so header/footer stay in sync.
+2026-11-03: initial site. 2026-11-06: Arena, /pack off, ItemShare ping,
+ChatFX, Server Firsts, waypoints HUD/share, Flashback dual-angle, pack v1.2.
+Voting stays support-only — no loot, crates, ranks, or in-game advantage."""
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1] / "public"
@@ -107,6 +110,7 @@ PAGES["index.html"] = (
         <span class="badge">No whitelist</span>
         <span class="badge">No ops</span>
         <span class="badge">No claims</span>
+        <span class="badge">Hard</span>
         <span class="badge">Max 30</span>
       </div>
     </section>
@@ -114,21 +118,24 @@ PAGES["index.html"] = (
     <section class="section wrap" id="features">
       <p class="kicker">What you get</p>
       <h2>Everything is allowed. Except cheating.</h2>
-      <p class="lede">PvP, griefing, and stealing are the game. Spawn is a small no-build / no-pvp pocket so new players can walk out. GrimAC + anti-xray is the only law.</p>
+      <p class="lede">PvP, griefing, and stealing are the game. Difficulty is hard. Spawn is a small no-build / no-pvp pocket so new players can walk out. GrimAC + anti-xray is the only law. A practice arena sits at the south spawn gate — it does not protect you in the wild.</p>
       <div class="grid">
         <article class="card"><div class="icon-pill">Ⓐ</div><h3>True anarchy</h3><p>No rules, no land claims, no map resets, no whitelist. Griefing allowed. Protected spawn is the only safe tile on the map.</p></article>
         <article class="card"><div class="icon-pill">⧉</div><h3>Java + Bedrock</h3><p>Geyser + floodgate crossplay. ViaVersion and ViaBackwards let older and newer Java clients join Paper 26.3.</p></article>
+        <article class="card"><div class="icon-pill">⚔</div><h3>The Arena</h3><p>Void-world pit. Right-click ArenaMaster at the south spawn gate (not from the wild). Gear is vaulted, diamond kit on entry, <code>/arena leave</code> restores it at spawn. PvE waves, named bosses, 1v1 or a bot. Punch a boss head in the lobby to spar. Party of 3 max.</p></article>
         <article class="card"><div class="icon-pill">🎤</div><h3>Proximity voice</h3><p>Simple Voice Chat on the server. You need the matching client mod (Fabric / NeoForge / Forge / Quilt). Vanilla and Bedrock have no voice — that is how SVC works. See <a href="/join.html#voice">install notes</a>.</p></article>
         <article class="card"><div class="icon-pill">⚖</div><h3>Anti-cheat, not anti-fun</h3><p>GrimAC + packetevents. Cheating is the only bannable offense. Anti-xray engine-mode 2 is on.</p></article>
-        <article class="card"><div class="icon-pill">🏛</div><h3>Hall of Legends</h3><p>In-game statue hall at spawn for the #1 player in 24 vanilla stat categories. This site mirrors the boards, including top 10. <a href="/legends.html">Open the hall</a>.</p></article>
-        <article class="card"><div class="icon-pill">▣</div><h3>Anarchy resource pack</h3><p>Optional UI pack, three tiers. In game: <code>/pack low</code>, <code>/pack medium</code>, <code>/pack high</code> — chunky iron / worn iron + oxblood / extra rust, rivets, ember trim.</p></article>
-        <article class="card"><div class="icon-pill">;</div><h3>VGS quick-chat</h3><p>Tribes-style voice-game-soundboard. Press <code>;</code> for a sidebar of 70+ tactical callouts (attack / defend / need / taunts), or fire a code like <code>;af</code>. Plays a sound to everyone.</p></article>
+        <article class="card"><div class="icon-pill">🏛</div><h3>Hall of Legends</h3><p>In-game statue hall at spawn for the #1 player in 24 vanilla stat categories, plus Server Firsts (<code>/firsts</code>) for first-on-this-map records. This site mirrors the legends boards. <a href="/legends.html">Open the hall</a>.</p></article>
+        <article class="card"><div class="icon-pill">▣</div><h3>Anarchy resource pack</h3><p>Optional UI pack. No popup on join. In game: <code>/pack</code> menu or <code>/pack low|medium|high|off</code> — chunky iron / worn iron + oxblood / extra rust, rivets, ember trim, or vanilla UI.</p></article>
+        <article class="card"><div class="icon-pill">;</div><h3>VGS quick-chat</h3><p>Tribes-style voice-game-soundboard. Press <code>;</code> for a sidebar of 70+ tactical callouts, or fire a code like <code>;af</code>. F-key hand swap is vanilla (no dupe). Plays a sound to everyone.</p></article>
+        <article class="card"><div class="icon-pill">※</div><h3>Party ping + share</h3><p>Middle-click a block or player to ping that spot for your <code>/party</code> (or <code>/ping</code>). Marker on the locator bar. <code>/share</code> still broadcasts a held item. Not in a party = invite someone first.</p></article>
+        <article class="card"><div class="icon-pill">◉</div><h3>Locator bar + /wp</h3><p>Party members see each other on the vanilla locator bar. <code>/wp</code> waypoints: private by default, share with a player or <code>party</code>, HUD roster with distance. Outsiders see nothing.</p></article>
         <article class="card"><div class="icon-pill">→</div><h3>/autofollow</h3><p><code>/autofollow &lt;player&gt;</code> follows a nearby player hands-free. Must be within 5 blocks. Sneak or damage cancels.</p></article>
-        <article class="card"><div class="icon-pill">◉</div><h3>Party locator bar</h3><p>Party members see each other on the vanilla locator bar. <code>/wp</code> waypoints render as icons. Outsiders see nothing.</p></article>
+        <article class="card"><div class="icon-pill">✦</div><h3>ChatFX</h3><p><code>/chatfx</code> (or <code>/cfx</code>) for text effects and signature chat sounds. Mention chime. Currently all free — not a rank shop.</p></article>
         <article class="card"><div class="icon-pill">★</div><h3>Vote the lists</h3><p>Seven public server lists. Voting is support only — no loot, crates, keys, or ranks. It just keeps the IP visible. <a href="/vote.html">Vote</a>.</p></article>
         <article class="card"><div class="icon-pill">!</div><h3>Report &amp; suggest</h3><p><code>/report</code>, <code>/suggest</code>, and <code>/feedback</code> with anti-spam cooldowns. Still anarchy — these are optional, not a ticket system that will save your base.</p></article>
-        <article class="card"><div class="icon-pill">▶</div><h3>Flashback killcams</h3><p>Server records a rolling 60-second clip. Deaths auto-clip from both victim and killer perspectives. Posted after the fact in <a href="/media.html">Media</a>.</p></article>
-        <article class="card"><div class="icon-pill">文</div><h3>Chat translator</h3><p>Incoming chat is translated per-viewer. Whispers too. Pregenned world (Chunky r=3000). WorldGuard spawn protection. Daily restart ~4am PT with warnings, daily backups.</p></article>
+        <article class="card"><div class="icon-pill">▶</div><h3>Flashback killcams</h3><p>Rolling 60-second clip. PvP deaths auto-clip from both victim and killer. Exports land after the fact in <a href="/media.html">Media</a>.</p></article>
+        <article class="card"><div class="icon-pill">文</div><h3>Chat + veterans</h3><p>Per-viewer translator (whispers too). 5h+ playtime gets a veteran Ⓐ badge, with later hour tiers in the same font. Pregenned world (Chunky r=3000). Daily restart ~4am PT with warnings, daily backups.</p></article>
       </div>
     </section>
     """,
@@ -143,7 +150,7 @@ PAGES["legends.html"] = (
     <section class="page-hero wrap">
       <p class="kicker">Flagship</p>
       <h2>Hall of Legends</h2>
-      <p class="lede">Same boards as <code>/legends</code> in game. Twenty-four vanilla stat categories, statue hall under spawn. Unclaimed pedestals stay empty until someone logs the first point. Click a card for the top 10.</p>
+      <p class="lede">Same boards as <code>/legends</code> in game. Twenty-four vanilla stat categories in the statue hall under spawn. The same hall also holds Server Firsts — first-on-this-map records via <code>/firsts</code> (diamond, first blood, nether, dragon, and the rest). Unclaimed legends pedestals stay empty until someone logs the first point. Click a card for the top 10.</p>
       <p class="lede" id="legends-updated"></p>
     </section>
     <section class="section wrap">
@@ -224,7 +231,7 @@ PAGES["gallery.html"] = (
     <section class="page-hero wrap">
       <p class="kicker">Screens</p>
       <h2>Gallery</h2>
-      <p class="lede">Spawn, the statue hall, public dimensions. Click for a lightbox (arrows / Esc). Drop files in <code>/gallery/</code> and add a line to <code>data/gallery.json</code>.</p>
+      <p class="lede">Spawn, the statue hall, the practice arena, public dimensions. No base-hunting intel. Click for a lightbox (arrows / Esc). Drop files in <code>/gallery/</code> and add a line to <code>data/gallery.json</code>.</p>
     </section>
     <section class="section wrap">
       <div class="masonry" id="gallery"></div>
@@ -252,7 +259,7 @@ PAGES["media.html"] = (
     <section class="page-hero wrap">
       <p class="kicker">Watch</p>
       <h2>Media</h2>
-      <p class="lede">Killcams are exported after the fight from the rolling 60-second Flashback buffer — victim and killer perspectives. This is not a live kill feed.</p>
+      <p class="lede">Killcams auto-export after the fight from the rolling 60-second Flashback buffer — scene camera and first-person, victim and killer. This is not a live kill feed.</p>
     </section>
     <section class="section wrap">
       <h2>YouTube — coming soon</h2>
@@ -319,15 +326,15 @@ PAGES["join.html"] = (
         </li>
         <li id="voice">
           <h3>Optional: Simple Voice Chat</h3>
-          <p>Proximity voice. Server runs voicechat-bukkit <strong>2.6.25</strong>. Install the matching <em>client</em> mod for your loader (Fabric, NeoForge, Forge, or Quilt) at the same version. Vanilla Java clients hear nothing. Bedrock hears nothing. That is not a bug.</p>
+          <p>Proximity voice. Server runs voicechat-bukkit <strong>2.6.25</strong>. Install the matching <em>client</em> mod for your loader (Fabric, NeoForge, Forge, or Quilt) at the same version. Vanilla Java and Bedrock hear nothing — that is how SVC works. Windows CurseForge: <a href="https://github.com/koevetmc/mc-norules-resourcepack/releases/download/v1.2/install-voicechat.bat">install-voicechat.bat</a> (same release as the anarchy pack).</p>
         </li>
         <li>
           <h3>Optional: anarchy resource pack</h3>
-          <p>The server offers a 3-tier UI pack. After you join, run <code>/pack low</code>, <code>/pack medium</code>, or <code>/pack high</code>. Medium is the default prompt on join.</p>
+          <p>No accept/decline popup on join. Opt-in only: run <code>/pack</code> for a clickable menu, or <code>/pack low|medium|high|off</code>. Off returns vanilla UI. Pack v1.2 (charcoal/oxblood iron, veteran Ⓐ glyphs).</p>
         </li>
         <li>
-          <h3>Walk out of spawn</h3>
-          <p>The cobble ring is a WorldGuard pocket: no build, no pvp. The greeting is literal — beyond that line there are no rules. Do not stand in spawn forever expecting a tutorial.</p>
+          <h3>Walk out of spawn — or hit the pit</h3>
+          <p>The cobble ring is a WorldGuard pocket: no build, no pvp. Beyond that line there are no rules. Difficulty is hard. South gate: right-click ArenaMaster for the practice arena (gear vaulted). Nametags are hidden in the wild.</p>
         </li>
       </ol>
       <p><a class="btn" href="/vote.html">Vote</a> <a class="btn btn-ghost" href="/legends.html">Hall of Legends</a></p>

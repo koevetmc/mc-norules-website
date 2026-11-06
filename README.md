@@ -3,7 +3,8 @@
 Static site for the **NO RULES SURVIVAL** Minecraft anarchy server. Vanilla HTML/CSS/JS, no framework, no database. Built for a **Cloudflare Worker with static assets** (not Pages).
 
 Java IP: `76.176.218.251:25565`  
-Bedrock: `76.176.218.251` port `19132`
+Bedrock: `76.176.218.251` port `19132`  
+Difficulty: Hard. Optional pack: `/pack low|medium|high|off` (v1.2, no join popup). Practice arena at the south spawn gate.
 
 ## Deploy (Cloudflare Worker)
 
@@ -39,7 +40,7 @@ All files live in `public/data/`. The site reads them client-side. Replace the s
 
 ### `legends.json`
 
-Mirrors `/legends` and the statue hall. **24 categories**, same keys as `plugins/Legends` (`kills` … `climb`). `value` is the **raw vanilla stat** the plugin reads (ticks, centimetres, damage points). The page formats it.
+Mirrors `/legends` and the statue hall. **24 categories**, same keys as `plugins/Legends` (`kills` … `climb`). Server Firsts (`/firsts`) are a separate in-game board in the same hall — not extra legends keys. `value` is the **raw vanilla stat** the plugin reads (ticks, centimetres, damage points). The page formats it.
 
 ```json
 {

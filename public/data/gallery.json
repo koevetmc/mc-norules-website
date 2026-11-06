@@ -1,6 +1,7 @@
 {
   "comment": "Drop JPEGs in /gallery/ and append a line. file is a root-relative URL. No screenshots that show coordinates or private bases — spawn and public dimensions only.",
   "items": [
+    {"file": "/gallery/arena-pit.jpg", "caption": "The Arena — void-world practice pit south of spawn. Gear vaulted, kits only, no survival loot.", "date": "2026-11-04", "author": "KoevetMC"},
     {"file": "/gallery/hall-pavilion.jpg", "caption": "Hall of Legends pavilion over spawn — statues of the server's top players below", "date": "2026-11-02", "author": "KoevetMC"},
     {"file": "/gallery/hall-interior.jpg", "caption": "Inside the Hall of Legends. Unclaimed pedestals wait for the first #1.", "date": "2026-11-02", "author": "KoevetMC"},
     {"file": "/gallery/hall-stair.jpg", "caption": "The descent into the statue hall", "date": "2026-10-30", "author": "KoevetMC"},
