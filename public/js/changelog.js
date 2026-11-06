@@ -33,7 +33,8 @@
   fetch("/data/changelog.json")
     .then((r) => r.json())
     .then((data) => {
-      all = (data.entries || []).slice().sort((a, b) => (a.date < b.date ? 1 : -1));
+      // 2026-11-06: keep JSON order on equal dates so newest-first file order stays stable.
+      all = (data.entries || []).slice().sort((a, b) => (a.date < b.date ? 1 : a.date > b.date ? -1 : 0));
       render();
     });
 
