@@ -1,4 +1,5 @@
-/* 2026-11-03: masonry gallery + accessible lightbox (Esc / arrows / trap-ish focus). */
+/* 2026-11-03: masonry gallery + accessible lightbox (Esc / arrows / trap-ish focus).
+   2026-11-06: also drives the homepage mosaic (#gallery.home-gallery). */
 (function () {
   const root = document.getElementById("gallery");
   const box = document.getElementById("lightbox");
@@ -35,6 +36,7 @@
       items = data.items || [];
       root.innerHTML = items
         .map((it, i) => {
+          const eager = i === 0 ? ' fetchpriority="high" loading="eager"' : ' loading="lazy"';
           return (
             '<a href="' +
             it.file +
@@ -44,7 +46,9 @@
             it.file +
             '" alt="' +
             (it.caption || "").replace(/"/g, "&quot;") +
-            '" loading="lazy" width="800" height="450"><figcaption>' +
+            '"' +
+            eager +
+            ' width="800" height="450"><figcaption>' +
             (it.caption || "") +
             "</figcaption></figure></a>"
           );

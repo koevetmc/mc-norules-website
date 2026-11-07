@@ -3,6 +3,13 @@
   "entries": [
     {
       "date": "2026-11-06",
+      "version": "web-1.3",
+      "tags": ["WEBSITE"],
+      "title": "Home page features the photo gallery",
+      "body": "Spawn, Hall of Legends, arena, and End shots now sit in a large mosaic under the join block. Click for the lightbox. Voting is still support only — no loot, crates, keys, or ranks."
+    },
+    {
+      "date": "2026-11-06",
       "version": "web-1.2",
       "tags": ["WEBSITE"],
       "title": "Site synced to live plugins and pack",

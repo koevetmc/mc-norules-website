@@ -41,6 +41,7 @@
         <a href="/media.html">Media</a>
         <a href="/changelog.html">Log</a>
         <a href="/join.html">Join</a>
+        <a href="/me.html">Account</a>
       </nav>
     </div>
   </header>
@@ -70,6 +71,24 @@
         <span class="badge">Max 30</span>
       </div>
     </section>
+
+    <section class="section home-shots wrap" id="shots">
+      <p class="kicker">In world</p>
+      <h2>The grounds</h2>
+      <p class="lede">Spawn, the Hall of Legends, the practice arena, the End. Real screenshots — click one. The full set lives on the <a href="/gallery.html">gallery page</a>.</p>
+      <div class="home-gallery" id="gallery"></div>
+    </section>
+    <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-hidden="true" aria-label="Screenshot">
+      <div class="lightbox-bar wrap">
+        <p data-cap></p>
+        <div class="lightbox-nav">
+          <button class="btn btn-ghost" type="button" data-prev>Prev</button>
+          <button class="btn btn-ghost" type="button" data-next>Next</button>
+          <button class="btn" type="button" data-close>Close</button>
+        </div>
+      </div>
+      <img data-full alt="">
+    </div>
 
     <section class="section wrap" id="features">
       <p class="kicker">What you get</p>
@@ -105,6 +124,6 @@
   <div id="toast" class="toast" role="status" aria-live="polite"></div>
   <script src="/js/config.js"></script>
   <script src="/js/site.js"></script>
-  
+  <script src="/js/gallery.js"></script>
 </body>
 </html>

@@ -2,6 +2,7 @@
 """Stamp shared chrome onto every HTML page so header/footer stay in sync.
 2026-11-03: initial site. 2026-11-06: Arena, /pack off, ItemShare ping,
 ChatFX, Server Firsts, waypoints HUD/share, Flashback dual-angle, pack v1.2.
+2026-11-06 later: home page features a real photo mosaic from gallery.json.
 Voting stays support-only — no loot, crates, ranks, or in-game advantage."""
 from pathlib import Path
 
@@ -16,6 +17,7 @@ NAV = [
     ("/media.html", "Media"),
     ("/changelog.html", "Log"),
     ("/join.html", "Join"),
+    ("/me.html", "Account"),
 ]
 
 
@@ -115,6 +117,24 @@ PAGES["index.html"] = (
       </div>
     </section>
 
+    <section class="section home-shots wrap" id="shots">
+      <p class="kicker">In world</p>
+      <h2>The grounds</h2>
+      <p class="lede">Spawn, the Hall of Legends, the practice arena, the End. Real screenshots — click one. The full set lives on the <a href="/gallery.html">gallery page</a>.</p>
+      <div class="home-gallery" id="gallery"></div>
+    </section>
+    <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-hidden="true" aria-label="Screenshot">
+      <div class="lightbox-bar wrap">
+        <p data-cap></p>
+        <div class="lightbox-nav">
+          <button class="btn btn-ghost" type="button" data-prev>Prev</button>
+          <button class="btn btn-ghost" type="button" data-next>Next</button>
+          <button class="btn" type="button" data-close>Close</button>
+        </div>
+      </div>
+      <img data-full alt="">
+    </div>
+
     <section class="section wrap" id="features">
       <p class="kicker">What you get</p>
       <h2>Everything is allowed. Except cheating.</h2>
@@ -139,7 +159,7 @@ PAGES["index.html"] = (
       </div>
     </section>
     """,
-    "",
+    '<script src="/js/gallery.js"></script>',
 )
 
 PAGES["legends.html"] = (
@@ -358,6 +378,85 @@ PAGES["404.html"] = (
     </section>
     """,
     "",
+)
+
+
+PAGES["login.html"] = (
+    "Sign in · NO RULES SURVIVAL",
+    "Email sign-in for your private player page. No Minecraft password is stored here.",
+    "/login.html",
+    """
+    <section class="page-hero wrap">
+      <p class="kicker">Account</p>
+      <h2>Sign in</h2>
+      <p class="lede">One email, one site account. After you are in, run <code>/link</code> in-game and type the code here. The site never asks for your Minecraft password.</p>
+    </section>
+    <section class="section wrap">
+      <form id="login-form" class="stack-form" autocomplete="on">
+        <label for="email">Email</label>
+        <input id="email" name="email" type="email" required maxlength="254" autocomplete="email" inputmode="email">
+        <button class="btn" type="submit">Send sign-in link</button>
+        <p id="form-msg" class="form-msg" role="status"></p>
+      </form>
+    </section>
+    """,
+    '<script src="/js/account.js"></script>',
+)
+
+PAGES["me.html"] = (
+    "Your account · NO RULES SURVIVAL",
+    "Private page for the Minecraft account you linked. Your UUID stays on this page.",
+    "/me.html",
+    """
+    <section class="section wrap dash" id="dash" hidden>
+      <header class="dash-top">
+        <img id="d-avatar" class="avatar" alt="" width="84" height="84">
+        <div>
+          <p class="kicker"><i id="live-dot"></i> <span id="d-live">Live</span></p>
+          <h2 id="d-name">Your account</h2>
+          <p id="d-rank" class="rank-line"></p>
+          <div class="rank-bar" id="rank-bar" hidden><span id="rank-fill"></span></div>
+          <p id="d-rank-next" class="form-msg"></p>
+          <p id="d-uuid" class="uuid"></p>
+          <p id="d-email" class="form-msg"></p>
+        </div>
+        <button class="btn btn-ghost" id="logout" type="button">Sign out</button>
+      </header>
+      <div class="stat-cards" id="stats">
+        <article class="stat-card"><span>Playtime</span><b id="s-play">—</b></article>
+        <article class="stat-card"><span>Deaths</span><b id="s-deaths">—</b></article>
+        <article class="stat-card"><span>Player kills</span><b id="s-pkills">—</b></article>
+        <article class="stat-card"><span>Mob kills</span><b id="s-mkills">—</b></article>
+        <article class="stat-card"><span>Arena</span><b id="s-arena">—</b></article>
+        <article class="stat-card"><span>Waves</span><b id="s-waves">—</b></article>
+        <article class="stat-card"><span>Endless</span><b id="s-endless">—</b></article>
+        <article class="stat-card"><span>Synced</span><b id="s-when">—</b></article>
+      </div>
+      <article class="card explore-card">
+        <h3>Explored ground</h3>
+        <p class="form-msg">Your /wp marks sit on the ground you have walked. Click a mark to center it. Nobody else can open this.</p>
+        <div id="explore-worlds" class="world-tabs"></div>
+        <canvas id="explore-map" class="explore-map" width="960" height="420"></canvas>
+        <ul id="mark-list" class="mark-list"></ul>
+      </article>
+      <div class="dash-split">
+        <article class="card">
+          <h3>Polls</h3>
+          <div id="polls"><p class="form-msg">Loading…</p></div>
+        </article>
+      </div>
+      <details class="relink" id="relink">
+        <summary>Enter a /link code</summary>
+        <form id="link-form" class="stack-form">
+          <label for="code">Code from <code>/link</code></label>
+          <input id="code" name="code" type="text" required minlength="8" maxlength="8" autocapitalize="characters" autocomplete="one-time-code" spellcheck="false">
+          <button class="btn" type="submit">Link this account</button>
+          <p id="form-msg" class="form-msg" role="status"></p>
+        </form>
+      </details>
+    </section>
+    """,
+    '<script src="/js/account.js"></script>',
 )
 
 
