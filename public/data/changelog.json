@@ -3,6 +3,13 @@
   "entries": [
     {
       "date": "2026-11-06",
+      "version": "web-1.4",
+      "tags": ["WEBSITE"],
+      "title": "Nine new spawn and hall screenshots",
+      "body": "Home mosaic and gallery page gained Hall of Legends aisle, night monument, ArenaMaster gate, watchtower, market, cherry grove, and barn shots. Duplicates, F3 coord screens, and player-base photos were skipped. Voting is still support only — no loot, crates, keys, or ranks."
+    },
+    {
+      "date": "2026-11-06",
       "version": "web-1.3",
       "tags": ["WEBSITE"],
       "title": "Home page features the photo gallery",

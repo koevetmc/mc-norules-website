@@ -560,7 +560,8 @@ h2 {
 .home-gallery {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  grid-template-rows: minmax(15rem, 28vh) minmax(15rem, 28vh) minmax(13rem, 22vh);
+  grid-template-rows: minmax(15rem, 28vh) minmax(15rem, 28vh);
+  grid-auto-rows: minmax(13rem, 22vh);
   gap: 0.55rem;
 }
 .home-gallery a {
