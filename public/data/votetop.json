@@ -1,0 +1,19 @@
+{
+  "updated": "2026-11-03T19:00:00Z",
+  "sample": true,
+  "comment": "2026-11-03: public list-site vote counts (support only, not a reward). Cron: scrape listing sites or a vote plugin that does NOT grant loot.",
+  "entries": [
+    {"name": "Raidless", "votes": 40},
+    {"name": "DirtHog", "votes": 31},
+    {"name": "CrystlQueen", "votes": 22},
+    {"name": "ElytraRat", "votes": 18},
+    {"name": "DeepslateDan", "votes": 16},
+    {"name": "MobMulcher", "votes": 15},
+    {"name": "PearlEater", "votes": 14},
+    {"name": "GappleGus", "votes": 12},
+    {"name": "HopScotch", "votes": 11},
+    {"name": "BossBane", "votes": 10},
+    {"name": "WitheredSteve", "votes": 9},
+    {"name": "VillagerVic", "votes": 8}
+  ]
+}

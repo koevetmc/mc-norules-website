@@ -1,0 +1,262 @@
+{
+  "updated": "2026-11-03T19:00:00Z",
+  "sample": true,
+  "comment": "One object per player who has ever joined. Cron: scan world/playerdata + stats. NEVER include coordinates, dimension, live location, or vote-reward fields.",
+  "players": [
+    {
+      "name": "CrystlQueen",
+      "firstSeen": "2026-10-29",
+      "lastSeen": "2026-11-03",
+      "stats": {
+        "kills": 142,
+        "deaths": 40,
+        "playtimeHours": 86.2,
+        "distanceKm": 214.0,
+        "mined": 18004,
+        "placed": 4200,
+        "totems": 11,
+        "crystals": 890
+      }
+    },
+    {
+      "name": "WitheredSteve",
+      "firstSeen": "2026-10-29",
+      "lastSeen": "2026-11-02",
+      "stats": {
+        "kills": 97,
+        "deaths": 318,
+        "playtimeHours": 41.0,
+        "distanceKm": 90.5,
+        "mined": 12000,
+        "placed": 800,
+        "totems": 2,
+        "crystals": 76
+      }
+    },
+    {
+      "name": "PearlEater",
+      "firstSeen": "2026-10-30",
+      "lastSeen": "2026-11-03",
+      "stats": {
+        "kills": 61,
+        "deaths": 154,
+        "playtimeHours": 55.4,
+        "distanceKm": 88.0,
+        "mined": 9000,
+        "placed": 1100,
+        "totems": 3,
+        "crystals": 210
+      }
+    },
+    {
+      "name": "DirtHog",
+      "firstSeen": "2026-10-29",
+      "lastSeen": "2026-11-03",
+      "stats": {
+        "kills": 12,
+        "deaths": 88,
+        "playtimeHours": 100.0,
+        "distanceKm": 64.2,
+        "mined": 184230,
+        "placed": 55210,
+        "totems": 1,
+        "crystals": 0
+      }
+    },
+    {
+      "name": "ElytraRat",
+      "firstSeen": "2026-10-30",
+      "lastSeen": "2026-11-03",
+      "stats": {
+        "kills": 29,
+        "deaths": 71,
+        "playtimeHours": 70.0,
+        "distanceKm": 482.0,
+        "mined": 4400,
+        "placed": 900,
+        "totems": 0,
+        "crystals": 4
+      }
+    },
+    {
+      "name": "TotemBank",
+      "firstSeen": "2026-10-31",
+      "lastSeen": "2026-11-02",
+      "stats": {
+        "kills": 8,
+        "deaths": 22,
+        "playtimeHours": 19.5,
+        "distanceKm": 22.0,
+        "mined": 2100,
+        "placed": 400,
+        "totems": 37,
+        "crystals": 12
+      }
+    },
+    {
+      "name": "Raidless",
+      "firstSeen": "2026-10-29",
+      "lastSeen": "2026-11-03",
+      "stats": {
+        "kills": 4,
+        "deaths": 11,
+        "playtimeHours": 130.0,
+        "distanceKm": 40.0,
+        "mined": 22000,
+        "placed": 8000,
+        "totems": 0,
+        "crystals": 0
+      }
+    },
+    {
+      "name": "LifeLong",
+      "firstSeen": "2026-10-30",
+      "lastSeen": "2026-11-01",
+      "stats": {
+        "kills": 1,
+        "deaths": 0,
+        "playtimeHours": 33.1,
+        "distanceKm": 18.4,
+        "mined": 1500,
+        "placed": 2200,
+        "totems": 0,
+        "crystals": 0
+      }
+    },
+    {
+      "name": "HopScotch",
+      "firstSeen": "2026-10-31",
+      "lastSeen": "2026-11-03",
+      "stats": {
+        "kills": 6,
+        "deaths": 201,
+        "playtimeHours": 44.0,
+        "distanceKm": 191.0,
+        "mined": 3000,
+        "placed": 500,
+        "totems": 1,
+        "crystals": 2
+      }
+    },
+    {
+      "name": "Fishbone",
+      "firstSeen": "2026-11-01",
+      "lastSeen": "2026-11-03",
+      "stats": {
+        "kills": 0,
+        "deaths": 9,
+        "playtimeHours": 12.2,
+        "distanceKm": 8.1,
+        "mined": 400,
+        "placed": 80,
+        "totems": 0,
+        "crystals": 0
+      }
+    },
+    {
+      "name": "VillagerVic",
+      "firstSeen": "2026-10-31",
+      "lastSeen": "2026-11-02",
+      "stats": {
+        "kills": 2,
+        "deaths": 14,
+        "playtimeHours": 28.0,
+        "distanceKm": 15.0,
+        "mined": 6000,
+        "placed": 9100,
+        "totems": 0,
+        "crystals": 0
+      }
+    },
+    {
+      "name": "DeepslateDan",
+      "firstSeen": "2026-10-30",
+      "lastSeen": "2026-11-03",
+      "stats": {
+        "kills": 3,
+        "deaths": 40,
+        "playtimeHours": 61.5,
+        "distanceKm": 33.0,
+        "mined": 99012,
+        "placed": 1200,
+        "totems": 0,
+        "crystals": 0
+      }
+    },
+    {
+      "name": "GappleGus",
+      "firstSeen": "2026-10-29",
+      "lastSeen": "2026-11-03",
+      "stats": {
+        "kills": 15,
+        "deaths": 60,
+        "playtimeHours": 38.0,
+        "distanceKm": 44.0,
+        "mined": 8000,
+        "placed": 1500,
+        "totems": 6,
+        "crystals": 9
+      }
+    },
+    {
+      "name": "ChestMoth",
+      "firstSeen": "2026-11-01",
+      "lastSeen": "2026-11-03",
+      "stats": {
+        "kills": 7,
+        "deaths": 25,
+        "playtimeHours": 16.4,
+        "distanceKm": 21.0,
+        "mined": 2400,
+        "placed": 22004,
+        "totems": 0,
+        "crystals": 0
+      }
+    },
+    {
+      "name": "BreedBae",
+      "firstSeen": "2026-11-02",
+      "lastSeen": "2026-11-03",
+      "stats": {
+        "kills": 0,
+        "deaths": 5,
+        "playtimeHours": 8.0,
+        "distanceKm": 6.2,
+        "mined": 300,
+        "placed": 1800,
+        "totems": 0,
+        "crystals": 0
+      }
+    },
+    {
+      "name": "BossBane",
+      "firstSeen": "2026-10-30",
+      "lastSeen": "2026-11-02",
+      "stats": {
+        "kills": 44,
+        "deaths": 39,
+        "playtimeHours": 47.7,
+        "distanceKm": 70.0,
+        "mined": 11000,
+        "placed": 2000,
+        "totems": 4,
+        "crystals": 30
+      }
+    },
+    {
+      "name": "MobMulcher",
+      "firstSeen": "2026-10-29",
+      "lastSeen": "2026-11-03",
+      "stats": {
+        "kills": 10,
+        "deaths": 55,
+        "playtimeHours": 52.0,
+        "distanceKm": 39.0,
+        "mined": 44100,
+        "placed": 3000,
+        "totems": 1,
+        "crystals": 0
+      }
+    }
+  ]
+}

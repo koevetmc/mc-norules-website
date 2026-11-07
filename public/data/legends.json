@@ -1,0 +1,241 @@
+{
+  "updated": "2026-11-03T19:00:00Z",
+  "sample": true,
+  "comment": "2026-11-06 schema still matches plugins/Legends (24 cats). Server Firsts (/firsts) are a separate plugin in the same hall — do not add them here. value is the RAW vanilla stat. Cron: dump top-10 per category from world/players/stats. Empty entries = unclaimed.",
+  "order": [
+    "kills", "deaths", "damage", "mobs", "crystals", "totems",
+    "playtime", "life", "distance", "pearls", "mined", "placed",
+    "jump", "fish", "trade", "elytra", "diamonds", "debris",
+    "gapple", "chests", "breed", "bosses", "raids", "climb"
+  ],
+  "categories": {
+    "kills": {
+      "title": "TOP KILLER",
+      "unit": "kills",
+      "format": "count",
+      "entries": [
+        {"name": "CrystlQueen", "value": 142},
+        {"name": "WitheredSteve", "value": 97},
+        {"name": "PearlEater", "value": 61},
+        {"name": "BossBane", "value": 44},
+        {"name": "ElytraRat", "value": 29}
+      ]
+    },
+    "deaths": {
+      "title": "MOST DEATHS",
+      "unit": "deaths",
+      "format": "count",
+      "entries": [
+        {"name": "WitheredSteve", "value": 318},
+        {"name": "HopScotch", "value": 201},
+        {"name": "PearlEater", "value": 154},
+        {"name": "DirtHog", "value": 88}
+      ]
+    },
+    "damage": {
+      "title": "MOST DAMAGE DEALT",
+      "unit": "hearts",
+      "format": "hearts",
+      "entries": [
+        {"name": "WitheredSteve", "value": 184000},
+        {"name": "CrystlQueen", "value": 162400},
+        {"name": "BossBane", "value": 99000}
+      ]
+    },
+    "mobs": {
+      "title": "MOB SLAYER",
+      "unit": "mobs killed",
+      "format": "count",
+      "entries": [
+        {"name": "MobMulcher", "value": 12440},
+        {"name": "DirtHog", "value": 8102},
+        {"name": "GappleGus", "value": 4330}
+      ]
+    },
+    "crystals": {
+      "title": "CRYSTAL PVPER",
+      "unit": "crystals placed",
+      "format": "count",
+      "entries": [
+        {"name": "CrystlQueen", "value": 890},
+        {"name": "PearlEater", "value": 210},
+        {"name": "WitheredSteve", "value": 76}
+      ]
+    },
+    "totems": {
+      "title": "TOTEMS POPPED",
+      "unit": "totems",
+      "format": "count",
+      "entries": [
+        {"name": "TotemBank", "value": 37},
+        {"name": "CrystlQueen", "value": 11},
+        {"name": "GappleGus", "value": 6}
+      ]
+    },
+    "playtime": {
+      "title": "MOST PLAYTIME",
+      "unit": "hours",
+      "format": "hours",
+      "entries": [
+        {"name": "Raidless", "value": 9360000},
+        {"name": "DirtHog", "value": 7200000},
+        {"name": "ElytraRat", "value": 5040000}
+      ]
+    },
+    "life": {
+      "title": "LONGEST ALIVE",
+      "unit": "",
+      "format": "life",
+      "entries": [
+        {"name": "LifeLong", "value": 8640000},
+        {"name": "Raidless", "value": 2160000}
+      ]
+    },
+    "distance": {
+      "title": "FARTHEST TRAVELED",
+      "unit": "km",
+      "format": "km",
+      "entries": [
+        {"name": "ElytraRat", "value": 48200000},
+        {"name": "HopScotch", "value": 19100000},
+        {"name": "PearlEater", "value": 8800000}
+      ]
+    },
+    "pearls": {
+      "title": "PEARL SPAMMER",
+      "unit": "pearls thrown",
+      "format": "count",
+      "entries": [
+        {"name": "PearlEater", "value": 4412},
+        {"name": "CrystlQueen", "value": 1204},
+        {"name": "ElytraRat", "value": 880}
+      ]
+    },
+    "mined": {
+      "title": "MOST BLOCKS MINED",
+      "unit": "blocks",
+      "format": "count",
+      "entries": [
+        {"name": "DirtHog", "value": 184230},
+        {"name": "DeepslateDan", "value": 99012},
+        {"name": "MobMulcher", "value": 44100}
+      ]
+    },
+    "placed": {
+      "title": "MOST BLOCKS PLACED",
+      "unit": "blocks",
+      "format": "count",
+      "entries": [
+        {"name": "DirtHog", "value": 55210},
+        {"name": "ChestMoth", "value": 22004},
+        {"name": "VillagerVic", "value": 9100}
+      ]
+    },
+    "jump": {
+      "title": "BUNNY HOPPER",
+      "unit": "jumps",
+      "format": "count",
+      "entries": [
+        {"name": "HopScotch", "value": 210004},
+        {"name": "ElytraRat", "value": 88021},
+        {"name": "PearlEater", "value": 41002}
+      ]
+    },
+    "fish": {
+      "title": "ANGLER",
+      "unit": "fish",
+      "format": "count",
+      "entries": [
+        {"name": "Fishbone", "value": 842},
+        {"name": "LifeLong", "value": 190}
+      ]
+    },
+    "trade": {
+      "title": "VILLAGER TRADER",
+      "unit": "trades",
+      "format": "count",
+      "entries": [
+        {"name": "VillagerVic", "value": 1204},
+        {"name": "GappleGus", "value": 330}
+      ]
+    },
+    "elytra": {
+      "title": "ELYTRA PILOT",
+      "unit": "km",
+      "format": "km",
+      "entries": [
+        {"name": "ElytraRat", "value": 31000000},
+        {"name": "HopScotch", "value": 4200000}
+      ]
+    },
+    "diamonds": {
+      "title": "DIAMOND MINER",
+      "unit": "ores",
+      "format": "count",
+      "entries": [
+        {"name": "DirtHog", "value": 412},
+        {"name": "DeepslateDan", "value": 277},
+        {"name": "Raidless", "value": 91}
+      ]
+    },
+    "debris": {
+      "title": "ANCIENT DEBRIS",
+      "unit": "debris",
+      "format": "count",
+      "entries": [
+        {"name": "DeepslateDan", "value": 64},
+        {"name": "DirtHog", "value": 21}
+      ]
+    },
+    "gapple": {
+      "title": "GOLDEN APPLES",
+      "unit": "eaten",
+      "format": "count",
+      "entries": [
+        {"name": "GappleGus", "value": 508},
+        {"name": "TotemBank", "value": 122},
+        {"name": "CrystlQueen", "value": 80}
+      ]
+    },
+    "chests": {
+      "title": "CHEST LOOTER",
+      "unit": "chests",
+      "format": "count",
+      "entries": [
+        {"name": "ChestMoth", "value": 2310},
+        {"name": "PearlEater", "value": 804}
+      ]
+    },
+    "breed": {
+      "title": "ANIMAL BREEDER",
+      "unit": "bred",
+      "format": "count",
+      "entries": [
+        {"name": "BreedBae", "value": 1660},
+        {"name": "VillagerVic", "value": 240}
+      ]
+    },
+    "bosses": {
+      "title": "BOSS SLAYER",
+      "unit": "bosses",
+      "format": "count",
+      "entries": [
+        {"name": "BossBane", "value": 14},
+        {"name": "CrystlQueen", "value": 4},
+        {"name": "MobMulcher", "value": 2}
+      ]
+    },
+    "raids": {
+      "title": "RAID WINNER",
+      "unit": "raids",
+      "format": "count",
+      "entries": []
+    },
+    "climb": {
+      "title": "CLIMBER",
+      "unit": "km",
+      "format": "km",
+      "entries": []
+    }
+  }
+}

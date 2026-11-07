@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" class="logo-svg" role="img" aria-label="No Rules Survival">
+  <!-- 2026-11-03: isometric grass block + circled-A. Ember veins glow on header hover. -->
+  <defs>
+    <linearGradient id="grass" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#6ea34a"/>
+      <stop offset="1" stop-color="#3d6a28"/>
+    </linearGradient>
+    <linearGradient id="dirtL" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#7a5a38"/>
+      <stop offset="1" stop-color="#4a3420"/>
+    </linearGradient>
+    <linearGradient id="dirtR" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#5a4028"/>
+      <stop offset="1" stop-color="#2e2114"/>
+    </linearGradient>
+    <filter id="emberGlow" x="-40%" y="-40%" width="180%" height="180%">
+      <feGaussianBlur stdDeviation="1.2" result="b"/>
+      <feMerge>
+        <feMergeNode in="b"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+  <polygon class="cube-top" points="32,6 58,20 32,34 6,20" fill="url(#grass)" stroke="#2a3d18" stroke-width="0.6"/>
+  <polygon class="cube-left" points="6,20 32,34 32,58 6,44" fill="url(#dirtL)" stroke="#2a1c10" stroke-width="0.6"/>
+  <polygon class="cube-right" points="58,20 32,34 32,58 58,44" fill="url(#dirtR)" stroke="#1a120a" stroke-width="0.6"/>
+  <!-- pixel-ish grass tiles -->
+  <path fill="#5b8c3a" opacity=".45" d="M18 16 L24 13 L28 15 L22 18 Z M36 12 L42 15 L38 18 L32 15 Z"/>
+  <!-- cracks / ember veins -->
+  <g class="ember-vein" fill="none" stroke="#e85d04" stroke-width="1.15" stroke-linecap="round" filter="url(#emberGlow)">
+    <path d="M32 8 L30 18 L34 24 L32 34"/>
+    <path d="M22 18 L18 28 L22 36"/>
+    <path d="M44 16 L48 26 L46 34"/>
+    <path d="M20 40 L24 48"/>
+    <path d="M44 38 L48 50"/>
+  </g>
+  <!-- circled A, slightly offset onto the cube face -->
+  <g transform="translate(32 30)" fill="none" stroke="#8b1e16" stroke-width="2.4" stroke-linejoin="round">
+    <circle class="a-ring" r="13.2" stroke="#c43a22"/>
+    <path class="a-letter" d="M0 -8.5 L-6.4 8.2 M0 -8.5 L6.4 8.2 M-3.6 2.2 H3.6" stroke="#d94a2a" stroke-width="2.6"/>
+  </g>
+  <g class="ember-vein" transform="translate(32 30)" fill="none" stroke="#ffba08" stroke-width="0.7" opacity=".85">
+    <circle r="13.2"/>
+  </g>
+</svg>

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Media · NO RULES SURVIVAL</title>
+  <meta name="description" content="YouTube coming soon. Flashback killcam archive posted after fights, never live.">
+  <meta name="theme-color" content="#e85d04">
+  <link rel="canonical" href="/media.html">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <link rel="manifest" href="/manifest.webmanifest">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="NO RULES SURVIVAL">
+  <meta property="og:title" content="Media · NO RULES SURVIVAL">
+  <meta property="og:description" content="YouTube coming soon. Flashback killcam archive posted after fights, never live.">
+  <meta property="og:image" content="/img/og-image.jpg">
+  <meta property="og:url" content="/media.html">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/style.css">
+  
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header">
+    <div class="wrap">
+      <a class="brand" href="/">
+        <span class="logo-slot"><img src="/img/logo.svg" class="logo" width="42" height="42" alt=""></span>
+        <span class="brand-text">NO RULES SURVIVAL<small>true anarchy</small></span>
+      </a>
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">Menu</button>
+      <nav class="site-nav" id="site-nav" aria-label="Primary">
+        <a href="/">Home</a>
+        <a href="/legends.html">Legends</a>
+        <a href="/players.html">Players</a>
+        <a href="/vote.html">Vote</a>
+        <a href="/gallery.html">Gallery</a>
+        <a href="/media.html">Media</a>
+        <a href="/changelog.html">Log</a>
+        <a href="/join.html">Join</a>
+      </nav>
+    </div>
+  </header>
+  <main id="main">
+
+    <section class="page-hero wrap">
+      <p class="kicker">Watch</p>
+      <h2>Media</h2>
+      <p class="lede">Killcams auto-export after the fight from the rolling 60-second Flashback buffer — scene camera and first-person, victim and killer. This is not a live kill feed.</p>
+    </section>
+    <section class="section wrap">
+      <h2>YouTube — coming soon</h2>
+      <div class="yt-card">
+        <p class="kicker">Subscribe</p>
+        <h3>Channel not live yet</h3>
+        <p class="lede">When the channel exists it will land here. Until then, the killcam archive below is the show.</p>
+        <a class="btn btn-ghost" href="https://www.youtube.com" rel="noopener">YouTube</a>
+      </div>
+    </section>
+    <section class="section wrap">
+      <h2>Killfeed archive</h2>
+      <p class="lede">Drop mp4s in <code>/clips/</code> and add a row to <code>data/clips.json</code>.</p>
+      <div class="clip-grid" id="clips"></div>
+    </section>
+    
+  </main>
+  <footer class="site-footer">
+    <div class="wrap">
+      <p>© <span data-year>2026</span> NO RULES SURVIVAL · Paper 26.3 · 76.176.218.251</p>
+      <p class="fairness-note">Anarchy fairness: this site never shows coordinates, live location, or who is online by name. Leaderboards and clips are public in-game data posted after the fact.</p>
+    </div>
+  </footer>
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+  <script src="/js/config.js"></script>
+  <script src="/js/site.js"></script>
+  <script src="/js/clips.js"></script>
+</body>
+</html>

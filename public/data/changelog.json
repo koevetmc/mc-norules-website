@@ -1,0 +1,154 @@
+{
+  "comment": "Newest first is fine; the page also sorts by date descending. tags: PLUGIN | SERVER | WEBSITE | FIX",
+  "entries": [
+    {
+      "date": "2026-11-06",
+      "version": "web-1.4",
+      "tags": ["WEBSITE"],
+      "title": "Nine new spawn and hall screenshots",
+      "body": "Home mosaic and gallery page gained Hall of Legends aisle, night monument, ArenaMaster gate, watchtower, market, cherry grove, and barn shots. Duplicates, F3 coord screens, and player-base photos were skipped. Voting is still support only — no loot, crates, keys, or ranks."
+    },
+    {
+      "date": "2026-11-06",
+      "version": "web-1.3",
+      "tags": ["WEBSITE"],
+      "title": "Home page features the photo gallery",
+      "body": "Spawn, Hall of Legends, arena, and End shots now sit in a large mosaic under the join block. Click for the lightbox. Voting is still support only — no loot, crates, keys, or ranks."
+    },
+    {
+      "date": "2026-11-06",
+      "version": "web-1.2",
+      "tags": ["WEBSITE"],
+      "title": "Site synced to live plugins and pack",
+      "body": "Homepage, join, legends, gallery, and this log now match Arena, PackSelect /pack off (no join popup), ItemShare party ping, ChatFX, Server Firsts, waypoints HUD/share, Flashback dual-angle clips, Hard difficulty, and pack v1.2. Voting is still support only — no loot, crates, keys, or ranks."
+    },
+    {
+      "date": "2026-11-06",
+      "version": "arena-2.3.2",
+      "tags": ["PLUGIN"],
+      "title": "The Arena — waves, bosses, 1v1",
+      "body": "Practice pit in a void world. Right-click ArenaMaster at the south spawn gate (not from the wild). Real gear is vaulted; a diamond kit is issued; /arena leave restores stash at spawn. PvE waves and named bosses, 1v1 or a bot, punch a lobby boss head to spar. Party of 3 max. No survival loot from the pit."
+    },
+    {
+      "date": "2026-11-06",
+      "version": "waypoints-1.5.6",
+      "tags": ["PLUGIN"],
+      "title": "Waypoints HUD, party share, mute beams",
+      "body": "/wp waypoints are private by default. Share with a player or party. Sidebar HUD lists party + distance. Shift-click a pane to mute that beam for you only."
+    },
+    {
+      "date": "2026-11-05",
+      "version": "itemshare-1.1.1",
+      "tags": ["PLUGIN"],
+      "title": "Party ping and item share",
+      "body": "Middle-click a block or player to ping that spot for your /party (or /ping). Marker on the locator bar. /share still broadcasts a held item. Invite someone first if you are not in a party."
+    },
+    {
+      "date": "2026-11-04",
+      "version": "packselect-1.1.3",
+      "tags": ["PLUGIN"],
+      "title": "Pack is opt-in: /pack off, no join popup",
+      "body": "No accept/decline resource-pack screen on join. /pack opens a clickable menu; /pack low|medium|high|off. Off is vanilla UI. Pack v1.2 (charcoal/oxblood iron plus veteran Ⓐ glyphs)."
+    },
+    {
+      "date": "2026-11-04",
+      "version": "chatfx-1.1.0",
+      "tags": ["PLUGIN"],
+      "title": "ChatFX text effects and chat sounds",
+      "body": "/chatfx (or /cfx) for text effects, signature chat sounds, and a mention chime. Currently all free — not a rank shop."
+    },
+    {
+      "date": "2026-11-04",
+      "version": "serverfirst-1.0.1",
+      "tags": ["PLUGIN"],
+      "title": "Server Firsts in the Hall of Legends",
+      "body": "First-on-this-map records via /firsts (diamond, first blood, nether, dragon, and the rest). Statues stand in the same hall as the 24 vanilla /legends boards. A map reset starts a fresh firsts board."
+    },
+    {
+      "date": "2026-11-04",
+      "tags": ["SERVER"],
+      "title": "Difficulty set to Hard",
+      "body": "World difficulty is Hard. Hunger, mobs, and damage match vanilla hard. The arena world is pinned the same way."
+    },
+    {
+      "date": "2026-11-04",
+      "version": "vgs-1.2.1",
+      "tags": ["PLUGIN", "FIX"],
+      "title": "VGS F-swap no longer dupes or voids items",
+      "body": "Double-F hand swap is vanilla again. The ; menu still opens. VGS no longer rewrites inventory after cancelling a swap."
+    },
+    {
+      "date": "2026-11-03",
+      "version": "web-1.1",
+      "tags": ["WEBSITE"],
+      "title": "Vote page is support only",
+      "body": "Loot table, crate/key/rank copy, and 'vote for rewards' claims removed. The seven list links stay. Voting does not grant in-game items or advantage."
+    },
+    {
+      "date": "2026-11-03",
+      "version": "web-1.0",
+      "tags": ["WEBSITE"],
+      "title": "Public website launched",
+      "body": "Static Cloudflare Workers site with Hall of Legends, player profiles, vote page, gallery, and killcam archive. Regenerates from JSON — no database."
+    },
+    {
+      "date": "2026-11-03",
+      "version": "smpchat-1.1.1",
+      "tags": ["PLUGIN"],
+      "title": "Veteran badge in chat and tab",
+      "body": "Players with 5+ hours playtime get the anarchy-A glyph before their name. Pack-loaded clients see the custom font; everyone else gets a text fallback."
+    },
+    {
+      "date": "2026-11-02",
+      "version": "legends-1.1.0",
+      "tags": ["PLUGIN", "SERVER"],
+      "title": "Second ring of Hall of Legends statues",
+      "body": "Cross-aisle pedestals added for bunny hopper, angler, villager trader, elytra pilot, diamond miner, ancient debris, golden apples, chest looter, animal breeder, boss slayer, raid winner, and climber. /legends still prints the top 10."
+    },
+    {
+      "date": "2026-11-02",
+      "version": "locatorbar-1.1.0",
+      "tags": ["PLUGIN"],
+      "title": "Party locator bar and waypoint icons",
+      "body": "Party members see each other on the vanilla locator bar. /wp waypoints render as bowtie icons tinted by dye color. No extra commands — SMPChat still owns /party."
+    },
+    {
+      "date": "2026-11-02",
+      "tags": ["SERVER"],
+      "title": "Spawn lively pass — tavern, market, hall pavilion",
+      "body": "Protected spawn gained the Broken Crown tavern, scrap market, smithy, and the red-nether Hall of Legends pavilion over the statue hall. WorldGuard still denies build/pvp inside the zone."
+    },
+    {
+      "date": "2026-11-01",
+      "version": "vgs-1.2.0",
+      "tags": ["PLUGIN", "FIX"],
+      "title": "VGS menu moved to ';' prefix",
+      "body": "Tribes-style voice-game-soundboard no longer steals V (Simple Voice Chat). Press ; for the sidebar of 70+ callouts, or fire a quick code like ;af."
+    },
+    {
+      "date": "2026-10-31",
+      "version": "packselect-1.0.0",
+      "tags": ["PLUGIN"],
+      "title": "PackSelect: 3-tier anarchy resource pack",
+      "body": "Optional UI pack in low / medium / high. In game: /pack low|medium|high. Chunky 2-color iron, worn iron + oxblood, or extra rust, rivets, and ember trim."
+    },
+    {
+      "date": "2026-10-30",
+      "tags": ["PLUGIN", "SERVER"],
+      "title": "Simple Voice Chat proximity voice enabled",
+      "body": "Server plugin voicechat-bukkit 2.6.25. Java clients need the matching SVC mod (Fabric / NeoForge / Forge / Quilt). Vanilla Java and Bedrock get no voice — that is upstream, not a server setting."
+    },
+    {
+      "date": "2026-10-29",
+      "tags": ["SERVER"],
+      "title": "Bedrock crossplay via Geyser + floodgate",
+      "body": "Java 76.176.218.251:25565. Bedrock same host, UDP 19132. ViaVersion + ViaBackwards let older and newer Java clients join Paper 26.3."
+    },
+    {
+      "date": "2026-10-29",
+      "tags": ["SERVER"],
+      "title": "Listed on seven public vote sites",
+      "body": "Support-only list links. No loot, crates, keys, or ranks for voting."
+    }
+  ]
+}
