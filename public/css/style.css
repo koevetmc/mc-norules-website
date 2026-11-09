@@ -181,7 +181,7 @@ a:hover { color: var(--ember-core); }
 
 /* ---------- hero ---------- */
 .hero {
-  padding: 3.5rem 0 2.5rem;
+  padding: 2.2rem 0 2.5rem;
   text-align: center;
 }
 .hero-logo {
@@ -592,93 +592,108 @@ h2 {
 }
 .lightbox-nav { display: flex; gap: 0.4rem; }
 
-/* 2026-11-08 later: horizontal death timeline — oldest left, newest right.
-   Player heads sit on the axis. The scroller starts at the newest end. */
-.home-deaths { padding-top: 0.2rem; }
-.death-feed {
-  overflow-x: auto;
-  overflow-y: hidden;
-  border: 1px solid var(--iron-dim);
+/* 2026-11-08 later: compact top-of-page death strip.
+   Axis = server UTC days. Ticks + 16px heads. Hover tip = how they died. */
+.death-strip {
+  border-bottom: 1px solid var(--iron-dim);
   background: var(--bg-2);
-  padding: 0.6rem 0 0.9rem;
-  -webkit-overflow-scrolling: touch;
-  scrollbar-color: var(--ember) var(--bg-4);
+  padding: 0.4rem 0 0.45rem;
 }
-.death-axis-label {
-  display: flex;
-  justify-content: space-between;
-  margin: 0 0 0.35rem;
-  color: var(--muted);
-  font-size: 0.72rem;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-}
-.death-track {
-  display: flex;
-  align-items: stretch;
-  min-width: max-content;
-  padding: 0 1.25rem 0.25rem;
-}
-.death-node {
-  --axis-y: calc(6.6rem + 24px);
-  position: relative;
-  flex: 0 0 10.5rem;
-  width: 10.5rem;
+.death-strip-inner {
   display: grid;
-  grid-template-rows: 6.6rem 48px auto;
-  justify-items: center;
-  text-align: center;
-  padding: 0 0.45rem;
+  grid-template-columns: auto 1fr;
+  gap: 0.7rem;
+  align-items: center;
 }
-.death-node::before {
-  content: "";
+.death-strip-kicker {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: 1rem;
+  letter-spacing: 0.14em;
+  color: var(--ember);
+  line-height: 1;
+}
+.death-axis { position: relative; height: 3.15rem; min-width: 0; }
+.death-axis-pad { position: relative; height: 100%; margin: 0 0.55rem; }
+.death-line {
   position: absolute;
   left: 0;
   right: 0;
-  top: var(--axis-y);
+  top: 1.15rem;
   height: 2px;
   background: var(--iron);
-  z-index: 0;
 }
-.death-node:first-child::before { left: 50%; }
-.death-node:last-child::before { right: 50%; }
-.death-msg {
-  margin: 0;
-  align-self: end;
-  padding-bottom: 0.45rem;
-  font-size: 0.82rem;
-  font-weight: 500;
-  line-height: 1.25;
-  max-height: 6.2rem;
-  overflow: hidden;
-}
-.death-msg a { color: var(--text); text-decoration: none; }
-.death-msg a:hover { color: var(--ember-core); }
-.death-dot {
-  position: relative;
-  z-index: 1;
-  width: 48px;
-  height: 48px;
-  border: 2px solid var(--ember);
-  background: var(--bg-4);
-  box-shadow: 0 0 0 4px var(--bg-2);
-}
-.death-dot img {
-  width: 40px;
-  height: 40px;
-  max-width: none;
-  image-rendering: pixelated;
-}
-.death-node time {
-  display: flex;
-  flex-direction: column;
-  gap: 0.1rem;
-  margin-top: 0.45rem;
+.death-day {
+  position: absolute;
+  top: 0;
+  transform: translateX(-50%);
   color: var(--muted);
-  font-size: 0.72rem;
+  font-size: 0.62rem;
+  letter-spacing: 0.04em;
   font-variant-numeric: tabular-nums;
-  line-height: 1.2;
+  pointer-events: none;
 }
+.death-day::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 0.95rem;
+  width: 1px;
+  height: 7px;
+  background: var(--iron-dim);
+}
+.death-mark {
+  position: absolute;
+  top: 1.05rem;
+  width: 16px;
+  margin: 0;
+  transform: translateX(-50%);
+  text-align: center;
+  text-decoration: none;
+  color: inherit;
+}
+.death-mark i {
+  display: block;
+  width: 2px;
+  height: 7px;
+  margin: 0 auto;
+  background: var(--ember);
+}
+.death-mark img {
+  width: 16px;
+  height: 16px;
+  max-width: none;
+  margin-top: 2px;
+  image-rendering: pixelated;
+  background: var(--bg-4);
+}
+.death-tip {
+  display: none;
+  position: absolute;
+  left: 50%;
+  top: calc(100% + 4px);
+  transform: translateX(-50%);
+  min-width: 12rem;
+  padding: 0.35rem 0.5rem;
+  background: #1b1713;
+  border: 1px solid var(--ember);
+  color: var(--text);
+  font-size: 0.72rem;
+  line-height: 1.3;
+  font-weight: 500;
+  white-space: nowrap;
+  z-index: 20;
+  pointer-events: none;
+  box-shadow: var(--shadow);
+}
+.death-mark-start .death-tip { left: 0; transform: none; }
+.death-mark-end .death-tip { left: auto; right: 0; transform: none; }
+.death-mark:hover,
+.death-mark:focus-visible { z-index: 30 !important; }
+.death-mark:hover .death-tip,
+.death-mark:focus-visible .death-tip,
+.death-mark.is-open .death-tip { display: block; }
+.death-strip-empty { margin: 0; color: var(--muted); font-size: 0.8rem; }
 
 /* 2026-11-06: homepage photo mosaic — large tiles, not a thumbnail strip.
    First shot spans two rows. Overlay captions keep the photos tall. */
@@ -1069,6 +1084,7 @@ h2 {
     grid-row: 1;
     min-height: 18rem;
   }
+  .death-day:not(.death-day-end):nth-child(even) { display: none; }
 }
 @media (max-width: 520px) {
   .masonry { columns: 1; }
@@ -1084,6 +1100,8 @@ h2 {
     min-height: 14rem;
   }
   .home-gallery a:first-child { min-height: 18rem; }
+  .death-strip-inner { grid-template-columns: 1fr; gap: 0.2rem; }
+  .death-strip-kicker { font-size: 0.85rem; }
 }
 
 /* 2026-11-08: Zelda-style cyan fairy trails the pointer (matches in-game Fairy).
@@ -1159,6 +1177,7 @@ h2 {
 @media (hover: none), (pointer: coarse) {
   .nr-fairy,
   .nr-fairy-spark { display: none !important; }
+  .death-mark:not(.is-open) .death-tip { display: none !important; }
 }
 
 @media (prefers-reduced-motion: reduce) {

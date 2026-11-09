@@ -4,6 +4,7 @@
 ChatFX, Server Firsts, waypoints HUD/share, Flashback dual-angle, pack v1.2.
 2026-11-06 later: home page features a real photo mosaic from gallery.json.
 2026-11-08: homepage killfeed from Paper System chat death lines.
+2026-11-08 later: compact top-of-page day-axis strip (ticks + heads, hover).
 Voting stays support-only — no loot, crates, ranks, or in-game advantage."""
 from pathlib import Path
 
@@ -94,6 +95,13 @@ PAGES["index.html"] = (
     "True anarchy survival on Paper 26.3. No whitelist, no ops, no claims, no rules. Java and Bedrock. Join 76.176.218.251.",
     "/",
     """
+    <section class="death-strip" id="killfeed" aria-label="Deaths on this map">
+      <div class="wrap death-strip-inner">
+        <p class="death-strip-kicker">Deaths</p>
+        <div class="death-axis" id="deaths"></div>
+      </div>
+    </section>
+
     <section class="hero wrap">
       <div class="hero-logo logo-slot" aria-hidden="true"><img src="/img/logo.svg" alt=""></div>
       <p class="kicker">Java + Bedrock · Paper 26.3</p>
@@ -117,15 +125,6 @@ PAGES["index.html"] = (
         <span class="badge">Hard</span>
         <span class="badge">Max 30</span>
       </div>
-    </section>
-
-    <section class="section home-deaths wrap" id="killfeed">
-      <p class="kicker">Killfeed</p>
-      <h2>Deaths</h2>
-      <p class="lede">Vanilla death chat from the live logs, on a left–right time axis (oldest → newest). Public after the fact — no coordinates, no who-is-online list.</p>
-      <p class="lede" id="deaths-updated"></p>
-      <p class="death-axis-label"><span>oldest</span><span>newer →</span></p>
-      <div class="death-feed" id="deaths"></div>
     </section>
 
     <section class="section home-shots wrap" id="shots">

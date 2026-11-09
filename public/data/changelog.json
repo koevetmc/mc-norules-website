@@ -3,6 +3,13 @@
   "entries": [
     {
       "date": "2026-11-08",
+      "version": "web-1.10",
+      "tags": ["WEBSITE"],
+      "title": "Deaths as a thin top-of-page strip",
+      "body": "Homepage killfeed is a compact day-axis under the header: ticks where players died, tiny heads under each mark, hover for the death line. Voting is still support only — no loot, crates, keys, or ranks."
+    },
+    {
+      "date": "2026-11-08",
       "version": "web-1.9",
       "tags": ["WEBSITE"],
       "title": "Deaths as a horizontal timeline",
