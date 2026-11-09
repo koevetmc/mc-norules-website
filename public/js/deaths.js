@@ -19,7 +19,7 @@
     if (!iso) return "";
     const d = new Date(iso);
     if (Number.isNaN(d.getTime())) return iso.replace("T", " ").replace("Z", " UTC");
-    return d.toISOString().replace("T", " ").replace("Z", " UTC");
+    return d.toISOString().slice(0, 19).replace("T", " ") + " UTC";
   }
 
   fetch("/data/deaths.json")
