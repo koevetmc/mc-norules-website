@@ -416,12 +416,15 @@ h2 {
   text-align: left;
   cursor: pointer;
 }
-.legend-head img {
-  width: 48px;
-  height: 48px;
+.legend-head img,
+.legend-head img.legend-skin {
+  width: 40px;
+  height: 80px;
+  object-fit: contain;
+  object-position: bottom;
   image-rendering: pixelated;
-  background: #000;
-  border: 1px solid var(--iron-dim);
+  background: transparent;
+  border: 0;
   flex: none;
 }
 .legend-meta { min-width: 0; }
@@ -504,9 +507,9 @@ h2 {
 .hall-statue {
   position: absolute;
   left: 50%;
-  top: 46%;
-  width: 5.6rem;
-  margin-left: -2.8rem;
+  top: 18%;
+  width: 6.4rem;
+  margin-left: -3.2rem;
   transform-style: preserve-3d;
   transform: rotateY(var(--a)) translateZ(var(--hall-r, 24rem)) rotateY(calc(-1 * var(--a) - var(--hall-rot, 0deg)));
   text-align: center;
@@ -518,26 +521,32 @@ h2 {
   cursor: pointer;
 }
 .hall-plinth {
-  height: 1.15rem;
-  margin: 0 auto 0.25rem;
-  width: 2.6rem;
+  height: 0.7rem;
+  margin: -0.2rem auto 0.35rem;
+  width: 2.4rem;
   background: linear-gradient(#3a3228, #1a1612);
   border: 1px solid var(--iron-dim);
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.45);
 }
 .hall-statue img {
-  width: 64px;
-  height: 64px;
+  width: 80px;
+  height: 160px;
   max-width: none;
   margin: 0 auto;
+  object-fit: contain;
+  object-position: bottom;
   image-rendering: pixelated;
-  background: #000;
-  border: 1px solid var(--iron-dim);
-  box-shadow: 0 0 18px rgba(232, 93, 4, 0.15);
+  background: transparent;
+  border: 0;
+  filter: drop-shadow(0 10px 14px rgba(0, 0, 0, 0.55));
 }
 .hall-statue.is-on img {
-  border-color: var(--ember-core);
-  box-shadow: 0 0 22px rgba(255, 186, 8, 0.45);
+  filter: drop-shadow(0 0 16px rgba(255, 186, 8, 0.5));
+}
+.hall-statue.unclaimed img {
+  width: 48px;
+  height: 48px;
+  opacity: 0.45;
 }
 .hall-plaque {
   margin: 0.35rem 0 0;
@@ -591,10 +600,21 @@ h2 {
   background: #1a0c05;
 }
 .hall-detail {
+  display: grid;
+  grid-template-columns: 7.5rem 1fr;
+  gap: 1rem;
+  align-items: start;
   background: var(--bg-3);
   border: 1px solid var(--iron-dim);
   padding: 0.9rem 1rem 1rem;
   min-height: 6rem;
+}
+.hall-detail-skin img {
+  width: 96px;
+  height: auto;
+  max-width: none;
+  image-rendering: pixelated;
+  background: transparent;
 }
 .hall-detail h3 {
   font-family: var(--font-display);
@@ -1327,10 +1347,12 @@ h2 {
     min-height: 18rem;
   }
   .death-day-minor { display: none; }
-  .hall-viewport { height: 24rem; }
-  .hall-statue { --hall-r: 14.5rem; width: 4.5rem; margin-left: -2.25rem; }
-  .hall-statue img { width: 48px; height: 48px; }
+  .hall-viewport { height: 26rem; }
+  .hall-statue { --hall-r: 14.5rem; width: 5.2rem; margin-left: -2.6rem; top: 16%; }
+  .hall-statue img { width: 56px; height: 112px; }
   .hall-plaque { font-size: 0.8rem; }
+  .hall-detail { grid-template-columns: 5.5rem 1fr; }
+  .hall-detail-skin img { width: 72px; }
 }
 @media (max-width: 520px) {
   .masonry { columns: 1; }

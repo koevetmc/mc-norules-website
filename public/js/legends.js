@@ -1,10 +1,20 @@
 /* 2026-11-03: Hall of Legends grid from /data/legends.json (24 plugin keys).
    2026-11-08: CSS 3D statue ring in front of the same 24 boards. No WebGL.
+   2026-11-08 later: ring uses mc-heads playermodels (full skin), not just heads.
    Reduced-motion hides the ring (CSS) and keeps the list. */
 (function () {
   const root = document.getElementById("legends");
   if (!root) return;
-  const NR = window.NR;
+  const NR = window.NR || {};
+  const BODY = NR.body || "https://mc-heads.net/body";
+  const MODEL = NR.model || "https://mc-heads.net/player";
+  const HEADS = NR.heads || "https://mc-heads.net/avatar";
+
+  function skin(kind, name) {
+    if (!name) return "/img/icon-32.png";
+    const base = kind === "model" ? MODEL : kind === "body" ? BODY : HEADS;
+    return base + "/" + encodeURIComponent(name);
+  }
   const world = document.getElementById("hall-world");
   const view = document.getElementById("hall-view");
   const indexEl = document.getElementById("hall-index");
@@ -24,7 +34,7 @@
     entries.slice(0, 10).forEach((e, i) => {
       const li = document.createElement("li");
       const head = document.createElement("img");
-      head.src = NR.heads + "/" + encodeURIComponent(e.name) + "/32";
+      head.src = skin("head", e.name) + "/32";
       head.alt = "";
       head.width = 20;
       head.height = 20;
@@ -63,8 +73,10 @@
       img.width = 48;
       img.height = 48;
       img.alt = "";
+      img.className = "legend-skin";
       if (top) {
-        img.src = NR.heads + "/" + encodeURIComponent(top.name) + "/64";
+        img.src = skin("body", top.name);
+        img.alt = top.name;
       } else {
         img.src = "/img/icon-32.png";
         img.alt = "unclaimed";
@@ -130,22 +142,21 @@
       btn.className = "hall-statue";
       btn.style.setProperty("--a", i * step + "deg");
       btn.dataset.i = String(i);
+      const img = document.createElement("img");
+      img.width = 80;
+      img.height = 160;
+      img.alt = top ? top.name : "unclaimed";
+      img.src = top ? skin("model", top.name) : "/img/icon-32.png";
       const plinth = document.createElement("div");
       plinth.className = "hall-plinth";
-      const img = document.createElement("img");
-      img.width = 64;
-      img.height = 64;
-      img.alt = "";
-      img.src = top
-        ? NR.heads + "/" + encodeURIComponent(top.name) + "/64"
-        : "/img/icon-32.png";
       const plaque = document.createElement("p");
       plaque.className = "hall-plaque";
       plaque.textContent = cat.title || key;
       const who = document.createElement("p");
       who.className = "hall-who";
       who.textContent = top ? top.name : "unclaimed";
-      btn.append(plinth, img, plaque, who);
+      btn.append(img, plinth, plaque, who);
+      if (!top) btn.classList.add("unclaimed");
       btn.addEventListener("click", (e) => {
         e.stopPropagation();
         auto = false;
@@ -182,6 +193,15 @@
       if (!detail || !cat) return;
       const top = (cat.entries || [])[0];
       detail.innerHTML = "";
+      const skinWrap = document.createElement("div");
+      skinWrap.className = "hall-detail-skin";
+      const skinImg = document.createElement("img");
+      skinImg.alt = top ? top.name : "unclaimed";
+      skinImg.width = 96;
+      skinImg.height = 192;
+      skinImg.src = top ? skin("body", top.name) : "/img/icon-32.png";
+      skinWrap.appendChild(skinImg);
+      const copy = document.createElement("div");
       const h = document.createElement("h3");
       h.textContent = cat.title || key;
       const p = document.createElement("p");
@@ -193,7 +213,8 @@
       const ol = document.createElement("ol");
       ol.className = "top10";
       fillTop10(ol, cat);
-      detail.append(h, p, ol);
+      copy.append(h, p, ol);
+      detail.append(skinWrap, copy);
     }
 
     function onDown(e) {

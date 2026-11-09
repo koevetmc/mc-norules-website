@@ -3,6 +3,13 @@
   "entries": [
     {
       "date": "2026-11-08",
+      "version": "web-1.12",
+      "tags": ["WEBSITE"],
+      "title": "Hall of Legends statues use real skins",
+      "body": "Each of the 24 boards shows the winner’s Minecraft playermodel (mc-heads), not just a head. The 3D ring is unchanged. Voting is still support only — no loot, crates, keys, or ranks."
+    },
+    {
+      "date": "2026-11-08",
       "version": "web-1.11",
       "tags": ["WEBSITE"],
       "title": "Motion pass and a 3D Hall of Legends",
