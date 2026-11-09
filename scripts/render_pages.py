@@ -5,6 +5,7 @@ ChatFX, Server Firsts, waypoints HUD/share, Flashback dual-angle, pack v1.2.
 2026-11-06 later: home page features a real photo mosaic from gallery.json.
 2026-11-08: homepage killfeed from Paper System chat death lines.
 2026-11-08 later: compact top-of-page day-axis strip (ticks + heads, hover).
+2026-11-08 later: sitewide motion + CSS 3D Hall of Legends ring.
 Voting stays support-only — no loot, crates, ranks, or in-game advantage."""
 from pathlib import Path
 
@@ -180,10 +181,26 @@ PAGES["legends.html"] = (
     <section class="page-hero wrap">
       <p class="kicker">Flagship</p>
       <h2>Hall of Legends</h2>
-      <p class="lede">Same boards as <code>/legends</code> in game. Twenty-four vanilla stat categories in the statue hall under spawn. Sortable full lists live on <a href="/rankings.html">Rankings</a>. The same hall also holds Server Firsts via <code>/firsts</code>. Unclaimed legends pedestals stay empty until someone logs the first point. Click a card for the top 10.</p>
+      <p class="lede">Same 24 boards as <code>/legends</code> in game. Drag the ring, or pick a plaque. Full sortable lists live on <a href="/rankings.html">Rankings</a>. Server Firsts are <code>/firsts</code>. Unclaimed pedestals stay empty until someone logs the first point.</p>
       <p class="lede" id="legends-updated"></p>
     </section>
+    <section class="section hall-stage wrap">
+      <div class="hall-viewport" id="hall-view" tabindex="0" aria-label="Hall of Legends statue ring. Drag to rotate.">
+        <div class="hall-world" id="hall-world"></div>
+      </div>
+      <p class="hall-hint">
+        <span>Drag or scroll to turn the hall. Click a statue for the top 10.</span>
+        <span>
+          <button class="btn btn-ghost" type="button" data-hall-prev>Prev</button>
+          <button class="btn btn-ghost" type="button" data-hall-next>Next</button>
+        </span>
+      </p>
+      <div class="hall-index" id="hall-index"></div>
+      <aside class="hall-detail" id="hall-detail"><p class="lede">Click a statue.</p></aside>
+    </section>
     <section class="section wrap">
+      <h2>All 24 boards</h2>
+      <p class="lede">Every category, same data. Click a card for the top 10. If you asked the site to reduce motion, this list is the hall.</p>
       <div class="legend-grid" id="legends"></div>
     </section>
     """,

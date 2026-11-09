@@ -82,6 +82,13 @@
   document.querySelectorAll("[data-year]").forEach((el) => {
     el.textContent = String(new Date().getFullYear());
   });
+
+  // 2026-11-08: mark the document so CSS can gate extra motion.
+  if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    document.documentElement.classList.add("nr-reduce");
+  } else {
+    document.documentElement.classList.add("nr-motion");
+  }
 })();
 
 /* 2026-11-08: cyan Navi-style fairy follows the mouse. One rAF, no canvas.

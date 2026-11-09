@@ -3,6 +3,13 @@
   "entries": [
     {
       "date": "2026-11-08",
+      "version": "web-1.11",
+      "tags": ["WEBSITE"],
+      "title": "Motion pass and a 3D Hall of Legends",
+      "body": "Sitewide hover and load motion (honors prefers-reduced-motion). Hall of Legends is a CSS 3D statue ring of the same 24 real boards; the full list is still under it. Voting is still support only — no loot, crates, keys, or ranks."
+    },
+    {
+      "date": "2026-11-08",
       "version": "web-1.10",
       "tags": ["WEBSITE"],
       "title": "Deaths as a thin top-of-page strip",
