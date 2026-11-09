@@ -468,9 +468,9 @@ h2 {
 .hall-stage { padding-top: 0.4rem; }
 .hall-viewport {
   position: relative;
-  height: min(28rem, 70vh);
-  perspective: 1100px;
-  perspective-origin: 50% 42%;
+  height: min(34rem, 78vh);
+  perspective: 1200px;
+  perspective-origin: 50% 46%;
   overflow: hidden;
   border: 1px solid var(--iron-dim);
   background:
@@ -491,24 +491,24 @@ h2 {
 .hall-floor {
   position: absolute;
   left: 50%;
-  top: 62%;
-  width: 36rem;
-  height: 36rem;
-  margin: -18rem 0 0 -18rem;
+  top: 68%;
+  width: 52rem;
+  height: 52rem;
+  margin: -26rem 0 0 -26rem;
   background:
     repeating-conic-gradient(from 0deg, #1a1511 0 15deg, #241c16 15deg 30deg);
   opacity: 0.55;
-  transform: rotateX(90deg) translateZ(-5.6rem);
+  transform: rotateX(90deg) translateZ(-6.2rem);
   border-radius: 50%;
 }
 .hall-statue {
   position: absolute;
   left: 50%;
-  top: 38%;
+  top: 46%;
   width: 5.6rem;
   margin-left: -2.8rem;
   transform-style: preserve-3d;
-  transform: rotateY(var(--a)) translateZ(var(--hall-r, 15.5rem)) rotateY(calc(-1 * var(--a) - var(--hall-rot, 0deg)));
+  transform: rotateY(var(--a)) translateZ(var(--hall-r, 24rem)) rotateY(calc(-1 * var(--a) - var(--hall-rot, 0deg)));
   text-align: center;
   background: none;
   border: 0;
@@ -1327,8 +1327,8 @@ h2 {
     min-height: 18rem;
   }
   .death-day-minor { display: none; }
-  .hall-viewport { height: 22rem; }
-  .hall-statue { --hall-r: 11.5rem; width: 4.5rem; margin-left: -2.25rem; }
+  .hall-viewport { height: 24rem; }
+  .hall-statue { --hall-r: 14.5rem; width: 4.5rem; margin-left: -2.25rem; }
   .hall-statue img { width: 48px; height: 48px; }
   .hall-plaque { font-size: 0.8rem; }
 }
