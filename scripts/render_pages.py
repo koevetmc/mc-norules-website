@@ -8,6 +8,7 @@ ChatFX, Server Firsts, waypoints HUD/share, Flashback dual-angle, pack v1.2.
 2026-11-08 later: sitewide motion + CSS 3D Hall of Legends ring.
 2026-11-08 later: WebGL aisle hall matching in-game (3D skins, lanterns).
 2026-11-08 later: homepage feature cards are a slow two-row marquee, not a grid.
+2026-11-08 later: drop Paper from player-facing copy; repeat Copy IP after features.
 Voting stays support-only — no loot, crates, ranks, or in-game advantage."""
 from pathlib import Path
 
@@ -78,7 +79,7 @@ def chrome(main: str, scripts: str) -> str:
   </main>
   <footer class="site-footer">
     <div class="wrap">
-      <p>© <span data-year>2026</span> NO RULES SURVIVAL · Paper 26.3 · 76.176.218.251</p>
+      <p>© <span data-year>2026</span> NO RULES SURVIVAL · 76.176.218.251</p>
       <p class="fairness-note">Anarchy fairness: this site never shows coordinates, live location, or who is online by name. Leaderboards and clips are public in-game data posted after the fact.</p>
     </div>
   </footer>
@@ -112,10 +113,10 @@ def _feat_row(cards: list, reverse: bool = False) -> str:
 
 FEAT_ROW_A = [
     ("Ⓐ", "True anarchy", "No rules, no land claims, no map resets, no whitelist. Griefing allowed. Protected spawn is the only safe tile on the map."),
-    ("⧉", "Java + Bedrock", "Geyser + floodgate crossplay. ViaVersion and ViaBackwards let older and newer Java clients join Paper 26.3."),
+    ("⧉", "Java + Bedrock", "Same world. Java and Bedrock. Recent Java versions can join — you do not need a special client."),
     ("⚔", "The Arena", "Void-world pit. Right-click ArenaMaster at the south spawn gate (not from the wild). Gear is vaulted, diamond kit on entry, <code>/arena leave</code> restores it at spawn. PvE waves, named bosses, 1v1 or a bot. Punch a boss head in the lobby to spar. Party of 3 max."),
     ("🎤", "Proximity voice", "Simple Voice Chat on the server. You need the matching client mod (Fabric / NeoForge / Forge / Quilt). Vanilla and Bedrock have no voice — that is how SVC works. See <a href=\"/join.html#voice\">install notes</a>."),
-    ("⚖", "Anti-cheat, not anti-fun", "GrimAC + packetevents. Cheating is the only bannable offense. Anti-xray engine-mode 2 is on."),
+    ("⚖", "Anti-cheat, not anti-fun", "Cheating is the only bannable offense. Anti-xray is on. Everything else is the game."),
     ("🏛", "Hall of Legends", "In-game statue hall at spawn for the #1 player in 24 vanilla stat categories, plus Server Firsts (<code>/firsts</code>) for first-on-this-map records. This site mirrors the legends boards. <a href=\"/legends.html\">Open the hall</a>."),
     ("▣", "Anarchy resource pack", "Optional UI pack. No popup on join. In game: <code>/pack</code> menu or <code>/pack low|medium|high|off</code> — chunky iron / worn iron + oxblood / extra rust, rivets, ember trim, or vanilla UI."),
     (";", "VGS quick-chat", "Tribes-style voice-game-soundboard. Press <code>;</code> for a sidebar of 70+ tactical callouts, or fire a code like <code>;af</code>. F-key hand swap is vanilla (no dupe). Plays a sound to everyone."),
@@ -136,7 +137,7 @@ PAGES = {}
 
 PAGES["index.html"] = (
     "NO RULES SURVIVAL — true Minecraft anarchy",
-    "True anarchy survival on Paper 26.3. No whitelist, no ops, no claims, no rules. Java and Bedrock. Join 76.176.218.251.",
+    "True Minecraft anarchy. No whitelist, no ops, no claims, no rules. Java and Bedrock. Join 76.176.218.251.",
     "/",
     """
     <section class="death-strip" id="killfeed" aria-label="Deaths on this map">
@@ -148,12 +149,12 @@ PAGES["index.html"] = (
 
     <section class="hero wrap">
       <div class="hero-logo logo-slot" aria-hidden="true"><img src="/img/logo.svg" alt=""></div>
-      <p class="kicker">Java + Bedrock · Paper 26.3</p>
+      <p class="kicker">Java + Bedrock · no whitelist</p>
       <h1>NO RULES<br>SURVIVAL</h1>
-      <p class="tagline">Join anarchy</p>
+      <p class="tagline">Copy the IP. You're in.</p>
       <div class="hero-actions">
         <button class="btn btn-lg" type="button" data-copy-ip>Copy IP · 76.176.218.251</button>
-        <a class="btn btn-ghost" href="/join.html">How to join</a>
+        <a class="btn btn-ghost" href="/join.html">Bedrock + voice</a>
         <span class="status" data-status data-state="unknown">
           <span class="status-dot" aria-hidden="true"></span>
           <span data-count>— / 30</span>
@@ -161,8 +162,8 @@ PAGES["index.html"] = (
         </span>
       </div>
       <div class="badges">
-        <span class="badge badge-ok">Java 25565</span>
-        <span class="badge badge-ok">Bedrock 19132</span>
+        <span class="badge badge-ok">Java</span>
+        <span class="badge badge-ok">Bedrock · 19132</span>
         <span class="badge">No whitelist</span>
         <span class="badge">No ops</span>
         <span class="badge">No claims</span>
@@ -193,11 +194,20 @@ PAGES["index.html"] = (
       <div class="wrap">
       <p class="kicker">What you get</p>
       <h2>Everything is allowed. Except cheating.</h2>
-      <p class="lede">PvP, griefing, and stealing are the game. Difficulty is hard. Spawn is a small no-build / no-pvp pocket so new players can walk out. GrimAC + anti-xray is the only law. A practice arena sits at the south spawn gate — it does not protect you in the wild. Hover a card to pause.</p>
+      <p class="lede">PvP, griefing, and stealing are the game. Spawn is a small safe pocket so you can walk out. After that, the only law is no cheating. Hover a card to pause.</p>
       </div>
       <div class="feat-marquee" aria-label="Server features">
         """ + _feat_row(FEAT_ROW_A) + """
         """ + _feat_row(FEAT_ROW_B, reverse=True) + """
+      </div>
+    </section>
+    <section class="section wrap join-again">
+      <p class="kicker">That's the pitch</p>
+      <h2>Copy the IP. You're in.</h2>
+      <p class="lede">Java or Bedrock. No application. Bedrock uses port 19132. Cheating is the only ban. Voting is support only — it does not give loot.</p>
+      <div class="hero-actions">
+        <button class="btn btn-lg" type="button" data-copy-ip>Copy IP · 76.176.218.251</button>
+        <a class="btn btn-ghost" href="/join.html">Bedrock + voice</a>
       </div>
     </section>
     """,
@@ -417,18 +427,18 @@ PAGES["join.html"] = (
     <section class="page-hero wrap">
       <p class="kicker">Direct connect</p>
       <h2>How to join</h2>
-      <p class="lede">No whitelist. No account application. If you can reach the IP, you are in. GrimAC will ban you if you cheat. That is the only rule.</p>
+      <p class="lede">No whitelist. No account application. If you can reach the IP, you are in. Cheat and you get banned. That is the only rule.</p>
     </section>
     <section class="section wrap">
       <ol class="steps">
         <li>
           <h3>Java Edition</h3>
-          <p>Multiplayer → Direct Connection. Paper 26.3. ViaVersion + ViaBackwards accept older and newer Java clients.</p>
+          <p>Multiplayer → Direct Connection. Recent Java versions work. Default port 25565.</p>
           <div class="ip-box"><span>76.176.218.251</span><button class="btn" type="button" data-copy-ip>Copy</button></div>
         </li>
         <li>
           <h3>Bedrock Edition</h3>
-          <p>Add server. Address <strong>76.176.218.251</strong>, port <strong>19132</strong>. Crossplay via Geyser + floodgate. You will not have Simple Voice Chat.</p>
+          <p>Add server. Address <strong>76.176.218.251</strong>, port <strong>19132</strong>. Same world as Java. Proximity voice is Java-mod only — Bedrock will not hear it.</p>
         </li>
         <li id="voice">
           <h3>Optional: Simple Voice Chat</h3>

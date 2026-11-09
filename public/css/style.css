@@ -239,6 +239,8 @@ a:hover { color: var(--ember-core); }
   justify-content: center;
   align-items: center;
 }
+/* 2026-11-08: repeat Copy IP after the ticker so a scroller can still join. */
+.join-again .hero-actions { justify-content: flex-start; }
 .badges {
   display: flex;
   gap: 0.5rem;

@@ -3,6 +3,13 @@
   "entries": [
     {
       "date": "2026-11-08",
+      "version": "web-1.15",
+      "tags": ["WEBSITE"],
+      "title": "Homepage talks like a player",
+      "body": "Paper and plugin names are off the first screen. The pitch is copy the IP. Same CTA after the feature ticker. Voting is still support only — no loot, crates, keys, or ranks."
+    },
+    {
+      "date": "2026-11-08",
       "version": "web-1.14",
       "tags": ["WEBSITE"],
       "title": "Feature cards drift as a slow ticker",
