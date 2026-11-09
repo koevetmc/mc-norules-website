@@ -3,6 +3,13 @@
   "entries": [
     {
       "date": "2026-11-08",
+      "version": "web-1.9",
+      "tags": ["WEBSITE"],
+      "title": "Deaths as a horizontal timeline",
+      "body": "Homepage killfeed is a left-to-right time axis (oldest left, newest right) with player heads on the line and UTC stamps. Voting is still support only — no loot, crates, keys, or ranks."
+    },
+    {
+      "date": "2026-11-08",
       "version": "web-1.8",
       "tags": ["WEBSITE"],
       "title": "Death timeline on the home page",

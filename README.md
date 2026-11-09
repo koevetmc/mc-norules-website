@@ -97,7 +97,7 @@ Public list-site vote counts. Support only — **not** a loot/reward board.
 
 ### `deaths.json`
 
-Homepage killfeed. Paper `System chat:` death lines from den logs, newest first. `{name, message, at}` — **no coordinates**. Rebuild with `python3 scripts/ingest_deaths.py /tmp/norules-system-chat.txt`. This map only (after 2026-10-29 23:00 UTC).
+Homepage killfeed. Paper `System chat:` death lines from den logs. `{name, message, at}` — **no coordinates**. JSON is newest-first; the homepage paints a left-to-right axis (oldest → newest). Rebuild with `python3 scripts/ingest_deaths.py /tmp/norules-system-chat.txt`. This map only (after 2026-10-29 23:00 UTC).
 
 ### `gallery.json` / `clips.json`
 

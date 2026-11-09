@@ -122,8 +122,9 @@ PAGES["index.html"] = (
     <section class="section home-deaths wrap" id="killfeed">
       <p class="kicker">Killfeed</p>
       <h2>Deaths</h2>
-      <p class="lede">Vanilla death chat from the live logs. Newest first. Public after the fact — no coordinates, no who-is-online list.</p>
+      <p class="lede">Vanilla death chat from the live logs, on a left–right time axis (oldest → newest). Public after the fact — no coordinates, no who-is-online list.</p>
       <p class="lede" id="deaths-updated"></p>
+      <p class="death-axis-label"><span>oldest</span><span>newer →</span></p>
       <div class="death-feed" id="deaths"></div>
     </section>
 
