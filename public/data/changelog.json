@@ -3,6 +3,13 @@
   "entries": [
     {
       "date": "2026-11-08",
+      "version": "web-1.7",
+      "tags": ["WEBSITE"],
+      "title": "Live rankings and full player stats",
+      "body": "Rankings page lists every vanilla stat we can read from this map (Hall of Legends 24, playtime, deaths, kills, distances, mined/placed, and more), sortable, real rows only. Each /player page shows the same numbers. /autofollow is listed as staged (jar on disk, loads next restart). Voting is still support only — no loot, crates, keys, or ranks."
+    },
+    {
+      "date": "2026-11-08",
       "version": "web-1.6",
       "tags": ["WEBSITE"],
       "title": "Dropped /autofollow from the feature list",

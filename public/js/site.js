@@ -225,8 +225,14 @@ window.nrFormatStat = function (format, value, unit) {
     case "life": {
       const min = Math.floor(n / 1200);
       return min >= 60
-        ? Math.floor(min / 60) + "h " + String(min % 60).padStart(2, "0") + "m without dying"
-        : min + "m without dying";
+        ? Math.floor(min / 60) + "h " + String(min % 60).padStart(2, "0") + "m"
+        : min + "m";
+    }
+    case "ticks": {
+      const sec = Math.floor(n / 20);
+      if (sec >= 3600) return (sec / 3600).toLocaleString(undefined, { maximumFractionDigits: 1 }) + " h";
+      if (sec >= 60) return Math.floor(sec / 60) + " m";
+      return sec + " s";
     }
     default:
       return n.toLocaleString() + (u ? " " + u : "");

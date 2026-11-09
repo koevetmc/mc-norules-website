@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Your account · NO RULES SURVIVAL</title>
+  <meta name="description" content="Private page for the Minecraft account you linked. Your UUID stays on this page.">
+  <meta name="theme-color" content="#e85d04">
+  <link rel="canonical" href="/me.html">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <link rel="manifest" href="/manifest.webmanifest">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="NO RULES SURVIVAL">
+  <meta property="og:title" content="Your account · NO RULES SURVIVAL">
+  <meta property="og:description" content="Private page for the Minecraft account you linked. Your UUID stays on this page.">
+  <meta property="og:image" content="/img/og-image.jpg">
+  <meta property="og:url" content="/me.html">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/style.css">
+  
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header">
+    <div class="wrap">
+      <a class="brand" href="/">
+        <span class="logo-slot"><img src="/img/logo.svg" class="logo" width="42" height="42" alt=""></span>
+        <span class="brand-text">NO RULES SURVIVAL<small>true anarchy</small></span>
+      </a>
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">Menu</button>
+      <nav class="site-nav" id="site-nav" aria-label="Primary">
+        <a href="/">Home</a>
+        <a href="/legends.html">Legends</a>
+        <a href="/rankings.html">Rankings</a>
+        <a href="/players.html">Players</a>
+        <a href="/vote.html">Vote</a>
+        <a href="/gallery.html">Gallery</a>
+        <a href="/media.html">Media</a>
+        <a href="/changelog.html">Log</a>
+        <a href="/join.html">Join</a>
+        <a href="/me.html">Account</a>
+      </nav>
+    </div>
+  </header>
+  <main id="main">
+
+    <section class="section wrap dash" id="dash" hidden>
+      <header class="dash-top">
+        <img id="d-avatar" class="avatar" alt="" width="84" height="84">
+        <div>
+          <p class="kicker"><i id="live-dot"></i> <span id="d-live">Live</span></p>
+          <h2 id="d-name">Your account</h2>
+          <p id="d-rank" class="rank-line"></p>
+          <div class="rank-bar" id="rank-bar" hidden><span id="rank-fill"></span></div>
+          <p id="d-rank-next" class="form-msg"></p>
+          <p id="d-uuid" class="uuid"></p>
+          <p id="d-email" class="form-msg"></p>
+        </div>
+        <button class="btn btn-ghost" id="logout" type="button">Sign out</button>
+      </header>
+      <div class="stat-cards" id="stats">
+        <article class="stat-card"><span>Playtime</span><b id="s-play">—</b></article>
+        <article class="stat-card"><span>Deaths</span><b id="s-deaths">—</b></article>
+        <article class="stat-card"><span>Player kills</span><b id="s-pkills">—</b></article>
+        <article class="stat-card"><span>Mob kills</span><b id="s-mkills">—</b></article>
+        <article class="stat-card"><span>Arena</span><b id="s-arena">—</b></article>
+        <article class="stat-card"><span>Waves</span><b id="s-waves">—</b></article>
+        <article class="stat-card"><span>Endless</span><b id="s-endless">—</b></article>
+        <article class="stat-card"><span>Synced</span><b id="s-when">—</b></article>
+      </div>
+      <article class="card explore-card">
+        <h3>Explored ground</h3>
+        <p class="form-msg">Your /wp marks sit on the ground you have walked. Click a mark to center it. Nobody else can open this.</p>
+        <div id="explore-worlds" class="world-tabs"></div>
+        <canvas id="explore-map" class="explore-map" width="960" height="420"></canvas>
+        <ul id="mark-list" class="mark-list"></ul>
+      </article>
+      <div class="dash-split">
+        <article class="card">
+          <h3>Polls</h3>
+          <div id="polls"><p class="form-msg">Loading…</p></div>
+        </article>
+      </div>
+      <details class="relink" id="relink">
+        <summary>Enter a /link code</summary>
+        <form id="link-form" class="stack-form">
+          <label for="code">Code from <code>/link</code></label>
+          <input id="code" name="code" type="text" required minlength="8" maxlength="8" autocapitalize="characters" autocomplete="one-time-code" spellcheck="false">
+          <button class="btn" type="submit">Link this account</button>
+          <p id="form-msg" class="form-msg" role="status"></p>
+        </form>
+      </details>
+    </section>
+    
+  </main>
+  <footer class="site-footer">
+    <div class="wrap">
+      <p>© <span data-year>2026</span> NO RULES SURVIVAL · Paper 26.3 · 76.176.218.251</p>
+      <p class="fairness-note">Anarchy fairness: this site never shows coordinates, live location, or who is online by name. Leaderboards and clips are public in-game data posted after the fact.</p>
+    </div>
+  </footer>
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+  <script src="/js/config.js"></script>
+  <script src="/js/site.js"></script>
+  <script src="/js/account.js"></script>
+</body>
+</html>

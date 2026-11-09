@@ -11,6 +11,7 @@ ROOT = Path(__file__).resolve().parents[1] / "public"
 NAV = [
     ("/", "Home"),
     ("/legends.html", "Legends"),
+    ("/rankings.html", "Rankings"),
     ("/players.html", "Players"),
     ("/vote.html", "Vote"),
     ("/gallery.html", "Gallery"),
@@ -150,6 +151,7 @@ PAGES["index.html"] = (
         <article class="card"><div class="icon-pill">;</div><h3>VGS quick-chat</h3><p>Tribes-style voice-game-soundboard. Press <code>;</code> for a sidebar of 70+ tactical callouts, or fire a code like <code>;af</code>. F-key hand swap is vanilla (no dupe). Plays a sound to everyone.</p></article>
         <article class="card"><div class="icon-pill">※</div><h3>Party ping + share</h3><p>Middle-click a block or player to ping that spot for your <code>/party</code> (or <code>/ping</code>). Marker on the locator bar. <code>/share</code> still broadcasts a held item. Not in a party = invite someone first.</p></article>
         <article class="card"><div class="icon-pill">◉</div><h3>Locator bar + /wp</h3><p>Party members see each other on the vanilla locator bar. <code>/wp</code> waypoints: private by default, share with a player or <code>party</code>, HUD roster with distance. Outsiders see nothing.</p></article>
+        <article class="card"><div class="icon-pill">→</div><h3>/autofollow</h3><p><code>/autofollow &lt;player&gt;</code> (alias <code>/follow</code>) follows someone within 5 blocks. Sneak, damage, or <code>/autofollow off</code> cancels. The jar is staged on the server — it loads at the next restart, not before.</p></article>
         <article class="card"><div class="icon-pill">✦</div><h3>ChatFX</h3><p><code>/chatfx</code> (or <code>/cfx</code>) for text effects and signature chat sounds. Mention chime. Currently all free — not a rank shop.</p></article>
         <article class="card"><div class="icon-pill">★</div><h3>Vote the lists</h3><p>Seven public server lists. Voting is support only — no loot, crates, keys, or ranks. It just keeps the IP visible. <a href="/vote.html">Vote</a>.</p></article>
         <article class="card"><div class="icon-pill">!</div><h3>Report &amp; suggest</h3><p><code>/report</code>, <code>/suggest</code>, and <code>/feedback</code> with anti-spam cooldowns. Still anarchy — these are optional, not a ticket system that will save your base.</p></article>
@@ -169,7 +171,7 @@ PAGES["legends.html"] = (
     <section class="page-hero wrap">
       <p class="kicker">Flagship</p>
       <h2>Hall of Legends</h2>
-      <p class="lede">Same boards as <code>/legends</code> in game. Twenty-four vanilla stat categories in the statue hall under spawn. The same hall also holds Server Firsts — first-on-this-map records via <code>/firsts</code> (diamond, first blood, nether, dragon, and the rest). Unclaimed legends pedestals stay empty until someone logs the first point. Click a card for the top 10.</p>
+      <p class="lede">Same boards as <code>/legends</code> in game. Twenty-four vanilla stat categories in the statue hall under spawn. Sortable full lists live on <a href="/rankings.html">Rankings</a>. The same hall also holds Server Firsts via <code>/firsts</code>. Unclaimed legends pedestals stay empty until someone logs the first point. Click a card for the top 10.</p>
       <p class="lede" id="legends-updated"></p>
     </section>
     <section class="section wrap">
@@ -179,15 +181,40 @@ PAGES["legends.html"] = (
     '<script src="/js/legends.js"></script>',
 )
 
+PAGES["rankings.html"] = (
+    "Rankings · NO RULES SURVIVAL",
+    "Sortable vanilla Minecraft leaderboards from this map. Hall of Legends cats, playtime, kills, mined, and more. Real stats only.",
+    "/rankings.html",
+    """
+    <section class="page-hero wrap">
+      <p class="kicker">Boards</p>
+      <h2>Rankings</h2>
+      <p class="lede">Every vanilla stat we can read from this map, sortable like a jaPRO board. Hall of Legends 24, plus movement, time, and world stats. Click a name for the full profile. No coordinates. Voting is not a ranking and grants no loot.</p>
+      <p class="lede" id="rank-updated"></p>
+    </section>
+    <section class="section wrap">
+      <div class="filters" id="rank-tabs"></div>
+      <div class="filters rank-boards" id="rank-boards"></div>
+      <div id="rank-table"></div>
+    </section>
+    <section class="section wrap">
+      <h2>Server Firsts</h2>
+      <p class="lede">First-on-this-map records from <code>/firsts</code>. Unclaimed keys are omitted.</p>
+      <div id="rank-firsts"></div>
+    </section>
+    """,
+    '<script src="/js/rankings.js"></script>',
+)
+
 PAGES["players.html"] = (
     "Players · NO RULES SURVIVAL",
-    "Public profiles for everyone who has joined. Stats only — no coordinates.",
+    "Public profiles for everyone who has joined. Every collected vanilla stat — no coordinates.",
     "/players.html",
     """
     <section class="page-hero wrap">
       <p class="kicker">Roster</p>
       <h2>Player profiles</h2>
-      <p class="lede">Everyone who has ever joined. Skins, Hall of Legends badges, vanilla stats. No coordinates, no live location, no base intel — this is anarchy, the site is not an ESP.</p>
+      <p class="lede">Everyone with a stats file on this map. Each profile lists every vanilla stat we collect, Hall of Legends placements, and Server Firsts. No coordinates, no live location, no vote rewards.</p>
       <p class="lede" id="players-updated"></p>
     </section>
     <section class="section wrap">
@@ -353,7 +380,7 @@ PAGES["join.html"] = (
         </li>
         <li>
           <h3>Walk out of spawn — or hit the pit</h3>
-          <p>The cobble ring is a WorldGuard pocket: no build, no pvp. Beyond that line there are no rules. Difficulty is hard. South gate: right-click ArenaMaster for the practice arena (gear vaulted). Nametags are hidden in the wild.</p>
+          <p>The cobble ring is a WorldGuard pocket: no build, no pvp. Beyond that line there are no rules. Difficulty is hard. South gate: right-click ArenaMaster for the practice arena (gear vaulted). Nametags are hidden in the wild. <code>/autofollow &lt;player&gt;</code> is staged on disk and will load at the next restart — it is not live yet.</p>
         </li>
       </ol>
       <p><a class="btn" href="/vote.html">Vote</a> <a class="btn btn-ghost" href="/legends.html">Hall of Legends</a></p>

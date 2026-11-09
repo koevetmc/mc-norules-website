@@ -14,7 +14,8 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 PUBLIC = ROOT / "public"
-SAFE = re.compile(r"^[A-Za-z0-9_]{1,16}$")
+# 2026-11-08: leading '.' is a Geyser/floodgate Bedrock name, not a path escape.
+SAFE = re.compile(r"^\.?[A-Za-z0-9_]{1,16}$")
 
 
 def main() -> None:

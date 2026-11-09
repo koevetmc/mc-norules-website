@@ -2,7 +2,7 @@
    Set origin to your custom domain (or the *.workers.dev URL wrangler prints)
    so Open Graph / sitemap absolute URLs stay correct. */
 window.NR = {
-  origin: "",
+  origin: "https://no-rules-survival.koevetmc.workers.dev",
   name: "NO RULES SURVIVAL",
   javaHost: "76.176.218.251",
   javaPort: 25565,
