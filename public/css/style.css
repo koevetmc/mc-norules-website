@@ -1001,64 +1001,64 @@ html.nr-shot-features .lightbox { display: none !important; }
 .death-mark.is-open .death-tip { display: block; }
 .death-strip-empty { margin: 0; color: var(--muted); font-size: 0.8rem; }
 
-/* 2026-11-06: homepage photo mosaic — large tiles, not a thumbnail strip.
-   First shot spans two rows. Overlay captions keep the photos tall. */
-.home-shots { padding-top: 0.4rem; }
-.home-gallery {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  grid-template-rows: minmax(15rem, 28vh) minmax(15rem, 28vh);
-  grid-auto-rows: minmax(13rem, 22vh);
-  gap: 0.55rem;
-}
-.home-gallery a {
+/* 2026-11-06: homepage photo mosaic.
+   2026-11-09: compact cycling stage instead — one shot, auto-advance. */
+.home-shots { padding-top: 0.4rem; padding-bottom: 1.4rem; }
+.home-gallery.is-cycle { display: block; }
+.home-cycle-stage {
   position: relative;
-  display: block;
-  min-height: 13rem;
+  margin: 0;
+  height: min(16.5rem, 38vh);
   overflow: hidden;
   border: 1px solid var(--iron-dim);
   background: #000;
+}
+.home-cycle-stage a {
+  display: block;
+  height: 100%;
   color: inherit;
   text-decoration: none;
 }
-.home-gallery a:first-child {
-  grid-column: 1 / 3;
-  grid-row: 1 / 3;
-  min-height: 32rem;
-}
-.home-gallery figure {
-  margin: 0;
-  height: 100%;
-}
-.home-gallery img {
+.home-cycle-stage img {
   width: 100%;
   height: 100%;
   object-fit: cover;
   display: block;
-  transform: scale(1.01);
-  transition: transform 0.45s var(--ease), filter 0.45s var(--ease);
+  opacity: 0;
+  transform: scale(1.03);
+  transition: opacity 0.45s var(--ease), transform 0.8s var(--ease);
+}
+.home-cycle-stage img.is-in {
+  opacity: 1;
+  transform: scale(1);
 }
 .masonry img {
   transition: transform 0.45s var(--ease), filter 0.45s var(--ease);
 }
-.home-gallery a:hover img,
 .masonry a:hover img { transform: scale(1.06); filter: brightness(1.08); }
-.home-gallery figcaption {
+.home-cycle-stage figcaption {
   position: absolute;
   left: 0;
   right: 0;
   bottom: 0;
   margin: 0;
-  padding: 2.4rem 0.75rem 0.7rem;
+  padding: 2.2rem 0.85rem 0.65rem;
   background: linear-gradient(transparent, rgba(10, 9, 8, 0.92));
   font-size: 0.88rem;
   font-weight: 500;
   color: var(--text);
 }
-.home-gallery a:first-child figcaption {
-  font-size: 1.05rem;
-  padding-top: 3.2rem;
+.home-cycle-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  margin: 0.45rem 0 0;
+  color: var(--muted);
+  font-size: 0.8rem;
+  font-variant-numeric: tabular-nums;
 }
+.home-cycle-bar .btn { padding: 0.3rem 0.7rem; font-size: 0.78rem; }
 
 /* ---------- vote (support only, no loot) ---------- */
 .odds { width: 100%; border-collapse: collapse; margin: 1rem 0 1.5rem; }
@@ -1191,12 +1191,7 @@ html.nr-shot-features .lightbox { display: none !important; }
 .grid .card:nth-child(7) { animation: nr-rise 0.5s var(--ease) 0.28s both; }
 .grid .card:nth-child(8) { animation: nr-rise 0.5s var(--ease) 0.32s both; }
 .grid .card:nth-child(n+9) { animation: nr-rise 0.5s var(--ease) 0.36s both; }
-.home-gallery a { animation: nr-rise 0.55s var(--ease) both; }
-.home-gallery a:nth-child(1) { animation-delay: 0.06s; }
-.home-gallery a:nth-child(2) { animation-delay: 0.12s; }
-.home-gallery a:nth-child(3) { animation-delay: 0.18s; }
-.home-gallery a:nth-child(4) { animation-delay: 0.22s; }
-.home-gallery a:nth-child(5) { animation-delay: 0.26s; }
+.home-cycle-stage { animation: nr-rise 0.55s var(--ease) both; }
 .legend-card { animation: nr-rise 0.45s var(--ease) both; }
 .hall-viewport { animation: nr-rise 0.55s var(--ease) both; }
 
@@ -1417,15 +1412,7 @@ html.nr-shot-features .lightbox { display: none !important; }
   .site-nav.open { display: flex; }
   .profile { grid-template-columns: 1fr; }
   .masonry { columns: 2 12rem; }
-  .home-gallery {
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: minmax(18rem, 42vh) minmax(12rem, 22vh) minmax(12rem, 22vh) minmax(12rem, 22vh) minmax(12rem, 22vh);
-  }
-  .home-gallery a:first-child {
-    grid-column: 1 / -1;
-    grid-row: 1;
-    min-height: 18rem;
-  }
+  .home-cycle-stage { height: min(14.5rem, 36vh); }
   .death-day-minor { display: none; }
   .hall-viewport { height: min(32rem, 72vh); }
   .hall-statue { --hall-r: 14.5rem; width: 5.2rem; margin-left: -2.6rem; top: 16%; }
@@ -1437,17 +1424,7 @@ html.nr-shot-features .lightbox { display: none !important; }
 @media (max-width: 520px) {
   .masonry { columns: 1; }
   .brand-text { font-size: 1.15rem; }
-  .home-gallery {
-    grid-template-columns: 1fr;
-    grid-template-rows: none;
-  }
-  .home-gallery a,
-  .home-gallery a:first-child {
-    grid-column: auto;
-    grid-row: auto;
-    min-height: 14rem;
-  }
-  .home-gallery a:first-child { min-height: 18rem; }
+  .home-cycle-stage { height: 13.5rem; }
   .death-strip-inner { grid-template-columns: 1fr; gap: 0.2rem; }
   .death-strip-kicker { font-size: 0.85rem; }
   .death-day:not(.death-day-end) { display: none; }
@@ -1542,6 +1519,11 @@ html.nr-shot-features .lightbox { display: none !important; }
   .legend-card:hover,
   .btn:hover { transform: none; }
   .hall-stage { display: none; }
+  .home-cycle-stage img {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
   .feat-marquee {
     overflow: visible;
     -webkit-mask-image: none;

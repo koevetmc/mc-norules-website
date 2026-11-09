@@ -2,6 +2,13 @@
   "comment": "Newest first is fine; the page also sorts by date descending. tags: PLUGIN | SERVER | WEBSITE | FIX",
   "entries": [
     {
+      "date": "2026-11-09",
+      "version": "web-1.16",
+      "tags": ["WEBSITE"],
+      "title": "Homepage gallery is a compact cycle",
+      "body": "The grounds section cycles one screenshot at a time instead of a large mosaic. The full gallery page is unchanged. Voting is still support only — no loot, crates, keys, or ranks."
+    },
+    {
       "date": "2026-11-08",
       "version": "web-1.15",
       "tags": ["WEBSITE"],

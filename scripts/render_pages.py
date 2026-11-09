@@ -3,6 +3,7 @@
 2026-11-03: initial site. 2026-11-06: Arena, /pack off, ItemShare ping,
 ChatFX, Server Firsts, waypoints HUD/share, Flashback dual-angle, pack v1.2.
 2026-11-06 later: home page features a real photo mosaic from gallery.json.
+2026-11-09: homepage mosaic became a compact cycling stage; gallery.html stays full.
 2026-11-08: homepage killfeed from Paper System chat death lines.
 2026-11-08 later: compact top-of-page day-axis strip (ticks + heads, hover).
 2026-11-08 later: sitewide motion + CSS 3D Hall of Legends ring.
@@ -175,7 +176,7 @@ PAGES["index.html"] = (
     <section class="section home-shots wrap" id="shots">
       <p class="kicker">In world</p>
       <h2>The grounds</h2>
-      <p class="lede">Spawn, the Hall of Legends, the practice arena, the End. Real screenshots — click one. The full set lives on the <a href="/gallery.html">gallery page</a>.</p>
+      <p class="lede">Spawn, the Hall of Legends, the practice arena, the End. Photos cycle — click one, or open the <a href="/gallery.html">full gallery</a>.</p>
       <div class="home-gallery" id="gallery"></div>
     </section>
     <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-hidden="true" aria-label="Screenshot">
