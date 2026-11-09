@@ -632,7 +632,10 @@ h2 {
   letter-spacing: 0.04em;
   font-variant-numeric: tabular-nums;
   pointer-events: none;
+  white-space: nowrap;
 }
+.death-day:first-of-type { transform: none; }
+.death-day:last-of-type { transform: translateX(-100%); }
 .death-day::after {
   content: "";
   position: absolute;
@@ -1084,7 +1087,7 @@ h2 {
     grid-row: 1;
     min-height: 18rem;
   }
-  .death-day:not(.death-day-end):nth-child(even) { display: none; }
+  .death-day-minor { display: none; }
 }
 @media (max-width: 520px) {
   .masonry { columns: 1; }
@@ -1102,6 +1105,7 @@ h2 {
   .home-gallery a:first-child { min-height: 18rem; }
   .death-strip-inner { grid-template-columns: 1fr; gap: 0.2rem; }
   .death-strip-kicker { font-size: 0.85rem; }
+  .death-day:not(.death-day-end) { display: none; }
 }
 
 /* 2026-11-08: Zelda-style cyan fairy trails the pointer (matches in-game Fairy).

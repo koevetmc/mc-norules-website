@@ -59,10 +59,12 @@
       for (let i = 0; i < nDays; i++) {
         const ms = t0 + i * DAY;
         const p = pct(ms);
-        const edge = i === 0 || i === nDays - 1 ? " death-day-end" : "";
+        const edge = i === 0 || i === nDays - 1;
+        const major = edge || i % 3 === 0;
         days.push(
           '<span class="death-day' +
-            edge +
+            (edge ? " death-day-end" : "") +
+            (major ? " death-day-major" : " death-day-minor") +
             '" style="left:' +
             p.toFixed(3) +
             '%">' +
