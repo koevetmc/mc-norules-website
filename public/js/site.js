@@ -84,6 +84,133 @@
   });
 })();
 
+/* 2026-11-08: cyan Navi-style fairy follows the mouse. One rAF, no canvas.
+   Fine pointer + hover only — touch and reduced-motion never start it. */
+(function () {
+  const fine = window.matchMedia("(hover: hover) and (pointer: fine)");
+  const reduce = window.matchMedia("(prefers-reduced-motion: reduce)");
+  if (!fine.matches || reduce.matches) return;
+
+  const root = document.createElement("div");
+  root.className = "nr-fairy";
+  root.setAttribute("aria-hidden", "true");
+  root.innerHTML =
+    '<span class="nr-fairy-glow"></span><span class="nr-fairy-core"></span>' +
+    '<span class="nr-fairy-wing nr-fairy-wing-l"></span><span class="nr-fairy-wing nr-fairy-wing-r"></span>';
+  document.body.appendChild(root);
+
+  const sparks = [];
+  for (let i = 0; i < 7; i++) {
+    const el = document.createElement("span");
+    el.className = "nr-fairy-spark";
+    el.setAttribute("aria-hidden", "true");
+    document.body.appendChild(el);
+    sparks.push({ el: el, x: 0, y: 0, life: 0 });
+  }
+
+  let tx = innerWidth * 0.5;
+  let ty = innerHeight * 0.4;
+  let x = tx;
+  let y = ty;
+  let dartT = 0;
+  let dartX = 0;
+  let dartY = 0;
+  let sparkI = 0;
+  let sparkWait = 0;
+  let on = false;
+  let raf = 0;
+
+  function hide() {
+    on = false;
+    root.classList.remove("is-on");
+  }
+
+  function show() {
+    if (on) return;
+    on = true;
+    root.classList.add("is-on");
+    if (!raf) raf = requestAnimationFrame(tick);
+  }
+
+  function tick(t) {
+    raf = 0;
+    if (!on && !sparks.some(function (s) { return s.life > 0; })) return;
+
+    const bob = Math.sin(t / 420) * 4;
+    dartT -= 1;
+    if (dartT <= 0) {
+      dartT = 48 + Math.random() * 90;
+      dartX = (Math.random() - 0.5) * 22;
+      dartY = (Math.random() - 0.5) * 16 - 6;
+    }
+    dartX *= 0.92;
+    dartY *= 0.92;
+    // Hover just above-right of the pointer, like Navi beside Link — keep the OS cursor.
+    const aimX = tx + 16 + dartX;
+    const aimY = ty - 18 + dartY + bob;
+    x += (aimX - x) * 0.16;
+    y += (aimY - y) * 0.16;
+    root.style.transform = "translate3d(" + x.toFixed(1) + "px," + y.toFixed(1) + "px,0)";
+
+    if (on) {
+      sparkWait += 1;
+      if (sparkWait >= 3) {
+        sparkWait = 0;
+        const s = sparks[sparkI++ % sparks.length];
+        s.x = x + (Math.random() - 0.5) * 8;
+        s.y = y + 5 + Math.random() * 5;
+        s.life = 1;
+      }
+    }
+    for (let i = 0; i < sparks.length; i++) {
+      const s = sparks[i];
+      if (s.life <= 0) {
+        s.el.style.opacity = "0";
+        continue;
+      }
+      s.life -= 0.045;
+      s.y += 0.35;
+      s.el.style.opacity = String(Math.max(0, s.life));
+      s.el.style.transform =
+        "translate3d(" + s.x.toFixed(1) + "px," + s.y.toFixed(1) + "px,0) scale(" + (0.35 + s.life) + ")";
+    }
+    raf = requestAnimationFrame(tick);
+  }
+
+  window.addEventListener(
+    "mousemove",
+    function (e) {
+      tx = e.clientX;
+      ty = e.clientY;
+      show();
+    },
+    { passive: true }
+  );
+  document.addEventListener("mouseleave", hide);
+  window.addEventListener(
+    "pointerdown",
+    function (e) {
+      if (e.pointerType === "touch") hide();
+    },
+    { passive: true }
+  );
+  fine.addEventListener("change", function () {
+    if (!fine.matches) hide();
+  });
+  reduce.addEventListener("change", function () {
+    if (reduce.matches) hide();
+  });
+
+  // Headless screenshot helper: /?fairy parks the spark on the hero without a mouse.
+  if (new URLSearchParams(location.search).has("fairy")) {
+    tx = innerWidth * 0.62;
+    ty = innerHeight * 0.38;
+    x = tx;
+    y = ty;
+    show();
+  }
+})();
+
 /** Format a Hall of Legends raw value the same way /legends does in-game. */
 window.nrFormatStat = function (format, value, unit) {
   const n = Number(value) || 0;

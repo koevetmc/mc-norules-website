@@ -2,6 +2,13 @@
   "comment": "Newest first is fine; the page also sorts by date descending. tags: PLUGIN | SERVER | WEBSITE | FIX",
   "entries": [
     {
+      "date": "2026-11-08",
+      "version": "web-1.5",
+      "tags": ["WEBSITE"],
+      "title": "A cyan fairy follows the pointer",
+      "body": "Desktop gets a Zelda-style spark (same cyan companion as in-game /fairy) that trails the mouse. Touch and reduced-motion skip it. Voting is still support only — no loot, crates, keys, or ranks."
+    },
+    {
       "date": "2026-11-06",
       "version": "web-1.4",
       "tags": ["WEBSITE"],
