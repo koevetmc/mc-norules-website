@@ -3,6 +3,13 @@
   "entries": [
     {
       "date": "2026-11-08",
+      "version": "web-1.6",
+      "tags": ["WEBSITE"],
+      "title": "Dropped /autofollow from the feature list",
+      "body": "The command is not loaded on the live server (plugin built 2026-11-02, never dropped into plugins/). Homepage no longer advertises it. Voting is still support only — no loot, crates, keys, or ranks."
+    },
+    {
+      "date": "2026-11-08",
       "version": "web-1.5",
       "tags": ["WEBSITE"],
       "title": "A cyan fairy follows the pointer",
