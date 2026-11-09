@@ -3,6 +3,13 @@
   "entries": [
     {
       "date": "2026-11-08",
+      "version": "web-1.14",
+      "tags": ["WEBSITE"],
+      "title": "Feature cards drift as a slow ticker",
+      "body": "Homepage ‘what you get’ is two slow scrolling rows instead of a dense grid. Hover or focus pauses a card so you can read it. Voting is still support only — no loot, crates, keys, or ranks."
+    },
+    {
+      "date": "2026-11-08",
       "version": "web-1.13",
       "tags": ["WEBSITE"],
       "title": "Hall of Legends is a walkable 3D aisle",

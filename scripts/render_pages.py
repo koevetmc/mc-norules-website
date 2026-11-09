@@ -7,6 +7,7 @@ ChatFX, Server Firsts, waypoints HUD/share, Flashback dual-angle, pack v1.2.
 2026-11-08 later: compact top-of-page day-axis strip (ticks + heads, hover).
 2026-11-08 later: sitewide motion + CSS 3D Hall of Legends ring.
 2026-11-08 later: WebGL aisle hall matching in-game (3D skins, lanterns).
+2026-11-08 later: homepage feature cards are a slow two-row marquee, not a grid.
 Voting stays support-only — no loot, crates, ranks, or in-game advantage."""
 from pathlib import Path
 
@@ -90,6 +91,47 @@ def chrome(main: str, scripts: str) -> str:
 """
 
 
+# 2026-11-08: homepage “what you get” as two slow marquee rows (not a 3×3/4×4 grid).
+# Duplicates in each row are aria-hidden copies so the CSS loop can wrap seamlessly.
+def _feat_card(icon: str, title: str, body: str, dup: bool = False) -> str:
+    cls = "card feat-dup" if dup else "card"
+    hid = ' aria-hidden="true"' if dup else ""
+    return (
+        f'<article class="{cls}"{hid}>'
+        f'<div class="icon-pill">{icon}</div><h3>{title}</h3><p>{body}</p>'
+        f"</article>"
+    )
+
+
+def _feat_row(cards: list, reverse: bool = False) -> str:
+    cls = "feat-row feat-row-rev" if reverse else "feat-row"
+    real = "".join(_feat_card(*c) for c in cards)
+    dups = "".join(_feat_card(*c, dup=True) for c in cards)
+    return f'<div class="{cls}">{real}{dups}</div>'
+
+
+FEAT_ROW_A = [
+    ("Ⓐ", "True anarchy", "No rules, no land claims, no map resets, no whitelist. Griefing allowed. Protected spawn is the only safe tile on the map."),
+    ("⧉", "Java + Bedrock", "Geyser + floodgate crossplay. ViaVersion and ViaBackwards let older and newer Java clients join Paper 26.3."),
+    ("⚔", "The Arena", "Void-world pit. Right-click ArenaMaster at the south spawn gate (not from the wild). Gear is vaulted, diamond kit on entry, <code>/arena leave</code> restores it at spawn. PvE waves, named bosses, 1v1 or a bot. Punch a boss head in the lobby to spar. Party of 3 max."),
+    ("🎤", "Proximity voice", "Simple Voice Chat on the server. You need the matching client mod (Fabric / NeoForge / Forge / Quilt). Vanilla and Bedrock have no voice — that is how SVC works. See <a href=\"/join.html#voice\">install notes</a>."),
+    ("⚖", "Anti-cheat, not anti-fun", "GrimAC + packetevents. Cheating is the only bannable offense. Anti-xray engine-mode 2 is on."),
+    ("🏛", "Hall of Legends", "In-game statue hall at spawn for the #1 player in 24 vanilla stat categories, plus Server Firsts (<code>/firsts</code>) for first-on-this-map records. This site mirrors the legends boards. <a href=\"/legends.html\">Open the hall</a>."),
+    ("▣", "Anarchy resource pack", "Optional UI pack. No popup on join. In game: <code>/pack</code> menu or <code>/pack low|medium|high|off</code> — chunky iron / worn iron + oxblood / extra rust, rivets, ember trim, or vanilla UI."),
+    (";", "VGS quick-chat", "Tribes-style voice-game-soundboard. Press <code>;</code> for a sidebar of 70+ tactical callouts, or fire a code like <code>;af</code>. F-key hand swap is vanilla (no dupe). Plays a sound to everyone."),
+]
+FEAT_ROW_B = [
+    ("※", "Party ping + share", "Middle-click a block or player to ping that spot for your <code>/party</code> (or <code>/ping</code>). Marker on the locator bar. <code>/share</code> still broadcasts a held item. Not in a party = invite someone first."),
+    ("◉", "Locator bar + /wp", "Party members see each other on the vanilla locator bar. <code>/wp</code> waypoints: private by default, share with a player or <code>party</code>, HUD roster with distance. Outsiders see nothing."),
+    ("→", "/autofollow", "<code>/autofollow &lt;player&gt;</code> (alias <code>/follow</code>) follows someone within 5 blocks. Sneak, damage, or <code>/autofollow off</code> cancels. The jar is staged on the server — it loads at the next restart, not before."),
+    ("✦", "ChatFX", "<code>/chatfx</code> (or <code>/cfx</code>) for text effects and signature chat sounds. Mention chime. Currently all free — not a rank shop."),
+    ("★", "Vote the lists", "Seven public server lists. Voting is support only — no loot, crates, keys, or ranks. It just keeps the IP visible. <a href=\"/vote.html\">Vote</a>."),
+    ("!", "Report &amp; suggest", "<code>/report</code>, <code>/suggest</code>, and <code>/feedback</code> with anti-spam cooldowns. Still anarchy — these are optional, not a ticket system that will save your base."),
+    ("▶", "Flashback killcams", "Rolling 60-second clip. PvP deaths auto-clip from both victim and killer. Exports land after the fact in <a href=\"/media.html\">Media</a>."),
+    ("文", "Chat + veterans", "Per-viewer translator (whispers too). 5h+ playtime gets a veteran Ⓐ badge, with later hour tiers in the same font. Pregenned world (Chunky r=3000). Daily restart ~4am PT with warnings, daily backups."),
+]
+
+
 PAGES = {}
 
 PAGES["index.html"] = (
@@ -147,27 +189,15 @@ PAGES["index.html"] = (
       <img data-full alt="">
     </div>
 
-    <section class="section wrap" id="features">
+    <section class="section" id="features">
+      <div class="wrap">
       <p class="kicker">What you get</p>
       <h2>Everything is allowed. Except cheating.</h2>
-      <p class="lede">PvP, griefing, and stealing are the game. Difficulty is hard. Spawn is a small no-build / no-pvp pocket so new players can walk out. GrimAC + anti-xray is the only law. A practice arena sits at the south spawn gate — it does not protect you in the wild.</p>
-      <div class="grid">
-        <article class="card"><div class="icon-pill">Ⓐ</div><h3>True anarchy</h3><p>No rules, no land claims, no map resets, no whitelist. Griefing allowed. Protected spawn is the only safe tile on the map.</p></article>
-        <article class="card"><div class="icon-pill">⧉</div><h3>Java + Bedrock</h3><p>Geyser + floodgate crossplay. ViaVersion and ViaBackwards let older and newer Java clients join Paper 26.3.</p></article>
-        <article class="card"><div class="icon-pill">⚔</div><h3>The Arena</h3><p>Void-world pit. Right-click ArenaMaster at the south spawn gate (not from the wild). Gear is vaulted, diamond kit on entry, <code>/arena leave</code> restores it at spawn. PvE waves, named bosses, 1v1 or a bot. Punch a boss head in the lobby to spar. Party of 3 max.</p></article>
-        <article class="card"><div class="icon-pill">🎤</div><h3>Proximity voice</h3><p>Simple Voice Chat on the server. You need the matching client mod (Fabric / NeoForge / Forge / Quilt). Vanilla and Bedrock have no voice — that is how SVC works. See <a href="/join.html#voice">install notes</a>.</p></article>
-        <article class="card"><div class="icon-pill">⚖</div><h3>Anti-cheat, not anti-fun</h3><p>GrimAC + packetevents. Cheating is the only bannable offense. Anti-xray engine-mode 2 is on.</p></article>
-        <article class="card"><div class="icon-pill">🏛</div><h3>Hall of Legends</h3><p>In-game statue hall at spawn for the #1 player in 24 vanilla stat categories, plus Server Firsts (<code>/firsts</code>) for first-on-this-map records. This site mirrors the legends boards. <a href="/legends.html">Open the hall</a>.</p></article>
-        <article class="card"><div class="icon-pill">▣</div><h3>Anarchy resource pack</h3><p>Optional UI pack. No popup on join. In game: <code>/pack</code> menu or <code>/pack low|medium|high|off</code> — chunky iron / worn iron + oxblood / extra rust, rivets, ember trim, or vanilla UI.</p></article>
-        <article class="card"><div class="icon-pill">;</div><h3>VGS quick-chat</h3><p>Tribes-style voice-game-soundboard. Press <code>;</code> for a sidebar of 70+ tactical callouts, or fire a code like <code>;af</code>. F-key hand swap is vanilla (no dupe). Plays a sound to everyone.</p></article>
-        <article class="card"><div class="icon-pill">※</div><h3>Party ping + share</h3><p>Middle-click a block or player to ping that spot for your <code>/party</code> (or <code>/ping</code>). Marker on the locator bar. <code>/share</code> still broadcasts a held item. Not in a party = invite someone first.</p></article>
-        <article class="card"><div class="icon-pill">◉</div><h3>Locator bar + /wp</h3><p>Party members see each other on the vanilla locator bar. <code>/wp</code> waypoints: private by default, share with a player or <code>party</code>, HUD roster with distance. Outsiders see nothing.</p></article>
-        <article class="card"><div class="icon-pill">→</div><h3>/autofollow</h3><p><code>/autofollow &lt;player&gt;</code> (alias <code>/follow</code>) follows someone within 5 blocks. Sneak, damage, or <code>/autofollow off</code> cancels. The jar is staged on the server — it loads at the next restart, not before.</p></article>
-        <article class="card"><div class="icon-pill">✦</div><h3>ChatFX</h3><p><code>/chatfx</code> (or <code>/cfx</code>) for text effects and signature chat sounds. Mention chime. Currently all free — not a rank shop.</p></article>
-        <article class="card"><div class="icon-pill">★</div><h3>Vote the lists</h3><p>Seven public server lists. Voting is support only — no loot, crates, keys, or ranks. It just keeps the IP visible. <a href="/vote.html">Vote</a>.</p></article>
-        <article class="card"><div class="icon-pill">!</div><h3>Report &amp; suggest</h3><p><code>/report</code>, <code>/suggest</code>, and <code>/feedback</code> with anti-spam cooldowns. Still anarchy — these are optional, not a ticket system that will save your base.</p></article>
-        <article class="card"><div class="icon-pill">▶</div><h3>Flashback killcams</h3><p>Rolling 60-second clip. PvP deaths auto-clip from both victim and killer. Exports land after the fact in <a href="/media.html">Media</a>.</p></article>
-        <article class="card"><div class="icon-pill">文</div><h3>Chat + veterans</h3><p>Per-viewer translator (whispers too). 5h+ playtime gets a veteran Ⓐ badge, with later hour tiers in the same font. Pregenned world (Chunky r=3000). Daily restart ~4am PT with warnings, daily backups.</p></article>
+      <p class="lede">PvP, griefing, and stealing are the game. Difficulty is hard. Spawn is a small no-build / no-pvp pocket so new players can walk out. GrimAC + anti-xray is the only law. A practice arena sits at the south spawn gate — it does not protect you in the wild. Hover a card to pause.</p>
+      </div>
+      <div class="feat-marquee" aria-label="Server features">
+        """ + _feat_row(FEAT_ROW_A) + """
+        """ + _feat_row(FEAT_ROW_B, reverse=True) + """
       </div>
     </section>
     """,

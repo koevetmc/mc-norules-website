@@ -89,6 +89,12 @@
   } else {
     document.documentElement.classList.add("nr-motion");
   }
+
+  // Headless screenshot helper: /?features hides the hero/gallery so the
+  // ticker is in the first viewport (scrollIntoView is flaky in headless).
+  if (new URLSearchParams(location.search).has("features")) {
+    document.documentElement.classList.add("nr-shot-features");
+  }
 })();
 
 /* 2026-11-08: cyan Navi-style fairy follows the mouse. One rAF, no canvas.

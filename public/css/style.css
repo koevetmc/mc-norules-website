@@ -373,6 +373,48 @@ h2 {
   padding: 0.05em 0.35em;
   border: 1px solid var(--iron-dim);
 }
+#features { scroll-margin-top: calc(var(--header-h) + 0.4rem); }
+html.nr-shot-features .death-strip,
+html.nr-shot-features .hero,
+html.nr-shot-features .home-shots,
+html.nr-shot-features .lightbox { display: none !important; }
+/* 2026-11-08: homepage features as a slow two-row ticker, not a 3×3/4×4 grid.
+   Duplicates in the HTML make the loop seamless. Hover / focus pauses it. */
+.feat-marquee {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  overflow: hidden;
+  padding: 0.45rem 0 0.55rem;
+  -webkit-mask-image: linear-gradient(90deg, transparent 0, #000 3.5%, #000 96.5%, transparent 100%);
+  mask-image: linear-gradient(90deg, transparent 0, #000 3.5%, #000 96.5%, transparent 100%);
+}
+.feat-row {
+  display: flex;
+  width: max-content;
+  animation: feat-scroll 80s linear infinite;
+  will-change: transform;
+}
+.feat-row-rev {
+  animation-duration: 96s;
+  animation-direction: reverse;
+}
+.feat-row .card {
+  flex: 0 0 18.5rem;
+  width: 18.5rem;
+  margin-right: 1rem;
+  display: flex;
+  flex-direction: column;
+}
+.feat-marquee:hover .feat-row,
+.feat-marquee:focus-within .feat-row {
+  animation-play-state: paused;
+}
+@keyframes feat-scroll {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
 .icon-pill {
   width: 1.8rem;
   height: 1.8rem;
@@ -1498,4 +1540,22 @@ h2 {
   .legend-card:hover,
   .btn:hover { transform: none; }
   .hall-stage { display: none; }
+  .feat-marquee {
+    overflow: visible;
+    -webkit-mask-image: none;
+    mask-image: none;
+    width: min(100% - 2rem, var(--max));
+    margin-inline: auto;
+  }
+  .feat-row {
+    flex-wrap: wrap;
+    width: auto;
+    gap: 1rem;
+  }
+  .feat-row .card {
+    flex: 1 1 16.5rem;
+    width: auto;
+    margin-right: 0;
+  }
+  .feat-dup { display: none !important; }
 }
