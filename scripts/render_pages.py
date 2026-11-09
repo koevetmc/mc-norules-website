@@ -6,6 +6,7 @@ ChatFX, Server Firsts, waypoints HUD/share, Flashback dual-angle, pack v1.2.
 2026-11-08: homepage killfeed from Paper System chat death lines.
 2026-11-08 later: compact top-of-page day-axis strip (ticks + heads, hover).
 2026-11-08 later: sitewide motion + CSS 3D Hall of Legends ring.
+2026-11-08 later: WebGL aisle hall matching in-game (3D skins, lanterns).
 Voting stays support-only — no loot, crates, ranks, or in-game advantage."""
 from pathlib import Path
 
@@ -181,15 +182,15 @@ PAGES["legends.html"] = (
     <section class="page-hero wrap">
       <p class="kicker">Flagship</p>
       <h2>Hall of Legends</h2>
-      <p class="lede">Same 24 boards as <code>/legends</code> in game. Drag the ring, or pick a plaque. Full sortable lists live on <a href="/rankings.html">Rankings</a>. Server Firsts are <code>/firsts</code>. Unclaimed pedestals stay empty until someone logs the first point.</p>
+      <p class="lede">Same 24 boards as <code>/legends</code> in game — walk the lantern-lit aisle, click a statue. Full sortable lists live on <a href="/rankings.html">Rankings</a>. Server Firsts are <code>/firsts</code>. Unclaimed pedestals stay empty until someone logs the first point.</p>
       <p class="lede" id="legends-updated"></p>
     </section>
     <section class="section hall-stage wrap">
-      <div class="hall-viewport" id="hall-view" tabindex="0" aria-label="Hall of Legends statue ring. Drag to rotate.">
+      <div class="hall-viewport" id="hall-view" tabindex="0" aria-label="Hall of Legends aisle. Drag to look, W S or scroll to walk, click a statue.">
         <div class="hall-world" id="hall-world"></div>
       </div>
       <p class="hall-hint">
-        <span>Drag or scroll to turn the hall. Click a statue for the top 10.</span>
+        <span>Drag to look · scroll or W/S to walk the aisle · click a statue for the top 10</span>
         <span>
           <button class="btn btn-ghost" type="button" data-hall-prev>Prev</button>
           <button class="btn btn-ghost" type="button" data-hall-next>Next</button>
@@ -205,6 +206,9 @@ PAGES["legends.html"] = (
     </section>
     """,
     '<script src="/js/legends.js"></script>',
+    """<link rel="preconnect" href="https://cdn.jsdelivr.net">
+  <link rel="preconnect" href="https://mc-heads.net" crossorigin>
+  <script type="importmap">{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.160.1/build/three.module.js"}}</script>""",
 )
 
 PAGES["rankings.html"] = (
@@ -513,8 +517,10 @@ PAGES["me.html"] = (
 
 
 def main() -> None:
-    for name, (title, desc, path, main, scripts) in PAGES.items():
-        html = head(title, desc, path) + chrome(main, scripts)
+    for name, spec in PAGES.items():
+        title, desc, path, body, scripts = spec[:5]
+        extra = spec[5] if len(spec) > 5 else ""
+        html = head(title, desc, path, extra) + chrome(body, scripts)
         (ROOT / name).write_text(html, encoding="utf-8")
         print("wrote", name)
 

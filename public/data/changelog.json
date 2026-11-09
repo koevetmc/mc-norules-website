@@ -3,6 +3,13 @@
   "entries": [
     {
       "date": "2026-11-08",
+      "version": "web-1.13",
+      "tags": ["WEBSITE"],
+      "title": "Hall of Legends is a walkable 3D aisle",
+      "body": "The hall now matches in-game: lantern-lit stone nave, red carpet, soul lights, and 3D player skins on pedestals. Walk, look, and click any of the 24 real boards. Voting is still support only — no loot, crates, keys, or ranks."
+    },
+    {
+      "date": "2026-11-08",
       "version": "web-1.12",
       "tags": ["WEBSITE"],
       "title": "Hall of Legends statues use real skins",

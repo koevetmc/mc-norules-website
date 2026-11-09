@@ -13,5 +13,7 @@ window.NR = {
   heads: "https://mc-heads.net/avatar",
   body: "https://mc-heads.net/body",
   // 2026-11-08: isometric playermodel for Hall of Legends statues.
-  model: "https://mc-heads.net/player"
+  model: "https://mc-heads.net/player",
+  // 2026-11-08 later: raw 64×64 skin for the WebGL aisle player meshes.
+  skin: "https://mc-heads.net/skin"
 };

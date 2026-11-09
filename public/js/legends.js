@@ -1,7 +1,9 @@
 /* 2026-11-03: Hall of Legends grid from /data/legends.json (24 plugin keys).
-   2026-11-08: CSS 3D statue ring in front of the same 24 boards. No WebGL.
-   2026-11-08 later: ring uses mc-heads playermodels (full skin), not just heads.
-   Reduced-motion hides the ring (CSS) and keeps the list. */
+   2026-11-08: CSS 3D statue ring, then full mc-heads playermodels.
+   2026-11-08 later: WebGL aisle (hall3d.js) matching the in-game hall —
+   stone nave, red carpet, lanterns, 3D skins on pedestals. CSS ring is
+   the fallback if WebGL/import fails. Reduced-motion hides the stage.
+   Vote stays support-only. */
 (function () {
   const root = document.getElementById("legends");
   if (!root) return;
@@ -118,20 +120,65 @@
     });
   }
 
-  function paintHall(order, cats) {
-    if (!world || !view || reduce) return;
+  function showDetail(i, order, cats) {
+    const key = order[i];
+    const cat = cats[key];
+    if (!detail || !cat) return;
+    const top = (cat.entries || [])[0];
+    detail.innerHTML = "";
+    const skinWrap = document.createElement("div");
+    skinWrap.className = "hall-detail-skin";
+    const skinImg = document.createElement("img");
+    skinImg.alt = top ? top.name : "unclaimed";
+    skinImg.width = 96;
+    skinImg.height = 192;
+    skinImg.src = top ? skin("body", top.name) : "/img/icon-32.png";
+    skinWrap.appendChild(skinImg);
+    const copy = document.createElement("div");
+    const h = document.createElement("h3");
+    h.textContent = cat.title || key;
+    const p = document.createElement("p");
+    p.className = "lede";
+    p.style.margin = "0 0 0.4rem";
+    p.textContent = top
+      ? top.name + " · " + window.nrFormatStat(cat.format, top.value, cat.unit)
+      : "unclaimed — be the first";
+    const ol = document.createElement("ol");
+    ol.className = "top10";
+    fillTop10(ol, cat);
+    copy.append(h, p, ol);
+    detail.append(skinWrap, copy);
+  }
+
+  function paintChips(order, cats, onPick) {
+    const chips = [];
+    if (!indexEl) return chips;
+    indexEl.innerHTML = "";
+    order.forEach((key, i) => {
+      const cat = cats[key];
+      if (!cat) return;
+      const chip = document.createElement("button");
+      chip.type = "button";
+      chip.textContent = cat.title || key;
+      chip.addEventListener("click", () => onPick(i));
+      indexEl.appendChild(chip);
+      chips.push(chip);
+    });
+    return chips;
+  }
+
+  function paintHall(order, cats, onSelect) {
+    if (!world || !view) return null;
+    world.hidden = false;
     const n = order.length;
     const step = 360 / Math.max(n, 1);
     let rot = 18;
-    let selected = 0;
     let dragging = false;
     let lastX = 0;
     let auto = true;
     const statues = [];
-    const chips = [];
 
     world.innerHTML = '<div class="hall-floor" aria-hidden="true"></div>';
-    if (indexEl) indexEl.innerHTML = "";
 
     order.forEach((key, i) => {
       const cat = cats[key];
@@ -160,22 +207,10 @@
       btn.addEventListener("click", (e) => {
         e.stopPropagation();
         auto = false;
-        select(i, true);
+        onSelect(i, true);
       });
       world.appendChild(btn);
       statues.push(btn);
-
-      if (indexEl) {
-        const chip = document.createElement("button");
-        chip.type = "button";
-        chip.textContent = cat.title || key;
-        chip.addEventListener("click", () => {
-          auto = false;
-          select(i, true);
-        });
-        indexEl.appendChild(chip);
-        chips.push(chip);
-      }
     });
 
     function apply() {
@@ -183,38 +218,9 @@
     }
 
     function select(i, spinTo) {
-      selected = i;
       statues.forEach((el, j) => el.classList.toggle("is-on", j === i));
-      chips.forEach((el, j) => el.classList.toggle("is-on", j === i));
       if (spinTo) rot = -i * step + 18;
       apply();
-      const key = order[i];
-      const cat = cats[key];
-      if (!detail || !cat) return;
-      const top = (cat.entries || [])[0];
-      detail.innerHTML = "";
-      const skinWrap = document.createElement("div");
-      skinWrap.className = "hall-detail-skin";
-      const skinImg = document.createElement("img");
-      skinImg.alt = top ? top.name : "unclaimed";
-      skinImg.width = 96;
-      skinImg.height = 192;
-      skinImg.src = top ? skin("body", top.name) : "/img/icon-32.png";
-      skinWrap.appendChild(skinImg);
-      const copy = document.createElement("div");
-      const h = document.createElement("h3");
-      h.textContent = cat.title || key;
-      const p = document.createElement("p");
-      p.className = "lede";
-      p.style.margin = "0 0 0.4rem";
-      p.textContent = top
-        ? top.name + " · " + window.nrFormatStat(cat.format, top.value, cat.unit)
-        : "unclaimed — be the first";
-      const ol = document.createElement("ol");
-      ol.className = "top10";
-      fillTop10(ol, cat);
-      copy.append(h, p, ol);
-      detail.append(skinWrap, copy);
     }
 
     function onDown(e) {
@@ -252,11 +258,6 @@
       { passive: false }
     );
 
-    const prev = document.querySelector("[data-hall-prev]");
-    const next = document.querySelector("[data-hall-next]");
-    if (prev) prev.addEventListener("click", () => { auto = false; select((selected - 1 + n) % n, true); });
-    if (next) next.addEventListener("click", () => { auto = false; select((selected + 1) % n, true); });
-
     let last = performance.now();
     function tick(now) {
       if (auto && !dragging) {
@@ -268,8 +269,14 @@
       requestAnimationFrame(tick);
     }
     requestAnimationFrame(tick);
-    select(0, true);
-    auto = true;
+    return { select };
+  }
+
+  function bindNav(n, go) {
+    const prev = document.querySelector("[data-hall-prev]");
+    const next = document.querySelector("[data-hall-next]");
+    if (prev) prev.addEventListener("click", () => go((go.i - 1 + n) % n, true));
+    if (next) next.addEventListener("click", () => go((go.i + 1) % n, true));
   }
 
   fetch("/data/legends.json")
@@ -283,7 +290,43 @@
       const cats = data.categories || {};
       const order = (data.order || Object.keys(cats)).filter((k) => cats[k]);
       paintGrid(order, cats);
-      paintHall(order, cats);
+
+      let hall = null;
+      const n = order.length;
+      const go = function (i, walk) {
+        go.i = i;
+        chips.forEach((el, j) => el.classList.toggle("is-on", j === i));
+        showDetail(i, order, cats);
+        if (hall) hall.select(i, walk);
+      };
+      go.i = 0;
+      const chips = paintChips(order, cats, (i) => go(i, true));
+      bindNav(n, go);
+
+      if (!view || reduce) return;
+
+      import("/js/hall3d.js")
+        .then((m) => m.mount({
+          view,
+          order,
+          cats,
+          formatStat: window.nrFormatStat,
+          onSelect: (i) => {
+            go.i = i;
+            chips.forEach((el, j) => el.classList.toggle("is-on", j === i));
+            showDetail(i, order, cats);
+          }
+        }))
+        .then((api) => {
+          hall = api;
+          // Stay on the carpet looking down the nave (in-game hall-aisle.jpg).
+          go(go.i, false);
+        })
+        .catch((err) => {
+          console.warn("WebGL hall unavailable, CSS ring fallback", err);
+          hall = paintHall(order, cats, go);
+          go(0, true);
+        });
     })
     .catch(() => {
       root.innerHTML = "<p class='lede'>Could not load legends.json.</p>";
