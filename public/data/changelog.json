@@ -3,6 +3,13 @@
   "entries": [
     {
       "date": "2026-11-08",
+      "version": "web-1.8",
+      "tags": ["WEBSITE"],
+      "title": "Death timeline on the home page",
+      "body": "Newest-first killfeed under the join block: vanilla death chat from the live logs, player heads, UTC timestamps. No coordinates. Voting is still support only — no loot, crates, keys, or ranks."
+    },
+    {
+      "date": "2026-11-08",
       "version": "web-1.7",
       "tags": ["WEBSITE"],
       "title": "Live rankings and full player stats",

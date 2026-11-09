@@ -1,0 +1,742 @@
+{
+  "updated": "2026-11-09T06:50:25Z",
+  "sample": false,
+  "comment": "Death messages from Paper logs (System chat). Newest first. No coordinates, no live player list.",
+  "items": [
+    {
+      "name": "KoevetMC",
+      "message": "was speared by Zombie",
+      "at": "2026-11-09T06:03:30Z"
+    },
+    {
+      "name": "KoevetMC",
+      "message": "was slain by Enderman",
+      "at": "2026-11-09T06:02:28Z"
+    },
+    {
+      "name": "KoevetMC",
+      "message": "was speared by Zombie",
+      "at": "2026-11-09T06:02:16Z"
+    },
+    {
+      "name": "KoevetMC",
+      "message": "was speared by Zombie",
+      "at": "2026-11-09T06:02:07Z"
+    },
+    {
+      "name": "KoevetMC",
+      "message": "was slain by Zombie",
+      "at": "2026-11-09T05:59:55Z"
+    },
+    {
+      "name": "KoevetMC",
+      "message": "was shot by Skeleton",
+      "at": "2026-11-09T05:21:46Z"
+    },
+    {
+      "name": "KoevetMC",
+      "message": "was fireballed by Ghast",
+      "at": "2026-11-09T04:43:51Z"
+    },
+    {
+      "name": "KoevetMC",
+      "message": "was shot by Skeleton",
+      "at": "2026-11-09T04:04:03Z"
+    },
+    {
+      "name": "KoevetMC",
+      "message": "was slain by Zombie",
+      "at": "2026-11-09T01:53:31Z"
+    },
+    {
+      "name": "KoevetMC",
+      "message": "was slain by Zombie",
+      "at": "2026-11-09T01:37:48Z"
+    },
+    {
+      "name": "KoevetMC",
+      "message": "was slain by Zombie",
+      "at": "2026-11-09T01:33:28Z"
+    },
+    {
+      "name": "KoevetMC",
+      "message": "was slain by Zombie",
+      "at": "2026-11-08T23:57:46Z"
+    },
+    {
+      "name": "KoevetMC",
+      "message": "was shot by Skeleton",
+      "at": "2026-11-08T23:37:42Z"
+    },
+    {
+      "name": "KoevetMC",
+      "message": "was slain by Zombie",
+      "at": "2026-11-08T23:35:46Z"
+    },
+    {
+      "name": "KoevetMC",
+      "message": "was slain by Zombie",
+      "at": "2026-11-08T23:34:52Z"
+    },
+    {
+      "name": "KoevetMC",
+      "message": "was slain by Zombie",
+      "at": "2026-11-08T23:33:50Z"
+    },
+    {
+      "name": "KoevetMC",
+      "message": "was slain by Spider",
+      "at": "2026-11-08T23:18:20Z"
+    },
+    {
+      "name": "KoevetMC",
+      "message": "was slain by Vex",
+      "at": "2026-11-08T22:32:20Z"
+    },
+    {
+      "name": "KoevetMC",
+      "message": "was slain by Vex",
+      "at": "2026-11-08T22:31:06Z"
+    },
+    {
+      "name": "KoevetMC",
+      "message": "was slain by Vex",
+      "at": "2026-11-08T22:29:58Z"
+    },
+    {
+      "name": "KoevetMC",
+      "message": "was slain by Vex",
+      "at": "2026-11-08T22:27:45Z"
+    },
+    {
+      "name": "KoevetMC",
+      "message": "was slain by Vex",
+      "at": "2026-11-08T22:27:23Z"
+    },
+    {
+      "name": "KoevetMC",
+      "message": "was slain by Vindicator",
+      "at": "2026-11-08T22:23:48Z"
+    },
+    {
+      "name": "KoevetMC",
+      "message": "was slain by Ravager",
+      "at": "2026-11-08T22:20:16Z"
+    },
+    {
+      "name": "KoevetMC",
+      "message": "was shot by Skeleton",
+      "at": "2026-11-08T22:16:40Z"
+    },
+    {
+      "name": "KoevetMC",
+      "message": "was slain by Vindicator",
+      "at": "2026-11-08T22:13:11Z"
+    },
+    {
+      "name": "KoevetMC",
+      "message": "was slain by Vindicator",
+      "at": "2026-11-08T22:10:07Z"
+    },
+    {
+      "name": ".Freakyguy2335",
+      "message": "was speared by Zombie",
+      "at": "2026-11-07T22:42:37Z"
+    },
+    {
+      "name": "KoevetMC",
+      "message": "fell from a high place",
+      "at": "2026-11-07T18:00:57Z"
+    },
+    {
+      "name": "KoevetMC",
+      "message": "was shot by Zed_The_Dead",
+      "at": "2026-11-07T17:27:16Z"
+    },
+    {
+      "name": "KoevetMC",
+      "message": "was shot by Zed_The_Dead",
+      "at": "2026-11-07T17:26:59Z"
+    },
+    {
+      "name": "KoevetMC",
+      "message": "was slain by Zombie",
+      "at": "2026-11-07T17:23:13Z"
+    },
+    {
+      "name": "Zed_The_Dead",
+      "message": "was shot by Skeleton",
+      "at": "2026-11-07T15:30:03Z"
+    },
+    {
+      "name": "Zed_The_Dead",
+      "message": "was shot by Skeleton",
+      "at": "2026-11-07T15:29:40Z"
+    },
+    {
+      "name": "KoevetMC",
+      "message": "was slain by Spider",
+      "at": "2026-11-07T04:27:51Z"
+    },
+    {
+      "name": "KoevetMC",
+      "message": "was slain by The Acklay",
+      "at": "2026-11-07T03:18:16Z"
+    },
+    {
+      "name": "KoevetMC",
+      "message": "was slain by Creepy Lumberjack",
+      "at": "2026-11-07T02:38:30Z"
+    },
+    {
+      "name": "KoevetMC",
+      "message": "was slain by Zombie",
+      "at": "2026-11-06T20:21:41Z"
+    },
+    {
+      "name": "KoevetMC",
+      "message": "was slain by Zombie",
+      "at": "2026-11-06T19:18:59Z"
+    },
+    {
+      "name": "ExploringSteve",
+      "message": "was shot by Skeleton",
+      "at": "2026-11-06T19:05:23Z"
+    },
+    {
+      "name": "ExploringSteve",
+      "message": "was slain by Zombie",
+      "at": "2026-11-06T19:03:33Z"
+    },
+    {
+      "name": "KoevetMC",
+      "message": "fell from a high place",
+      "at": "2026-11-06T03:35:48Z"
+    },
+    {
+      "name": "KoevetMC",
+      "message": "was slain by Brawler",
+      "at": "2026-11-06T02:59:48Z"
+    },
+    {
+      "name": "KoevetMC",
+      "message": "hit the ground too hard while trying to escape Vindicator",
+      "at": "2026-11-06T02:57:29Z"
+    },
+    {
+      "name": "KoevetMC",
+      "message": "was shot by Skeleton",
+      "at": "2026-11-06T01:50:47Z"
+    },
+    {
+      "name": "KoevetMC",
+      "message": "was shot by Skeleton",
+      "at": "2026-11-06T01:33:19Z"
+    },
+    {
+      "name": "KoevetMC",
+      "message": "was blown up by Creeper",
+      "at": "2026-11-06T01:22:14Z"
+    },
+    {
+      "name": "KoevetMC",
+      "message": "was shot by Skeleton",
+      "at": "2026-11-06T01:05:20Z"
+    },
+    {
+      "name": "Zed_The_Dead",
+      "message": "was blown up by Creeper",
+      "at": "2026-11-06T00:37:45Z"
+    },
+    {
+      "name": "BGoldGolden",
+      "message": "tried to swim in lava",
+      "at": "2026-11-05T22:20:47Z"
+    },
+    {
+      "name": "33cruz33",
+      "message": "was shot by Skeleton",
+      "at": "2026-11-05T21:55:51Z"
+    },
+    {
+      "name": "BGoldGolden",
+      "message": "was shot by Skeleton",
+      "at": "2026-11-05T21:53:38Z"
+    },
+    {
+      "name": "33cruz33",
+      "message": "was shot by Skeleton",
+      "at": "2026-11-05T21:52:36Z"
+    },
+    {
+      "name": "BGoldGolden",
+      "message": "was speared by Zombie",
+      "at": "2026-11-05T21:50:54Z"
+    },
+    {
+      "name": "33cruz33",
+      "message": "was speared by Zombie",
+      "at": "2026-11-05T21:49:57Z"
+    },
+    {
+      "name": "BGoldGolden",
+      "message": "was blown up by Creeper",
+      "at": "2026-11-05T21:48:23Z"
+    },
+    {
+      "name": "33cruz33",
+      "message": "was slain by Zombie",
+      "at": "2026-11-05T21:46:54Z"
+    },
+    {
+      "name": "33cruz33",
+      "message": "burned to death",
+      "at": "2026-11-05T21:43:05Z"
+    },
+    {
+      "name": "KoevetMC",
+      "message": "was shot by Skeleton",
+      "at": "2026-11-05T21:08:53Z"
+    },
+    {
+      "name": "KoevetMC",
+      "message": "was impaled by Drowned",
+      "at": "2026-11-05T17:56:29Z"
+    },
+    {
+      "name": "YurevdB_",
+      "message": "was blown up by Creeper",
+      "at": "2026-11-05T07:48:40Z"
+    },
+    {
+      "name": "KoevetMC",
+      "message": "was slain by Zombie",
+      "at": "2026-11-05T04:33:53Z"
+    },
+    {
+      "name": "_NebL",
+      "message": "was shot by Bogged",
+      "at": "2026-11-05T04:28:24Z"
+    },
+    {
+      "name": "_NebL",
+      "message": "was shot by Bogged",
+      "at": "2026-11-05T04:28:13Z"
+    },
+    {
+      "name": "_NebL",
+      "message": "was shot by Bogged",
+      "at": "2026-11-05T04:27:19Z"
+    },
+    {
+      "name": "_NebL",
+      "message": "was shot by Bogged",
+      "at": "2026-11-05T04:26:10Z"
+    },
+    {
+      "name": "_NebL",
+      "message": "was shot by Bogged",
+      "at": "2026-11-05T04:25:03Z"
+    },
+    {
+      "name": ".Beynz_I",
+      "message": "was shot by Bogged",
+      "at": "2026-11-05T04:16:08Z"
+    },
+    {
+      "name": ".Beynz_I",
+      "message": "was shot by Bogged",
+      "at": "2026-11-05T04:15:28Z"
+    },
+    {
+      "name": ".Beynz_I",
+      "message": "was shot by Bogged",
+      "at": "2026-11-05T04:14:53Z"
+    },
+    {
+      "name": "_NebL",
+      "message": "was shot by Bogged",
+      "at": "2026-11-05T04:14:24Z"
+    },
+    {
+      "name": ".Beynz_I",
+      "message": "was shot by Bogged",
+      "at": "2026-11-05T04:14:05Z"
+    },
+    {
+      "name": "_NebL",
+      "message": "was shot by Bogged",
+      "at": "2026-11-05T04:13:57Z"
+    },
+    {
+      "name": ".Beynz_I",
+      "message": "was impaled on a stalagmite",
+      "at": "2026-11-05T04:13:36Z"
+    },
+    {
+      "name": "_NebL",
+      "message": "was shot by Bogged",
+      "at": "2026-11-05T04:13:30Z"
+    },
+    {
+      "name": ".Beynz_I",
+      "message": "was shot by Bogged",
+      "at": "2026-11-05T04:12:57Z"
+    },
+    {
+      "name": ".Beynz_I",
+      "message": "hit the ground too hard",
+      "at": "2026-11-05T04:09:04Z"
+    },
+    {
+      "name": ".Beynz_I",
+      "message": "was impaled on a stalagmite",
+      "at": "2026-11-05T03:57:06Z"
+    },
+    {
+      "name": ".Beynz_I",
+      "message": "was shot by Bogged",
+      "at": "2026-11-05T03:51:15Z"
+    },
+    {
+      "name": "SportsMix",
+      "message": "was slain by Slime",
+      "at": "2026-11-05T03:48:49Z"
+    },
+    {
+      "name": ".Beynz_I",
+      "message": "was slain by Zombie",
+      "at": "2026-11-05T03:46:00Z"
+    },
+    {
+      "name": "_NebL",
+      "message": "fell from a high place",
+      "at": "2026-11-05T03:40:44Z"
+    },
+    {
+      "name": "SportsMix",
+      "message": "was speared by _NebL",
+      "at": "2026-11-05T03:22:10Z"
+    },
+    {
+      "name": "KoevetMC",
+      "message": "experienced kinetic energy",
+      "at": "2026-11-05T00:31:55Z"
+    },
+    {
+      "name": "Zed_The_Dead",
+      "message": "fell from a high place",
+      "at": "2026-11-04T21:10:49Z"
+    },
+    {
+      "name": "Zed_The_Dead",
+      "message": "was doomed to fall",
+      "at": "2026-11-04T21:02:39Z"
+    },
+    {
+      "name": "KoevetMC",
+      "message": "was slain by YurevdB_",
+      "at": "2026-11-04T10:34:24Z"
+    },
+    {
+      "name": "KoevetMC",
+      "message": "was slain by YurevdB_",
+      "at": "2026-11-04T10:23:10Z"
+    },
+    {
+      "name": "KoevetMC",
+      "message": "tried to swim in lava",
+      "at": "2026-11-04T10:01:48Z"
+    },
+    {
+      "name": "KoevetMC",
+      "message": "tried to swim in lava",
+      "at": "2026-11-04T06:29:54Z"
+    },
+    {
+      "name": "KoevetMC",
+      "message": "was slain by Enderman",
+      "at": "2026-11-04T02:05:46Z"
+    },
+    {
+      "name": "Zed_The_Dead",
+      "message": "tried to swim in lava",
+      "at": "2026-11-03T14:28:15Z"
+    },
+    {
+      "name": "KoevetMC",
+      "message": "was slain by Phantom",
+      "at": "2026-11-02T23:23:33Z"
+    },
+    {
+      "name": "33cruz33",
+      "message": "was slain by Piglin",
+      "at": "2026-11-02T06:12:12Z"
+    },
+    {
+      "name": "Alejok0",
+      "message": "was doomed to fall by Creeper",
+      "at": "2026-11-02T05:48:17Z"
+    },
+    {
+      "name": "Alejok0",
+      "message": "was slain by Piglin",
+      "at": "2026-11-02T05:42:55Z"
+    },
+    {
+      "name": "Alejok0",
+      "message": "burned to death",
+      "at": "2026-11-02T05:39:19Z"
+    },
+    {
+      "name": "33cruz33",
+      "message": "was slain by BGoldGolden",
+      "at": "2026-11-02T05:21:30Z"
+    },
+    {
+      "name": "33cruz33",
+      "message": "was slain by Spider",
+      "at": "2026-11-02T04:29:26Z"
+    },
+    {
+      "name": "KoevetMC",
+      "message": "burned to death",
+      "at": "2026-11-02T04:08:50Z"
+    },
+    {
+      "name": "33cruz33",
+      "message": "was slain by Zombie",
+      "at": "2026-11-02T04:08:01Z"
+    },
+    {
+      "name": "pazy312",
+      "message": "fell from a high place",
+      "at": "2026-11-02T03:56:31Z"
+    },
+    {
+      "name": "pazy312",
+      "message": "was slain by BGoldGolden",
+      "at": "2026-11-02T03:55:59Z"
+    },
+    {
+      "name": "pazy312",
+      "message": "drowned",
+      "at": "2026-11-02T03:48:02Z"
+    },
+    {
+      "name": "33cruz33",
+      "message": "fell from a high place",
+      "at": "2026-11-02T03:37:04Z"
+    },
+    {
+      "name": "33cruz33",
+      "message": "tried to swim in lava",
+      "at": "2026-11-02T03:36:55Z"
+    },
+    {
+      "name": "33cruz33",
+      "message": "tried to swim in lava to escape BGoldGolden",
+      "at": "2026-11-02T03:36:32Z"
+    },
+    {
+      "name": "33cruz33",
+      "message": "tried to swim in lava to escape BGoldGolden",
+      "at": "2026-11-02T03:35:59Z"
+    },
+    {
+      "name": "BGoldGolden",
+      "message": "tried to swim in lava",
+      "at": "2026-11-02T03:35:37Z"
+    },
+    {
+      "name": "33cruz33",
+      "message": "was slain by Zombie",
+      "at": "2026-11-02T03:32:49Z"
+    },
+    {
+      "name": "pazy312",
+      "message": "hit the ground too hard",
+      "at": "2026-11-02T03:14:13Z"
+    },
+    {
+      "name": "BGoldGolden",
+      "message": "fell from a high place",
+      "at": "2026-11-02T03:12:57Z"
+    },
+    {
+      "name": "33cruz33",
+      "message": "was slain by Zombie",
+      "at": "2026-11-02T03:11:42Z"
+    },
+    {
+      "name": "pazy312",
+      "message": "fell from a high place",
+      "at": "2026-11-02T03:08:58Z"
+    },
+    {
+      "name": "pazy312",
+      "message": "was shot by Skeleton",
+      "at": "2026-11-02T03:07:50Z"
+    },
+    {
+      "name": "BGoldGolden",
+      "message": "was slain by 33cruz33",
+      "at": "2026-11-02T03:05:50Z"
+    },
+    {
+      "name": "pazy312",
+      "message": "fell from a high place",
+      "at": "2026-11-02T03:03:35Z"
+    },
+    {
+      "name": "pazy312",
+      "message": "fell from a high place",
+      "at": "2026-11-02T03:01:03Z"
+    },
+    {
+      "name": "pazy312",
+      "message": "was doomed to fall by Skeleton",
+      "at": "2026-11-02T03:00:40Z"
+    },
+    {
+      "name": "KoevetMC",
+      "message": "was blown up by Creeper",
+      "at": "2026-11-02T01:17:56Z"
+    },
+    {
+      "name": "KoevetMC",
+      "message": "was speared by YurevdB_",
+      "at": "2026-11-02T00:56:52Z"
+    },
+    {
+      "name": "KoevetMC",
+      "message": "was speared by YurevdB_",
+      "at": "2026-11-02T00:21:22Z"
+    },
+    {
+      "name": "KoevetMC",
+      "message": "was slain by YurevdB_",
+      "at": "2026-11-02T00:01:16Z"
+    },
+    {
+      "name": "KoevetMC",
+      "message": "was slain by Enderman",
+      "at": "2026-11-01T23:58:30Z"
+    },
+    {
+      "name": "KoevetMC",
+      "message": "drowned",
+      "at": "2026-11-01T23:22:34Z"
+    },
+    {
+      "name": "KoevetMC",
+      "message": "was shot by Skeleton",
+      "at": "2026-11-01T23:10:12Z"
+    },
+    {
+      "name": "Zed_The_Dead",
+      "message": "burned to death",
+      "at": "2026-11-01T17:00:53Z"
+    },
+    {
+      "name": "Zed_The_Dead",
+      "message": "was slain by Piglin Brute",
+      "at": "2026-11-01T16:57:10Z"
+    },
+    {
+      "name": "KoevetMC",
+      "message": "was shot by Skeleton",
+      "at": "2026-10-31T14:17:29Z"
+    },
+    {
+      "name": "KoevetMC",
+      "message": "fell from a high place",
+      "at": "2026-10-31T05:50:39Z"
+    },
+    {
+      "name": "KoevetMC",
+      "message": "fell from a high place",
+      "at": "2026-10-31T05:11:52Z"
+    },
+    {
+      "name": "KoevetMC",
+      "message": "fell from a high place",
+      "at": "2026-10-31T05:09:16Z"
+    },
+    {
+      "name": "CrimsonChad_",
+      "message": "fell from a high place",
+      "at": "2026-10-31T05:07:19Z"
+    },
+    {
+      "name": "KoevetMC",
+      "message": "hit the ground too hard",
+      "at": "2026-10-31T05:07:12Z"
+    },
+    {
+      "name": "KoevetMC",
+      "message": "fell from a high place",
+      "at": "2026-10-31T05:02:03Z"
+    },
+    {
+      "name": "KoevetMC",
+      "message": "fell from a high place",
+      "at": "2026-10-31T04:53:54Z"
+    },
+    {
+      "name": "KoevetMC",
+      "message": "was slain by Zombie",
+      "at": "2026-10-31T04:36:37Z"
+    },
+    {
+      "name": "KoevetMC",
+      "message": "was slain by Zombie",
+      "at": "2026-10-31T04:34:41Z"
+    },
+    {
+      "name": "KoevetMC",
+      "message": "was blown up by Creeper",
+      "at": "2026-10-31T04:32:11Z"
+    },
+    {
+      "name": "KoevetMC",
+      "message": "was blown up by Creeper",
+      "at": "2026-10-31T04:18:25Z"
+    },
+    {
+      "name": "KoevetMC",
+      "message": "was slain by Zombie",
+      "at": "2026-10-30T03:33:18Z"
+    },
+    {
+      "name": "KoevetMC",
+      "message": "was blown up by Creeper",
+      "at": "2026-10-30T02:32:10Z"
+    },
+    {
+      "name": "X_Professor_YT",
+      "message": "fell from a high place",
+      "at": "2026-10-30T01:00:29Z"
+    },
+    {
+      "name": "KoevetMC",
+      "message": "was slain by Zed_The_Dead",
+      "at": "2026-10-29T23:14:07Z"
+    },
+    {
+      "name": "KoevetMC",
+      "message": "was shot by Skeleton",
+      "at": "2026-10-29T23:11:22Z"
+    },
+    {
+      "name": "KoevetMC",
+      "message": "was slain by Zed_The_Dead",
+      "at": "2026-10-29T23:02:48Z"
+    },
+    {
+      "name": "Zed_The_Dead",
+      "message": "was slain by KoevetMC",
+      "at": "2026-10-29T23:01:43Z"
+    }
+  ]
+}

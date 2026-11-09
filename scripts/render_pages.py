@@ -3,6 +3,7 @@
 2026-11-03: initial site. 2026-11-06: Arena, /pack off, ItemShare ping,
 ChatFX, Server Firsts, waypoints HUD/share, Flashback dual-angle, pack v1.2.
 2026-11-06 later: home page features a real photo mosaic from gallery.json.
+2026-11-08: homepage killfeed from Paper System chat death lines.
 Voting stays support-only — no loot, crates, ranks, or in-game advantage."""
 from pathlib import Path
 
@@ -118,6 +119,14 @@ PAGES["index.html"] = (
       </div>
     </section>
 
+    <section class="section home-deaths wrap" id="killfeed">
+      <p class="kicker">Killfeed</p>
+      <h2>Deaths</h2>
+      <p class="lede">Vanilla death chat from the live logs. Newest first. Public after the fact — no coordinates, no who-is-online list.</p>
+      <p class="lede" id="deaths-updated"></p>
+      <div class="death-feed" id="deaths"></div>
+    </section>
+
     <section class="section home-shots wrap" id="shots">
       <p class="kicker">In world</p>
       <h2>The grounds</h2>
@@ -160,7 +169,7 @@ PAGES["index.html"] = (
       </div>
     </section>
     """,
-    '<script src="/js/gallery.js"></script>',
+    '<script src="/js/gallery.js"></script>\n  <script src="/js/deaths.js"></script>',
 )
 
 PAGES["legends.html"] = (

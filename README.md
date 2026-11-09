@@ -95,6 +95,10 @@ Public list-site vote counts. Support only — **not** a loot/reward board.
 
 `tags` is one or more of `PLUGIN`, `SERVER`, `WEBSITE`, `FIX`.
 
+### `deaths.json`
+
+Homepage killfeed. Paper `System chat:` death lines from den logs, newest first. `{name, message, at}` — **no coordinates**. Rebuild with `python3 scripts/ingest_deaths.py /tmp/norules-system-chat.txt`. This map only (after 2026-10-29 23:00 UTC).
+
 ### `gallery.json` / `clips.json`
 
 Drop media in `/gallery/` or `/clips/`, append `{file, caption, date, author}` or `{file, title, killer, victim, date, poster}`. Clips are **after-the-fact** Flashback exports — not a live kill feed.
