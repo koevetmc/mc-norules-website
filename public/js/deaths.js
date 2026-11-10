@@ -1,6 +1,6 @@
-/* 2026-11-09: spaced day-column timeline. Hover/tap fills a detail tray
-   (victim, how they died, killer if it was a player). No piled 16px heads.
-   No coordinates. */
+/* 2026-11-09: thin horizontal rail by server day — one row of ticks, not
+   stacked heads. Hover/tap fills the tray (victim, how, killer if a player).
+   Every JSON death is a tick. No coordinates. */
 (function () {
   const root = document.getElementById("deaths");
   const tray = document.getElementById("death-tray");
@@ -62,7 +62,6 @@
         return;
       }
 
-      // 2026-11-09: kicker carries the real count so the fold shows 147, not a crop.
       const kicker = document.querySelector(".death-strip-kicker");
       if (kicker) kicker.textContent = "Deaths · " + items.length;
       const strip = document.getElementById("killfeed");
@@ -125,10 +124,9 @@
         });
       }
 
-      const cols = buckets
+      const days = buckets
         .map(function (list, i) {
           const ms = t0 + i * DAY;
-          // Every death in the JSON is a tick. Dense days wrap; nothing is +N cropped.
           const ticks = list
             .map(function (e) {
               const killer = killerOf(e.message);
@@ -143,26 +141,23 @@
                 label +
                 '"><img src="' +
                 headUrl(e.name) +
-                '" alt="" width="16" height="16"></button>'
+                '" alt="" width="8" height="8"></button>'
               );
             })
             .join("");
-          if (!list.length) return "";
           return (
-            '<div class="death-col" data-day="' +
-            i +
-            '"><span class="death-col-date">' +
-            dayLabel(ms) +
-            '</span><div class="death-stack">' +
+            '<div class="death-day" style="flex-grow:' +
+            Math.max(list.length, 1) +
+            '"><div class="death-day-ticks">' +
             ticks +
-            '</div><span class="death-col-n">' +
-            list.length +
+            '</div><span class="death-day-label">' +
+            dayLabel(ms) +
             "</span></div>"
           );
         })
         .join("");
 
-      root.innerHTML = '<div class="death-days">' + cols + "</div>";
+      root.innerHTML = '<div class="death-rail"><div class="death-track">' + days + "</div></div>";
       root.addEventListener("click", function (ev) {
         const btn = ev.target.closest(".death-tick");
         if (!btn) return;
@@ -176,10 +171,6 @@
         if (e) paintTray(e);
       });
       paintTray(selected);
-      if (new URLSearchParams(location.search).has("death-tip")) {
-        const last = root.querySelector(".death-tick:last-of-type");
-        if (last) last.classList.add("is-on");
-      }
     })
     .catch(() => {
       root.innerHTML = "<p class='death-strip-empty'>Could not load deaths.</p>";

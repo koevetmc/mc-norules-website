@@ -3,6 +3,13 @@
   "entries": [
     {
       "date": "2026-11-09",
+      "version": "web-1.22",
+      "tags": ["WEBSITE"],
+      "title": "Deaths is a thin horizontal timeline",
+      "body": "One rail by server day, small ticks on the line, hover for who and how. All 147 real deaths stay on the axis. Vote is still support only."
+    },
+    {
+      "date": "2026-11-09",
       "version": "web-1.21",
       "tags": ["WEBSITE", "FIX"],
       "title": "Deaths sit on the first screen again",
