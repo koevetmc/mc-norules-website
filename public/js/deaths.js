@@ -155,7 +155,7 @@
             dayLabel(ms) +
             '</span><div class="death-stack">' +
             ticks +
-            "</div><span class="death-col-n">" +
+            '</div><span class="death-col-n">' +
             list.length +
             "</span></div>"
           );

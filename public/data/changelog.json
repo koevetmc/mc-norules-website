@@ -6,7 +6,7 @@
       "version": "web-1.21",
       "tags": ["WEBSITE", "FIX"],
       "title": "Deaths sit on the first screen again",
-      "body": "The death timeline is directly under the hero, not below The law. All 147 real deaths on this map render as ticks. Vote is still support only."
+      "body": "The death timeline is directly under the hero, not below The law. A quote bug in the timeline script had stopped every tick from painting; all 147 real deaths on this map render again. Vote is still support only."
     },
     {
       "date": "2026-11-09",
