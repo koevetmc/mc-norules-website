@@ -3,6 +3,13 @@
   "entries": [
     {
       "date": "2026-11-09",
+      "version": "web-1.20",
+      "tags": ["WEBSITE"],
+      "title": "Circled-A seal, day-column deaths, full-bleed hall",
+      "body": "Hero is the monument path, not a muddy aisle. Deaths are a spaced timeline with hover/tap detail. Features are a list, not a card wall. Hall of Legends is full-bleed. Vote is still support only."
+    },
+    {
+      "date": "2026-11-09",
       "version": "web-1.19",
       "tags": ["WEBSITE", "FIX"],
       "title": "Hall lights or falls back. Skip link stays off canvas.",

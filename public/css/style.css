@@ -115,8 +115,7 @@ a:hover { color: var(--ember-core); }
   display: flex;
   align-items: center;
   border-bottom: 1px solid var(--iron-dim);
-  background: rgba(7, 6, 5, 0.9);
-  backdrop-filter: blur(14px);
+  background: rgba(7, 6, 5, 0.94);
 }
 .site-header .wrap {
   display: flex;
@@ -260,7 +259,7 @@ a:hover { color: var(--ember-core); }
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: center 42%;
+  object-position: center 38%;
   z-index: -2;
   max-width: none;
 }
@@ -268,11 +267,10 @@ a:hover { color: var(--ember-core); }
   position: absolute;
   inset: 0;
   z-index: -1;
-  /* 2026-11-09: statue holograms in the photo were fighting the headline. */
+  /* 2026-11-09: bottom-weighted only — the circled-A path has to stay visible. */
   background:
-    linear-gradient(180deg, rgba(7, 6, 5, 0.42) 0%, rgba(7, 6, 5, 0.62) 42%, rgba(7, 6, 5, 0.94) 100%),
-    radial-gradient(ellipse at 50% 46%, rgba(7, 6, 5, 0.55), transparent 60%),
-    radial-gradient(ellipse at 50% 100%, rgba(232, 93, 4, 0.16), transparent 50%);
+    linear-gradient(180deg, rgba(7, 6, 5, 0.18) 0%, rgba(7, 6, 5, 0.08) 38%, rgba(7, 6, 5, 0.82) 78%, rgba(7, 6, 5, 0.96) 100%),
+    radial-gradient(ellipse at 50% 100%, rgba(232, 93, 4, 0.2), transparent 55%);
 }
 .hero-plaque {
   padding: 2.4rem 0 2.2rem;
@@ -494,6 +492,10 @@ h2 { font-size: clamp(2rem, 5vw, 3.15rem); }
   margin-inline: auto;
   font-size: clamp(1.15rem, 3vw, 1.7rem);
   padding: 0.7rem 1.15rem;
+  appearance: none;
+  font-family: inherit;
+  cursor: pointer;
+  color: inherit;
 }
 .ip-display-sm { font-size: 0.95rem; display: inline-block; margin: 0.4rem 0 0.7rem; }
 
@@ -557,54 +559,79 @@ html.nr-shot-features .death-strip,
 html.nr-shot-features .hero,
 html.nr-shot-features .home-shots,
 html.nr-shot-features .lightbox { display: none !important; }
-/* 2026-11-08: homepage features as a slow two-row ticker, not a 3×3/4×4 grid.
-   Duplicates in the HTML make the loop seamless. Hover / focus pauses it. */
-.feat-marquee {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-  overflow: hidden;
-  padding: 0.45rem 0 0.55rem;
-  -webkit-mask-image: linear-gradient(90deg, transparent 0, #000 3.5%, #000 96.5%, transparent 100%);
-  mask-image: linear-gradient(90deg, transparent 0, #000 3.5%, #000 96.5%, transparent 100%);
-}
-.feat-row {
-  display: flex;
-  width: max-content;
-  animation: feat-scroll 80s linear infinite;
-  will-change: transform;
-}
-.feat-row-rev {
-  animation-duration: 96s;
-  animation-direction: reverse;
-}
-.feat-row .card {
-  flex: 0 0 18.5rem;
-  width: 18.5rem;
-  margin-right: 1rem;
-  display: flex;
-  flex-direction: column;
-}
-.feat-marquee:hover .feat-row,
-.feat-marquee:focus-within .feat-row {
-  animation-play-state: paused;
-}
-@keyframes feat-scroll {
-  from { transform: translateX(0); }
-  to { transform: translateX(-50%); }
-}
 
-.icon-pill {
-  width: 1.8rem;
-  height: 1.8rem;
+/* 2026-11-09: feature index — one line each, not a card wall or ticker. */
+.identity { text-align: center; padding-bottom: 0.4rem; }
+.identity .lede { margin-inline: auto; }
+.feat-index {
   display: grid;
-  place-items: center;
-  background: #000;
-  border: 1px solid var(--iron-dim);
-  color: var(--ember);
-  font-size: 0.85rem;
-  margin-bottom: 0.6rem;
+  grid-template-columns: 1fr 1fr;
+  gap: 0 2.4rem;
+  border-top: 1px solid var(--iron-dim);
 }
+.feat-line {
+  display: grid;
+  grid-template-columns: 8.5rem 1fr;
+  gap: 1rem;
+  align-items: baseline;
+  padding: 0.95rem 0;
+  border-bottom: 1px solid var(--iron-dim);
+}
+.feat-line h3 {
+  font-family: var(--font-display);
+  font-size: 1.35rem;
+  letter-spacing: 0.08em;
+  margin: 0;
+  color: var(--ember);
+}
+.feat-line p { margin: 0; color: var(--muted); font-size: 0.92rem; }
+
+.home-legends {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.75rem;
+  margin: 0 0 1.2rem;
+}
+.home-legend-cell {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.35rem;
+  text-align: center;
+  text-decoration: none;
+  color: inherit;
+  padding: 0.7rem 0.4rem;
+  border: 1px solid var(--iron-dim);
+  background: var(--bg-2);
+}
+.home-legend-cell img { width: 48px; height: 48px; image-rendering: pixelated; }
+.home-legend-cat {
+  font-size: 0.62rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ember);
+}
+.home-legend-name { font-size: 0.82rem; color: var(--text); }
+.home-stats { display: flex; flex-direction: column; margin: 0 0 1.2rem; }
+.home-stat {
+  display: grid;
+  grid-template-columns: 32px 10rem 1fr auto;
+  gap: 0.75rem;
+  align-items: center;
+  padding: 0.7rem 0;
+  border-bottom: 1px solid var(--iron-dim);
+  text-decoration: none;
+  color: inherit;
+}
+.home-stat img { width: 32px; height: 32px; image-rendering: pixelated; }
+.home-stat span {
+  font-size: 0.68rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.home-stat b { font-weight: 600; }
+.home-stat em { color: var(--lantern); font-style: normal; font-variant-numeric: tabular-nums; }
 
 /* ---------- legends ---------- */
 .legend-grid {
@@ -690,15 +717,25 @@ html.nr-shot-features .lightbox { display: none !important; }
 
 /* 2026-11-08: CSS 3D statue ring — fallback if WebGL hall fails.
    2026-11-08 later: .is-gl canvas aisle matching the in-game hall. */
-.hall-stage { padding-top: 0.4rem; }
+.hall-bleed { padding: 0; }
+.hall-head {
+  text-align: center;
+  padding: 1.4rem 1rem 0.85rem;
+}
+.hall-head h1 {
+  font-size: clamp(2.4rem, 6vw, 4.2rem);
+  margin: 0 0 0.35rem;
+}
+.hall-sub { margin: 0; color: var(--muted); }
+.hall-sub span { color: var(--iron); }
 .hall-viewport {
   scroll-margin-top: 4.75rem;
   position: relative;
-  height: min(44rem, 86vh);
+  height: min(52rem, 88vh);
   perspective: 1200px;
   perspective-origin: 50% 46%;
   overflow: hidden;
-  border: 1px solid var(--iron-dim);
+  border-block: 1px solid var(--iron-dim);
   background:
     radial-gradient(80% 70% at 50% 100%, rgba(232, 93, 4, 0.16), transparent 55%),
     linear-gradient(#0d0b09, #161210);
@@ -706,6 +743,7 @@ html.nr-shot-features .lightbox { display: none !important; }
   touch-action: none;
   user-select: none;
 }
+.hall-meta { padding-top: 1.2rem; }
 .hall-viewport.is-gl {
   perspective: none;
   background: #0c0a08;
@@ -1088,114 +1126,101 @@ html.nr-shot-features .lightbox { display: none !important; }
 }
 .lightbox-nav { display: flex; gap: 0.4rem; }
 
-/* 2026-11-08 later: compact top-of-page death strip.
-   Axis = server UTC days. Ticks + 16px heads. Hover tip = how they died. */
+/* 2026-11-09: day-column death timeline. Equal spacing, tray for the how. */
 .death-strip {
-  border-bottom: 1px solid var(--iron-dim);
+  border-block: 1px solid var(--iron-dim);
   background: var(--bg-2);
-  padding: 0.4rem 0 0.45rem;
-}
-.death-strip-inner {
-  display: grid;
-  grid-template-columns: auto 1fr;
-  gap: 0.7rem;
-  align-items: center;
+  padding: 1.1rem 0 1.2rem;
 }
 .death-strip-kicker {
-  margin: 0;
+  margin: 0 0 0.7rem;
   font-family: var(--font-display);
-  font-size: 1rem;
+  font-size: 1.15rem;
   letter-spacing: 0.14em;
   color: var(--ember);
   line-height: 1;
-}
-.death-axis { position: relative; height: 3.15rem; min-width: 0; }
-.death-axis-pad { position: relative; height: 100%; margin: 0 0.55rem; }
-.death-line {
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: 1.15rem;
-  height: 2px;
-  background: var(--iron);
-}
-.death-day {
-  position: absolute;
-  top: 0;
-  transform: translateX(-50%);
-  color: var(--muted);
-  font-size: 0.62rem;
-  letter-spacing: 0.04em;
-  font-variant-numeric: tabular-nums;
-  pointer-events: none;
-  white-space: nowrap;
-}
-.death-day:first-of-type { transform: none; }
-.death-day:last-of-type { transform: translateX(-100%); }
-.death-day::after {
-  content: "";
-  position: absolute;
-  left: 50%;
-  top: 0.95rem;
-  width: 1px;
-  height: 7px;
-  background: var(--iron-dim);
-}
-.death-mark {
-  position: absolute;
-  top: 1.05rem;
-  width: 16px;
-  margin: 0;
-  transform: translateX(-50%);
   text-align: center;
-  text-decoration: none;
-  color: inherit;
 }
-.death-mark i {
-  display: block;
-  width: 2px;
-  height: 7px;
-  margin: 0 auto;
-  background: var(--ember);
+.death-days {
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: minmax(4.4rem, 1fr);
+  gap: 0.35rem;
+  overflow-x: auto;
+  padding-bottom: 0.35rem;
+  scroll-snap-type: x proximity;
 }
-.death-mark img {
-  width: 16px;
-  height: 16px;
-  max-width: none;
-  margin-top: 2px;
-  image-rendering: pixelated;
-  background: var(--bg-4);
-  transition: transform 0.2s var(--ease);
+.death-col {
+  scroll-snap-align: start;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.35rem;
+  min-width: 4.4rem;
 }
-.death-mark:hover img,
-.death-mark:focus-visible img,
-.death-mark.is-open img { transform: scale(1.35); }
-.death-tip {
-  display: none;
-  position: absolute;
-  left: 50%;
-  top: calc(100% + 4px);
-  transform: translateX(-50%);
-  min-width: 12rem;
-  padding: 0.35rem 0.5rem;
-  background: #1b1713;
-  border: 1px solid var(--ember);
-  color: var(--text);
-  font-size: 0.72rem;
-  line-height: 1.3;
-  font-weight: 500;
+.death-col-date {
+  font-size: 0.68rem;
+  letter-spacing: 0.04em;
+  color: var(--muted);
+  font-variant-numeric: tabular-nums;
   white-space: nowrap;
-  z-index: 20;
-  pointer-events: none;
-  box-shadow: var(--shadow);
 }
-.death-mark-start .death-tip { left: 0; transform: none; }
-.death-mark-end .death-tip { left: auto; right: 0; transform: none; }
-.death-mark:hover,
-.death-mark:focus-visible { z-index: 30 !important; }
-.death-mark:hover .death-tip,
-.death-mark:focus-visible .death-tip,
-.death-mark.is-open .death-tip { display: block; }
+.death-stack {
+  display: flex;
+  flex-direction: column-reverse;
+  align-items: center;
+  gap: 0.2rem;
+  min-height: 2.4rem;
+}
+.death-tick {
+  appearance: none;
+  background: #000;
+  border: 1px solid var(--iron-dim);
+  padding: 0;
+  cursor: pointer;
+  line-height: 0;
+}
+.death-tick img {
+  width: 24px;
+  height: 24px;
+  max-width: none;
+  image-rendering: pixelated;
+  display: block;
+}
+.death-tick.is-pvp { border-color: var(--ember); }
+.death-tick.is-on,
+.death-tick:hover,
+.death-tick:focus-visible { border-color: var(--ember-core); }
+.death-more, .death-col-n {
+  font-size: 0.62rem;
+  color: var(--iron);
+  font-variant-numeric: tabular-nums;
+}
+.death-tray {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.55rem 1rem;
+  align-items: center;
+  justify-content: center;
+  min-height: 2.6rem;
+  margin-top: 0.85rem;
+  padding-top: 0.75rem;
+  border-top: 1px solid var(--iron-dim);
+  font-size: 0.88rem;
+}
+.death-tray-who, .death-tray-killer {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  text-decoration: none;
+  color: var(--text);
+  font-weight: 600;
+}
+.death-tray img { width: 32px; height: 32px; image-rendering: pixelated; }
+.death-tray-killer img { width: 24px; height: 24px; }
+.death-tray-msg { margin: 0; color: var(--muted); }
+.death-tray-mob { color: var(--iron); }
+.death-tray time { color: var(--iron); font-variant-numeric: tabular-nums; font-size: 0.78rem; }
 .death-strip-empty { margin: 0; color: var(--muted); font-size: 0.8rem; }
 
 /* 2026-11-06: homepage photo mosaic.
@@ -1735,8 +1760,12 @@ html.nr-shot-features .lightbox { display: none !important; }
   .profile { grid-template-columns: 1fr; }
   .masonry { columns: 2 12rem; }
   .home-cycle-stage { height: min(14.5rem, 36vh); }
-  .death-day-minor { display: none; }
-  .hall-viewport { height: min(32rem, 72vh); }
+  .feat-index { grid-template-columns: 1fr; }
+  .feat-line { grid-template-columns: 6.5rem 1fr; }
+  .home-legends { grid-template-columns: repeat(2, 1fr); }
+  .home-stat { grid-template-columns: 32px 1fr auto; }
+  .home-stat span { grid-column: 2; }
+  .hall-viewport { height: min(38rem, 78vh); }
   .hall-statue { --hall-r: 14.5rem; width: 5.2rem; margin-left: -2.6rem; top: 16%; }
   .hall-statue img { width: 56px; height: 112px; }
   .hall-plaque { font-size: 0.8rem; }
@@ -1749,9 +1778,8 @@ html.nr-shot-features .lightbox { display: none !important; }
   .masonry { columns: 1; }
   .brand-text { font-size: 1.15rem; }
   .home-cycle-stage { height: 13.5rem; }
-  .death-strip-inner { grid-template-columns: 1fr; gap: 0.2rem; }
-  .death-strip-kicker { font-size: 0.85rem; }
-  .death-day:not(.death-day-end) { display: none; }
+  .death-strip-kicker { font-size: 0.95rem; }
+  .feat-line { grid-template-columns: 1fr; gap: 0.2rem; }
   .hero h1 { font-size: clamp(2.6rem, 14vw, 4rem); }
   .ip-plaque { font-size: 1.05rem; }
   .stat-cards { grid-template-columns: 1fr 1fr; }
@@ -1830,7 +1858,6 @@ html.nr-shot-features .lightbox { display: none !important; }
 @media (hover: none), (pointer: coarse) {
   .nr-fairy,
   .nr-fairy-spark { display: none !important; }
-  .death-mark:not(.is-open) .death-tip { display: none !important; }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -1845,29 +1872,10 @@ html.nr-shot-features .lightbox { display: none !important; }
   .card:hover,
   .legend-card:hover,
   .btn:hover { transform: none; }
-  .hall-stage { display: none; }
+  .hall-bleed .hall-viewport { display: none; }
   .home-cycle-stage img {
     opacity: 1 !important;
     transform: none !important;
     transition: none !important;
   }
-  .hero-bg { filter: none; }
-  .feat-marquee {
-    overflow: visible;
-    -webkit-mask-image: none;
-    mask-image: none;
-    width: min(100% - 2rem, var(--max));
-    margin-inline: auto;
-  }
-  .feat-row {
-    flex-wrap: wrap;
-    width: auto;
-    gap: 1rem;
-  }
-  .feat-row .card {
-    flex: 1 1 16.5rem;
-    width: auto;
-    margin-right: 0;
-  }
-  .feat-dup { display: none !important; }
 }

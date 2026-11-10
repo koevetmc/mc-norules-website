@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Stamp shared chrome onto every HTML page so header/footer stay in sync.
-2026-11-09 later: critique pass — Join in primary, hall plaque hero, no
-play-rail spam, absolute OG URLs, death strip after the pitch.
+2026-11-09 refine: story order hero → identity → features → gallery →
+legends → stats → join. Death timeline is day columns, not a head pile.
 Voting stays support-only — no loot, crates, ranks, or in-game advantage."""
 from pathlib import Path
 
@@ -120,43 +120,26 @@ def chrome(main: str, scripts: str) -> str:
 """
 
 
-def _feat_card(icon: str, title: str, body: str, dup: bool = False) -> str:
-    cls = "card feat-dup" if dup else "card"
-    hid = ' aria-hidden="true"' if dup else ""
-    return (
-        f'<article class="{cls}"{hid}>'
-        f'<div class="icon-pill">{icon}</div><h3>{title}</h3><p>{body}</p>'
-        f"</article>"
+FEATURES = [
+    ("Arena", "Void-world pit. Right-click ArenaMaster at the south spawn gate. Gear is vaulted. Waves, named bosses, 1v1 or a bot."),
+    ("Bosses", "Named hosts in the pit. Punch a boss head in any lobby to spar. No rank, no board for a spar."),
+    ("Crossplay", "Same world on Java and Bedrock. Recent Java versions join without a special client."),
+    ("Proximity voice", "Simple Voice Chat on the server. Matching client mod required. Vanilla and Bedrock hear nothing — that is how it works. <a href=\"/join.html#voice\">Install notes</a>."),
+    ("Killcams", "Rolling 60-second clip. PvP deaths auto-clip from victim and killer. Posted after the fight in <a href=\"/media.html\">Media</a>."),
+    ("Pack", "Optional anarchy UI. No popup on join. In game: <code>/pack</code> — low, medium, high, or off."),
+    ("Quick-chat", "Press <code>;</code> for a sidebar of tactical callouts, or fire a code like <code>;af</code>. Plays a sound to everyone nearby."),
+    ("Party", "Invite with <code>/party</code>. Middle-click pings a spot on the locator bar. Outsiders see nothing."),
+    ("Progression", "Veteran mark in chat after five hours. Hall of Legends statues. Server Firsts. No paid ranks."),
+    ("Hall", "Twenty-four vanilla boards in a statue aisle at spawn. This site is the same hall. <a href=\"/legends.html\">Walk it</a>."),
+]
+
+
+def _feat_index() -> str:
+    rows = "".join(
+        f'<div class="feat-line"><h3>{title}</h3><p>{body}</p></div>'
+        for title, body in FEATURES
     )
-
-
-def _feat_row(cards: list, reverse: bool = False) -> str:
-    cls = "feat-row feat-row-rev" if reverse else "feat-row"
-    real = "".join(_feat_card(*c) for c in cards)
-    dups = "".join(_feat_card(*c, dup=True) for c in cards)
-    return f'<div class="{cls}">{real}{dups}</div>'
-
-
-FEAT_ROW_A = [
-    ("Ⓐ", "True anarchy", "No rules, no land claims, no map resets, no whitelist. Griefing allowed. Protected spawn is the only safe tile on the map."),
-    ("⧉", "Java + Bedrock", "Same world. Java and Bedrock. Recent Java versions can join — you do not need a special client."),
-    ("⚔", "The Arena", "Void-world pit. Right-click ArenaMaster at the south spawn gate (not from the wild). Gear is vaulted, diamond kit on entry, <code>/arena leave</code> restores it at spawn. PvE waves, named bosses, 1v1 or a bot. Punch a boss head in the lobby to spar. Party of 3 max."),
-    ("🎤", "Proximity voice", "Simple Voice Chat on the server. You need the matching client mod (Fabric / NeoForge / Forge / Quilt). Vanilla and Bedrock have no voice — that is how SVC works. See <a href=\"/join.html#voice\">install notes</a>."),
-    ("⚖", "Anti-cheat, not anti-fun", "Cheating is the only bannable offense. Anti-xray is on. Everything else is the game."),
-    ("🏛", "Hall of Legends", "In-game statue hall at spawn for the #1 player in 24 vanilla stat categories, plus Server Firsts (<code>/firsts</code>) for first-on-this-map records. This site mirrors the legends boards. <a href=\"/legends.html\">Open the hall</a>."),
-    ("▣", "Anarchy resource pack", "Optional UI pack. No popup on join. In game: <code>/pack</code> menu or <code>/pack low|medium|high|off</code> — chunky iron / worn iron + oxblood / extra rust, rivets, ember trim, or vanilla UI."),
-    (";", "VGS quick-chat", "Tribes-style voice-game-soundboard. Press <code>;</code> for a sidebar of 70+ tactical callouts, or fire a code like <code>;af</code>. F-key hand swap is vanilla (no dupe). Plays a sound to everyone."),
-]
-FEAT_ROW_B = [
-    ("※", "Party ping + share", "Middle-click a block or player to ping that spot for your <code>/party</code> (or <code>/ping</code>). Marker on the locator bar. <code>/share</code> still broadcasts a held item. Not in a party = invite someone first."),
-    ("◉", "Locator bar + /wp", "Party members see each other on the vanilla locator bar. <code>/wp</code> waypoints: private by default, share with a player or <code>party</code>, HUD roster with distance. Outsiders see nothing."),
-    ("→", "/autofollow", "<code>/autofollow &lt;player&gt;</code> (alias <code>/follow</code>) follows someone within 5 blocks. Sneak, damage, or <code>/autofollow off</code> cancels. Not live until the next restart."),
-    ("✦", "ChatFX", "<code>/chatfx</code> (or <code>/cfx</code>) for text effects and signature chat sounds. Mention chime. Currently all free — not a rank shop."),
-    ("★", "Vote the lists", "Seven public server lists. Voting is support only — no loot, crates, keys, or ranks. It just keeps the IP visible. <a href=\"/vote.html\">Vote</a>."),
-    ("!", "Report &amp; suggest", "<code>/report</code>, <code>/suggest</code>, and <code>/feedback</code> with anti-spam cooldowns. Still anarchy — these are optional, not a ticket system that will save your base."),
-    ("▶", "Flashback killcams", "Rolling 60-second clip. PvP deaths auto-clip from both victim and killer. Exports land after the fact in <a href=\"/media.html\">Media</a>."),
-    ("文", "Chat + veterans", "Per-viewer translator (whispers too). 5h+ playtime gets a veteran Ⓐ badge, with later hour tiers in the same font. Daily restart around 4am PT with warnings, daily backups."),
-]
+    return f'<div class="feat-index">{rows}</div>'
 
 
 PAGES = {}
@@ -168,46 +151,40 @@ PAGES["index.html"] = (
     """
     <section class="hero">
       <div class="hero-stage">
-        <img class="hero-photo" src="/gallery/hall-aisle.jpg" alt="" width="1920" height="1080" fetchpriority="high">
+        <img class="hero-photo" src="/gallery/spawn-anarchy-a.jpg" alt="" width="1920" height="1080" fetchpriority="high">
         <div class="hero-veil" aria-hidden="true"></div>
         <div class="wrap hero-plaque">
           <p class="kicker">Java · Bedrock · no whitelist</p>
           <h1>NO RULES SURVIVAL</h1>
           <p class="tagline">Copy the IP. You're in.</p>
-          <p class="lede hero-lede">PvP, griefing, and stealing are the game. Spawn is a small safe pocket. After that, the only law is no cheating.</p>
           <div class="edition" role="tablist" aria-label="Edition">
             <button class="edition-btn is-on" type="button" role="tab" aria-selected="true" data-edition="java">Java</button>
             <button class="edition-btn" type="button" role="tab" aria-selected="false" data-edition="bedrock">Bedrock</button>
           </div>
-          <p class="ip-display ip-plaque" data-ip-face>76.176.218.251</p>
-          <p class="edition-note" data-edition-note>Direct connect. Default port 25565.</p>
-          <div class="hero-actions">
-            <button class="btn btn-play btn-lg" type="button" data-copy-ip="auto">Play now</button>
-            <a class="btn btn-ghost" href="/join.html">How to join</a>
-            <span class="status" data-status data-state="unknown">
-              <span class="status-dot" aria-hidden="true"></span>
-              <span data-count>—</span>
-              <span data-label>checking</span>
-            </span>
-          </div>
-          <div class="badges">
-            <span class="badge badge-ok">Java</span>
-            <span class="badge badge-ok">Bedrock</span>
-            <span class="badge">No whitelist</span>
-            <span class="badge">No ops</span>
-            <span class="badge">No claims</span>
-            <span class="badge">Hard</span>
-            <span class="badge">Cap 30</span>
-          </div>
+          <button class="ip-display ip-plaque" type="button" data-copy-ip="auto" data-ip-face>76.176.218.251</button>
+          <p class="edition-note" data-edition-note>Direct connect. Default port 25565. <a href="/join.html">How to join</a></p>
         </div>
       </div>
     </section>
 
+    <section class="section wrap identity" id="identity">
+      <p class="kicker">The law</p>
+      <h2>Spawn is a pocket. After that, nothing is safe.</h2>
+      <p class="lede">The cobble ring is protected: no build, no PvP. Beyond it there are no claims, no ops, no resets, no whitelist. Griefing, stealing, and PvP are the game. Cheating is the only ban. Cap 30.</p>
+    </section>
+
     <section class="death-strip" id="killfeed" aria-label="Deaths on this map">
-      <div class="wrap death-strip-inner">
-        <p class="death-strip-kicker">Deaths</p>
+      <div class="wrap">
+        <p class="death-strip-kicker">Deaths on this map</p>
         <div class="death-axis" id="deaths"></div>
+        <div class="death-tray" id="death-tray" aria-live="polite"></div>
       </div>
+    </section>
+
+    <section class="section wrap" id="features">
+      <p class="kicker">In play</p>
+      <h2>What the world actually has</h2>
+      """ + _feat_index() + """
     </section>
 
     <section class="section home-shots wrap" id="shots">
@@ -228,31 +205,36 @@ PAGES["index.html"] = (
       <img data-full alt="">
     </div>
 
-    <section class="section" id="features">
-      <div class="wrap">
-      <p class="kicker">What you get</p>
-      <h2>Everything is allowed. Except cheating.</h2>
-      <p class="lede">The cobble ring is safe. After that, the only law is no cheating. Hover a card to pause.</p>
-      </div>
-      <div class="feat-marquee" aria-label="Server features">
-        """ + _feat_row(FEAT_ROW_A) + """
-        """ + _feat_row(FEAT_ROW_B, reverse=True) + """
-      </div>
+    <section class="section wrap" id="home-hall">
+      <p class="kicker">Statues</p>
+      <h2>Hall of Legends</h2>
+      <p class="lede">The #1 in each board stands in the aisle at spawn. Walk it here. Full lists on <a href="/rankings.html">Rankings</a>.</p>
+      <div class="home-legends" id="home-legends"></div>
+      <p><a class="btn" href="/legends.html">Walk the hall</a></p>
     </section>
+
+    <section class="section wrap" id="home-boards">
+      <p class="kicker">Live boards</p>
+      <h2>Who holds the map</h2>
+      <p class="lede">Vanilla stats from this world. No coordinates. Vote counts are not a board.</p>
+      <div class="home-stats" id="home-stats"></div>
+      <p><a class="btn btn-ghost" href="/rankings.html">All rankings</a></p>
+    </section>
+
     <section class="section wrap join-again">
       <p class="kicker">Direct connect</p>
       <h2>Play now</h2>
       <p class="lede">Java or Bedrock. No application. Cheating is the only ban. Voting is support only — it does not give loot.</p>
-      <p class="ip-display ip-plaque" data-ip-face>76.176.218.251</p>
-          <div class="hero-actions">
-            <button class="btn btn-play btn-lg" type="button" data-copy-ip="auto">Play now</button>
-            <a class="btn btn-ghost" href="/join.html">How to join</a>
+      <button class="ip-display ip-plaque" type="button" data-copy-ip="auto" data-ip-face>76.176.218.251</button>
+      <div class="hero-actions">
+        <button class="btn btn-play btn-lg" type="button" data-copy-ip="auto">Play now</button>
+        <a class="btn btn-ghost" href="/join.html">How to join</a>
         <a class="btn btn-ghost" href="/vote.html">Vote the lists</a>
       </div>
     </section>
     """,
-    '<script src="/js/gallery.js"></script>\n  <script src="/js/deaths.js"></script>',
-    '<link rel="preload" as="image" href="/gallery/hall-aisle.jpg">',
+    '<script src="/js/gallery.js"></script>\n  <script src="/js/deaths.js"></script>\n  <script src="/js/home.js"></script>',
+    '<link rel="preload" as="image" href="/gallery/spawn-anarchy-a.jpg">',
 )
 
 PAGES["legends.html"] = (
@@ -260,31 +242,30 @@ PAGES["legends.html"] = (
     "The #1 player in each vanilla stat category, mirrored from the in-game statue hall. Expand any board for the top 10.",
     "/legends.html",
     """
-    <section class="page-hero wrap">
-      <div class="page-hero-copy">
+    <section class="hall-bleed">
+      <div class="hall-head">
         <p class="kicker">In game</p>
         <h1>Hall of Legends</h1>
-        <p class="lede">Same 24 boards as <code>/legends</code> in game — walk the lantern-lit aisle, click a statue. Full sortable lists live on <a href="/rankings.html">Rankings</a>. Server Firsts are <code>/firsts</code>. Unclaimed pedestals stay empty until someone logs the first point.</p>
-        <p class="lede" id="legends-updated"></p>
+        <p class="hall-sub">Walk the aisle. Click a statue. <span id="legends-updated"></span></p>
       </div>
-    </section>
-    <section class="section hall-stage wrap">
       <div class="hall-viewport" id="hall-view" tabindex="0" aria-label="Hall of Legends aisle. Drag to look, W S or scroll to walk, click a statue.">
         <div class="hall-world" id="hall-world"></div>
       </div>
-      <p class="hall-hint">
-        <span>Drag to look · scroll or W/S to walk the aisle · click a statue for the top 10</span>
+      <p class="hall-hint wrap">
+        <span>Drag to look · scroll or W/S to walk · click a statue</span>
         <span>
           <button class="btn btn-ghost" type="button" data-hall-prev>Prev</button>
           <button class="btn btn-ghost" type="button" data-hall-next>Next</button>
         </span>
       </p>
+    </section>
+    <section class="section wrap hall-meta">
       <div class="hall-index" id="hall-index"></div>
       <aside class="hall-detail" id="hall-detail"><p class="lede">Click a statue.</p></aside>
     </section>
     <section class="section wrap">
       <h2>All 24 boards</h2>
-      <p class="lede">Every category, same data. Click a card for the top 10. If you asked the site to reduce motion, this list is the hall.</p>
+      <p class="lede">Same data as the aisle. Click a board for the top 10. Sortable lists live on <a href="/rankings.html">Rankings</a>.</p>
       <div class="legend-grid" id="legends"></div>
     </section>
     """,

@@ -72,11 +72,14 @@
       try {
         await navigator.clipboard.writeText(text);
         showToast(note);
-        btn.textContent = "Copied";
-        clearTimeout(btn._nrCopy);
-        btn._nrCopy = setTimeout(() => {
-          btn.textContent = label;
-        }, 1600);
+        // 2026-11-09: the IP plaque is itself a copy control — don't overwrite the address.
+        if (!btn.hasAttribute("data-ip-face")) {
+          btn.textContent = "Copied";
+          clearTimeout(btn._nrCopy);
+          btn._nrCopy = setTimeout(() => {
+            btn.textContent = label;
+          }, 1600);
+        }
       } catch {
         showToast("copy failed — " + ip);
       }

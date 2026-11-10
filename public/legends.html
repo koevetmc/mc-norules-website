@@ -62,31 +62,30 @@
   </header>
   <main id="main">
 
-    <section class="page-hero wrap">
-      <div class="page-hero-copy">
+    <section class="hall-bleed">
+      <div class="hall-head">
         <p class="kicker">In game</p>
         <h1>Hall of Legends</h1>
-        <p class="lede">Same 24 boards as <code>/legends</code> in game — walk the lantern-lit aisle, click a statue. Full sortable lists live on <a href="/rankings.html">Rankings</a>. Server Firsts are <code>/firsts</code>. Unclaimed pedestals stay empty until someone logs the first point.</p>
-        <p class="lede" id="legends-updated"></p>
+        <p class="hall-sub">Walk the aisle. Click a statue. <span id="legends-updated"></span></p>
       </div>
-    </section>
-    <section class="section hall-stage wrap">
       <div class="hall-viewport" id="hall-view" tabindex="0" aria-label="Hall of Legends aisle. Drag to look, W S or scroll to walk, click a statue.">
         <div class="hall-world" id="hall-world"></div>
       </div>
-      <p class="hall-hint">
-        <span>Drag to look · scroll or W/S to walk the aisle · click a statue for the top 10</span>
+      <p class="hall-hint wrap">
+        <span>Drag to look · scroll or W/S to walk · click a statue</span>
         <span>
           <button class="btn btn-ghost" type="button" data-hall-prev>Prev</button>
           <button class="btn btn-ghost" type="button" data-hall-next>Next</button>
         </span>
       </p>
+    </section>
+    <section class="section wrap hall-meta">
       <div class="hall-index" id="hall-index"></div>
       <aside class="hall-detail" id="hall-detail"><p class="lede">Click a statue.</p></aside>
     </section>
     <section class="section wrap">
       <h2>All 24 boards</h2>
-      <p class="lede">Every category, same data. Click a card for the top 10. If you asked the site to reduce motion, this list is the hall.</p>
+      <p class="lede">Same data as the aisle. Click a board for the top 10. Sortable lists live on <a href="/rankings.html">Rankings</a>.</p>
       <div class="legend-grid" id="legends"></div>
     </section>
     

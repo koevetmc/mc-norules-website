@@ -1,8 +1,9 @@
-/* 2026-11-08 later: compact top-of-page death strip.
-   Axis = server UTC days. Each death is a tick + tiny head. Hover = how they died.
+/* 2026-11-09: spaced day-column timeline. Hover/tap fills a detail tray
+   (victim, how they died, killer if it was a player). No piled 16px heads.
    No coordinates. */
 (function () {
   const root = document.getElementById("deaths");
+  const tray = document.getElementById("death-tray");
   if (!root) return;
   const NR = window.NR || { heads: "https://mc-heads.net/avatar" };
   const DAY = 86400000;
@@ -24,15 +25,30 @@
 
   function dayLabel(ms) {
     const d = new Date(ms);
-    const m = d.getUTCMonth() + 1;
-    const day = d.getUTCDate();
-    return m + "/" + day;
+    return d.toLocaleDateString("en-US", { month: "short", day: "numeric", timeZone: "UTC" });
   }
 
-  function stamp(iso) {
+  function whenLabel(iso) {
     const d = new Date(iso);
     if (Number.isNaN(d.getTime())) return String(iso || "");
-    return d.toISOString().slice(0, 19).replace("T", " ") + " UTC";
+    return d.toLocaleString("en-US", {
+      month: "short",
+      day: "numeric",
+      hour: "numeric",
+      minute: "2-digit",
+      timeZone: "UTC",
+      timeZoneName: "short",
+    });
+  }
+
+  function killerOf(msg) {
+    const m = String(msg || "").match(/\bby (.+)$/i);
+    if (!m) return "";
+    return m[1].replace(/\s+while trying to escape.*$/i, "").trim();
+  }
+
+  function headUrl(name) {
+    return NR.heads + "/" + encodeURIComponent(name) + "/32";
   }
 
   fetch("/data/deaths.json")
@@ -45,79 +61,119 @@
         root.innerHTML = "<p class='death-strip-empty'>No deaths yet.</p>";
         return;
       }
+
+      const names = {};
+      items.forEach(function (e) {
+        if (e.name) names[e.name] = true;
+      });
+
       const t0 = utcDay(Date.parse(items[0].at));
       const tLast = utcDay(Date.parse(items[items.length - 1].at));
       const nDays = Math.max(1, Math.round((tLast - t0) / DAY) + 1);
-      const tEnd = t0 + nDays * DAY;
-      const span = tEnd - t0;
-
-      function pct(ms) {
-        return ((ms - t0) / span) * 100;
-      }
-
-      const days = [];
-      for (let i = 0; i < nDays; i++) {
-        const ms = t0 + i * DAY;
-        const p = pct(ms);
-        const edge = i === 0 || i === nDays - 1;
-        const major = edge || i % 3 === 0;
-        days.push(
-          '<span class="death-day' +
-            (edge ? " death-day-end" : "") +
-            (major ? " death-day-major" : " death-day-minor") +
-            '" style="left:' +
-            p.toFixed(3) +
-            '%">' +
-            dayLabel(ms) +
-            "</span>"
-        );
-      }
-
-      const marks = items.map(function (e, i) {
+      const buckets = [];
+      for (let i = 0; i < nDays; i++) buckets.push([]);
+      items.forEach(function (e, idx) {
         const ms = Date.parse(e.at);
-        const p = pct(Number.isNaN(ms) ? t0 : ms);
-        const name = esc(e.name || "");
-        const msg = esc(e.message || "");
-        const when = esc(stamp(e.at));
-        const tip = name + " " + msg + " · " + when;
-        const href = "/player/" + encodeURIComponent(e.name || "") + "/";
-        const edge = p < 12 ? " death-mark-start" : p > 88 ? " death-mark-end" : "";
-        return (
-          '<a class="death-mark' +
-            edge +
-            '" href="' +
-            href +
-            '" style="left:' +
-            p.toFixed(3) +
-            "%;z-index:" +
-            (i + 1) +
-            '" title="' +
-            tip +
-            '" aria-label="' +
-            tip +
-            '"><i></i><img src="' +
-            NR.heads +
-            "/" +
-            encodeURIComponent(e.name) +
-            '/16" alt="" width="16" height="16"><span class="death-tip">' +
-            name +
-            " " +
-            msg +
-            "<br>" +
-            when +
-            "</span></a>"
-        );
+        const i = Math.max(0, Math.min(nDays - 1, Math.round((utcDay(ms) - t0) / DAY)));
+        e._i = idx;
+        buckets[i].push(e);
       });
 
-      root.innerHTML =
-        '<div class="death-axis-pad"><div class="death-line"></div>' +
-        days.join("") +
-        marks.join("") +
-        "</div>";
-      // Headless screenshot helper: /?death-tip opens the newest mark's how-they-died tip.
+      let selected = items[items.length - 1];
+
+      function paintTray(e) {
+        if (!tray || !e) return;
+        selected = e;
+        const killer = killerOf(e.message);
+        const pvp = killer && names[killer];
+        const href = "/player/" + encodeURIComponent(e.name || "") + "/";
+        tray.innerHTML =
+          '<a class="death-tray-who" href="' +
+          href +
+          '"><img src="' +
+          headUrl(e.name) +
+          '" alt="" width="32" height="32"><strong>' +
+          esc(e.name) +
+          "</strong></a>" +
+          '<p class="death-tray-msg">' +
+          esc(e.message || "") +
+          "</p>" +
+          (pvp
+            ? '<a class="death-tray-killer" href="/player/' +
+              encodeURIComponent(killer) +
+              '/"><img src="' +
+              headUrl(killer) +
+              '" alt="" width="24" height="24"> ' +
+              esc(killer) +
+              "</a>"
+            : killer
+              ? '<span class="death-tray-mob">' + esc(killer) + "</span>"
+              : "") +
+          '<time datetime="' +
+          esc(e.at) +
+          '">' +
+          esc(whenLabel(e.at)) +
+          "</time>";
+        root.querySelectorAll(".death-tick").forEach(function (btn) {
+          btn.classList.toggle("is-on", Number(btn.getAttribute("data-i")) === e._i);
+        });
+      }
+
+      const cols = buckets
+        .map(function (list, i) {
+          const ms = t0 + i * DAY;
+          const ticks = list
+            .slice(-6)
+            .map(function (e) {
+              const killer = killerOf(e.message);
+              const pvp = killer && names[killer];
+              const label = esc(e.name) + " " + esc(e.message || "");
+              return (
+                '<button class="death-tick' +
+                (pvp ? " is-pvp" : "") +
+                '" type="button" data-i="' +
+                e._i +
+                '" aria-label="' +
+                label +
+                '"><img src="' +
+                headUrl(e.name) +
+                '" alt="" width="24" height="24"></button>'
+              );
+            })
+            .join("");
+          const extra = list.length > 6 ? '<span class="death-more">+' + (list.length - 6) + "</span>" : "";
+          return (
+            '<div class="death-col" data-day="' +
+            i +
+            '"><span class="death-col-date">' +
+            dayLabel(ms) +
+            '</span><div class="death-stack">' +
+            ticks +
+            extra +
+            "</div><span class="death-col-n">" +
+            list.length +
+            "</span></div>"
+          );
+        })
+        .join("");
+
+      root.innerHTML = '<div class="death-days">' + cols + "</div>";
+      root.addEventListener("click", function (ev) {
+        const btn = ev.target.closest(".death-tick");
+        if (!btn) return;
+        const e = items[Number(btn.getAttribute("data-i"))];
+        if (e) paintTray(e);
+      });
+      root.addEventListener("mouseover", function (ev) {
+        const btn = ev.target.closest(".death-tick");
+        if (!btn) return;
+        const e = items[Number(btn.getAttribute("data-i"))];
+        if (e) paintTray(e);
+      });
+      paintTray(selected);
       if (new URLSearchParams(location.search).has("death-tip")) {
-        const last = root.querySelector(".death-mark:last-of-type");
-        if (last) last.classList.add("is-open");
+        const last = root.querySelector(".death-tick:last-of-type");
+        if (last) last.classList.add("is-on");
       }
     })
     .catch(() => {
