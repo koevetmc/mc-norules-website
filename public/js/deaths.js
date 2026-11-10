@@ -62,6 +62,12 @@
         return;
       }
 
+      // 2026-11-09: kicker carries the real count so the fold shows 147, not a crop.
+      const kicker = document.querySelector(".death-strip-kicker");
+      if (kicker) kicker.textContent = "Deaths · " + items.length;
+      const strip = document.getElementById("killfeed");
+      if (strip) strip.setAttribute("data-death-count", String(items.length));
+
       const names = {};
       items.forEach(function (e) {
         if (e.name) names[e.name] = true;
@@ -122,8 +128,8 @@
       const cols = buckets
         .map(function (list, i) {
           const ms = t0 + i * DAY;
+          // Every death in the JSON is a tick. Dense days wrap; nothing is +N cropped.
           const ticks = list
-            .slice(-6)
             .map(function (e) {
               const killer = killerOf(e.message);
               const pvp = killer && names[killer];
@@ -137,11 +143,11 @@
                 label +
                 '"><img src="' +
                 headUrl(e.name) +
-                '" alt="" width="24" height="24"></button>'
+                '" alt="" width="16" height="16"></button>'
               );
             })
             .join("");
-          const extra = list.length > 6 ? '<span class="death-more">+' + (list.length - 6) + "</span>" : "";
+          if (!list.length) return "";
           return (
             '<div class="death-col" data-day="' +
             i +
@@ -149,7 +155,6 @@
             dayLabel(ms) +
             '</span><div class="death-stack">' +
             ticks +
-            extra +
             "</div><span class="death-col-n">" +
             list.length +
             "</span></div>"

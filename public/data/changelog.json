@@ -3,6 +3,13 @@
   "entries": [
     {
       "date": "2026-11-09",
+      "version": "web-1.21",
+      "tags": ["WEBSITE", "FIX"],
+      "title": "Deaths sit on the first screen again",
+      "body": "The death timeline is directly under the hero, not below The law. All 147 real deaths on this map render as ticks. Vote is still support only."
+    },
+    {
+      "date": "2026-11-09",
       "version": "web-1.20",
       "tags": ["WEBSITE"],
       "title": "Circled-A seal, day-column deaths, full-bleed hall",

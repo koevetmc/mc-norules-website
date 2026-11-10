@@ -247,7 +247,8 @@ a:hover { color: var(--ember-core); }
 .hero-stage {
   position: relative;
   isolation: isolate;
-  min-height: min(86vh, 48rem);
+  /* 2026-11-09: keep the death timeline in the first viewport — 86vh ate the fold. */
+  min-height: min(52vh, 28rem);
   display: grid;
   align-items: end;
   overflow: hidden;
@@ -1126,11 +1127,12 @@ html.nr-shot-features .lightbox { display: none !important; }
 }
 .lightbox-nav { display: flex; gap: 0.4rem; }
 
-/* 2026-11-09: day-column death timeline. Equal spacing, tray for the how. */
+/* 2026-11-09: day-column death timeline. Equal spacing, tray for the how.
+   Compact wrap so all 147 ticks fit under the shortened hero, in the fold. */
 .death-strip {
   border-block: 1px solid var(--iron-dim);
   background: var(--bg-2);
-  padding: 1.1rem 0 1.2rem;
+  padding: 0.7rem 0 0.8rem;
 }
 .death-strip-kicker {
   margin: 0 0 0.7rem;
@@ -1167,10 +1169,12 @@ html.nr-shot-features .lightbox { display: none !important; }
 }
 .death-stack {
   display: flex;
-  flex-direction: column-reverse;
-  align-items: center;
-  gap: 0.2rem;
-  min-height: 2.4rem;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-content: flex-start;
+  gap: 2px;
+  max-width: 4.6rem;
+  min-height: 1.1rem;
 }
 .death-tick {
   appearance: none;
@@ -1181,8 +1185,8 @@ html.nr-shot-features .lightbox { display: none !important; }
   line-height: 0;
 }
 .death-tick img {
-  width: 24px;
-  height: 24px;
+  width: 16px;
+  height: 16px;
   max-width: none;
   image-rendering: pixelated;
   display: block;
@@ -1754,7 +1758,7 @@ html.nr-shot-features .lightbox { display: none !important; }
     box-shadow: none;
   }
   .site-nav a { font-size: 0.95rem; padding: 0.35rem 0; }
-  .hero-stage { min-height: min(78vh, 40rem); }
+  .hero-stage { min-height: min(48vh, 22rem); }
   .hero-plaque { padding: 1.6rem 0 1.5rem; }
   .brand-text { display: none; }
   .profile { grid-template-columns: 1fr; }
