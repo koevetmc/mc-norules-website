@@ -15,7 +15,7 @@
         return;
       }
       root.innerHTML =
-        "<ol class='top10' style='display:grid;padding:1rem'>" +
+        "<ol class='top10'>" +
         entries
           .slice(0, 25)
           .map((e, i) => {

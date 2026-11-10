@@ -1,30 +1,24 @@
 #!/usr/bin/env python3
 """Stamp shared chrome onto every HTML page so header/footer stay in sync.
-2026-11-03: initial site. 2026-11-06: Arena, /pack off, ItemShare ping,
-ChatFX, Server Firsts, waypoints HUD/share, Flashback dual-angle, pack v1.2.
-2026-11-06 later: home page features a real photo mosaic from gallery.json.
-2026-11-09: homepage mosaic became a compact cycling stage; gallery.html stays full.
-2026-11-08: homepage killfeed from Paper System chat death lines.
-2026-11-08 later: compact top-of-page day-axis strip (ticks + heads, hover).
-2026-11-08 later: sitewide motion + CSS 3D Hall of Legends ring.
-2026-11-08 later: WebGL aisle hall matching in-game (3D skins, lanterns).
-2026-11-08 later: homepage feature cards are a slow two-row marquee, not a grid.
-2026-11-08 later: drop Paper from player-facing copy; repeat Copy IP after features.
+2026-11-09: full visual redesign — cinematic hall hero, PLAY NOW + IP on
+every page, header live count, no Paper / operator jargon in public copy.
 Voting stays support-only — no loot, crates, ranks, or in-game advantage."""
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1] / "public"
 
-NAV = [
+NAV_PRIMARY = [
     ("/", "Home"),
     ("/legends.html", "Legends"),
     ("/rankings.html", "Rankings"),
     ("/players.html", "Players"),
     ("/vote.html", "Vote"),
     ("/gallery.html", "Gallery"),
+]
+NAV_MORE = [
+    ("/join.html", "Join"),
     ("/media.html", "Media"),
     ("/changelog.html", "Log"),
-    ("/join.html", "Join"),
     ("/me.html", "Account"),
 ]
 
@@ -58,8 +52,30 @@ def head(title: str, desc: str, path: str, extra: str = "") -> str:
 </head>"""
 
 
+def _nav_links(pairs) -> str:
+    return "\n        ".join(f'<a href="{href}">{label}</a>' for href, label in pairs)
+
+
+def play_rail() -> str:
+    # 2026-11-09: every inner page repeats PLAY NOW + the IP + live count.
+    return """
+      <aside class="play-rail" aria-label="Join the server">
+        <p class="play-rail-kicker">Direct connect</p>
+        <p class="ip-display">76.176.218.251</p>
+        <button class="btn btn-play" type="button" data-copy-ip>Play now</button>
+        <span class="status" data-status data-state="unknown">
+          <span class="status-dot" aria-hidden="true"></span>
+          <span data-count>— / 30</span>
+          <span data-label>checking</span>
+        </span>
+        <p class="play-rail-note">Java default port. Bedrock 19132. Voting is support only — no loot.</p>
+      </aside>"""
+
+
 def chrome(main: str, scripts: str) -> str:
-    links = "\n        ".join(f'<a href="{href}">{label}</a>' for href, label in NAV)
+    primary = _nav_links(NAV_PRIMARY)
+    more = _nav_links(NAV_MORE)
+    foot_links = _nav_links(NAV_PRIMARY + NAV_MORE)
     return f"""
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
@@ -69,19 +85,45 @@ def chrome(main: str, scripts: str) -> str:
         <span class="logo-slot"><img src="/img/logo.svg" class="logo" width="42" height="42" alt=""></span>
         <span class="brand-text">NO RULES SURVIVAL<small>true anarchy</small></span>
       </a>
-      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">Menu</button>
       <nav class="site-nav" id="site-nav" aria-label="Primary">
-        {links}
+        {primary}
+        <div class="nav-more">
+          <button type="button" aria-expanded="false" aria-controls="nav-more-list">More</button>
+          <div class="nav-more-list" id="nav-more-list">
+        {more}
+          </div>
+        </div>
       </nav>
+      <div class="header-cta">
+        <span class="status" data-status data-state="unknown">
+          <span class="status-dot" aria-hidden="true"></span>
+          <span data-count>— / 30</span>
+          <span data-label>checking</span>
+        </span>
+        <button class="btn btn-play" type="button" data-copy-ip>Play now</button>
+      </div>
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">Menu</button>
     </div>
   </header>
   <main id="main">
 {main}
   </main>
   <footer class="site-footer">
-    <div class="wrap">
-      <p>© <span data-year>2026</span> NO RULES SURVIVAL · 76.176.218.251</p>
-      <p class="fairness-note">Anarchy fairness: this site never shows coordinates, live location, or who is online by name. Leaderboards and clips are public in-game data posted after the fact.</p>
+    <div class="wrap footer-grid">
+      <div>
+        <p class="brand-text">NO RULES SURVIVAL<small>true anarchy</small></p>
+        <p class="ip-display ip-display-sm">76.176.218.251</p>
+        <p><button class="btn btn-play" type="button" data-copy-ip>Play now</button></p>
+      </div>
+      <nav class="footer-nav" aria-label="Footer">
+        {foot_links}
+      </nav>
+      <div>
+        <p>Java or Bedrock. No whitelist. Cheating is the only ban.</p>
+        <p><a href="/vote.html">Vote</a> is support only — no loot, crates, keys, ranks, or advantage.</p>
+        <p class="fairness-note">This site never shows coordinates, live location, or who is online by name. Leaderboards and clips are public in-game data posted after the fact.</p>
+        <p>© <span data-year>2026</span> NO RULES SURVIVAL</p>
+      </div>
     </div>
   </footer>
   <div id="toast" class="toast" role="status" aria-live="polite"></div>
@@ -93,8 +135,6 @@ def chrome(main: str, scripts: str) -> str:
 """
 
 
-# 2026-11-08: homepage “what you get” as two slow marquee rows (not a 3×3/4×4 grid).
-# Duplicates in each row are aria-hidden copies so the CSS loop can wrap seamlessly.
 def _feat_card(icon: str, title: str, body: str, dup: bool = False) -> str:
     cls = "card feat-dup" if dup else "card"
     hid = ' aria-hidden="true"' if dup else ""
@@ -130,7 +170,7 @@ FEAT_ROW_B = [
     ("★", "Vote the lists", "Seven public server lists. Voting is support only — no loot, crates, keys, or ranks. It just keeps the IP visible. <a href=\"/vote.html\">Vote</a>."),
     ("!", "Report &amp; suggest", "<code>/report</code>, <code>/suggest</code>, and <code>/feedback</code> with anti-spam cooldowns. Still anarchy — these are optional, not a ticket system that will save your base."),
     ("▶", "Flashback killcams", "Rolling 60-second clip. PvP deaths auto-clip from both victim and killer. Exports land after the fact in <a href=\"/media.html\">Media</a>."),
-    ("文", "Chat + veterans", "Per-viewer translator (whispers too). 5h+ playtime gets a veteran Ⓐ badge, with later hour tiers in the same font. Pregenned world (Chunky r=3000). Daily restart ~4am PT with warnings, daily backups."),
+    ("文", "Chat + veterans", "Per-viewer translator (whispers too). 5h+ playtime gets a veteran Ⓐ badge, with later hour tiers in the same font. Daily restart around 4am PT with warnings, daily backups."),
 ]
 
 
@@ -148,28 +188,38 @@ PAGES["index.html"] = (
       </div>
     </section>
 
-    <section class="hero wrap">
-      <div class="hero-logo logo-slot" aria-hidden="true"><img src="/img/logo.svg" alt=""></div>
-      <p class="kicker">Java + Bedrock · no whitelist</p>
-      <h1>NO RULES<br>SURVIVAL</h1>
-      <p class="tagline">Copy the IP. You're in.</p>
-      <div class="hero-actions">
-        <button class="btn btn-lg" type="button" data-copy-ip>Copy IP · 76.176.218.251</button>
-        <a class="btn btn-ghost" href="/join.html">Bedrock + voice</a>
-        <span class="status" data-status data-state="unknown">
-          <span class="status-dot" aria-hidden="true"></span>
-          <span data-count>— / 30</span>
-          <span data-label>checking</span>
-        </span>
-      </div>
-      <div class="badges">
-        <span class="badge badge-ok">Java</span>
-        <span class="badge badge-ok">Bedrock · 19132</span>
-        <span class="badge">No whitelist</span>
-        <span class="badge">No ops</span>
-        <span class="badge">No claims</span>
-        <span class="badge">Hard</span>
-        <span class="badge">Max 30</span>
+    <section class="hero">
+      <div class="hero-stage">
+        <div class="hero-bg" aria-hidden="true"></div>
+        <div class="wrap hero-inner">
+          <div class="hero-copy">
+            <p class="kicker">Java · Bedrock · no whitelist</p>
+            <h1>NO RULES<br>SURVIVAL</h1>
+            <p class="tagline">True anarchy. Copy the IP. You're in.</p>
+            <p class="lede hero-lede">PvP, griefing, and stealing are the game. Spawn is a small safe pocket. After that, the only law is no cheating.</p>
+            <div class="hero-actions">
+              <button class="btn btn-play btn-lg" type="button" data-copy-ip>Play now</button>
+              <a class="btn btn-ghost" href="/join.html">Bedrock + voice</a>
+            </div>
+            <div class="hero-ip-row">
+              <p class="ip-display">76.176.218.251</p>
+              <span class="status" data-status data-state="unknown">
+                <span class="status-dot" aria-hidden="true"></span>
+                <span data-count>— / 30</span>
+                <span data-label>checking</span>
+              </span>
+            </div>
+            <div class="badges">
+              <span class="badge badge-ok">Java</span>
+              <span class="badge badge-ok">Bedrock · 19132</span>
+              <span class="badge">No whitelist</span>
+              <span class="badge">No ops</span>
+              <span class="badge">No claims</span>
+              <span class="badge">Hard</span>
+              <span class="badge">Max 30</span>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
 
@@ -195,7 +245,7 @@ PAGES["index.html"] = (
       <div class="wrap">
       <p class="kicker">What you get</p>
       <h2>Everything is allowed. Except cheating.</h2>
-      <p class="lede">PvP, griefing, and stealing are the game. Spawn is a small safe pocket so you can walk out. After that, the only law is no cheating. Hover a card to pause.</p>
+      <p class="lede">Hover a card to pause. The full list is here — nothing invented, nothing for sale.</p>
       </div>
       <div class="feat-marquee" aria-label="Server features">
         """ + _feat_row(FEAT_ROW_A) + """
@@ -204,11 +254,20 @@ PAGES["index.html"] = (
     </section>
     <section class="section wrap join-again">
       <p class="kicker">That's the pitch</p>
-      <h2>Copy the IP. You're in.</h2>
+      <h2>Play now</h2>
       <p class="lede">Java or Bedrock. No application. Bedrock uses port 19132. Cheating is the only ban. Voting is support only — it does not give loot.</p>
+      <div class="hero-ip-row">
+        <p class="ip-display">76.176.218.251</p>
+        <span class="status" data-status data-state="unknown">
+          <span class="status-dot" aria-hidden="true"></span>
+          <span data-count>— / 30</span>
+          <span data-label>checking</span>
+        </span>
+      </div>
       <div class="hero-actions">
-        <button class="btn btn-lg" type="button" data-copy-ip>Copy IP · 76.176.218.251</button>
+        <button class="btn btn-play btn-lg" type="button" data-copy-ip>Play now</button>
         <a class="btn btn-ghost" href="/join.html">Bedrock + voice</a>
+        <a class="btn btn-ghost" href="/vote.html">Vote the lists</a>
       </div>
     </section>
     """,
@@ -221,10 +280,13 @@ PAGES["legends.html"] = (
     "/legends.html",
     """
     <section class="page-hero wrap">
-      <p class="kicker">Flagship</p>
-      <h2>Hall of Legends</h2>
-      <p class="lede">Same 24 boards as <code>/legends</code> in game — walk the lantern-lit aisle, click a statue. Full sortable lists live on <a href="/rankings.html">Rankings</a>. Server Firsts are <code>/firsts</code>. Unclaimed pedestals stay empty until someone logs the first point.</p>
-      <p class="lede" id="legends-updated"></p>
+      <div class="page-hero-copy">
+        <p class="kicker">Flagship</p>
+        <h1>Hall of Legends</h1>
+        <p class="lede">Same 24 boards as <code>/legends</code> in game — walk the lantern-lit aisle, click a statue. Full sortable lists live on <a href="/rankings.html">Rankings</a>. Server Firsts are <code>/firsts</code>. Unclaimed pedestals stay empty until someone logs the first point.</p>
+        <p class="lede" id="legends-updated"></p>
+      </div>
+      """ + play_rail() + """
     </section>
     <section class="section hall-stage wrap">
       <div class="hall-viewport" id="hall-view" tabindex="0" aria-label="Hall of Legends aisle. Drag to look, W S or scroll to walk, click a statue.">
@@ -258,20 +320,23 @@ PAGES["rankings.html"] = (
     "/rankings.html",
     """
     <section class="page-hero wrap">
-      <p class="kicker">Boards</p>
-      <h2>Rankings</h2>
-      <p class="lede">Every vanilla stat we can read from this map, sortable like a jaPRO board. Hall of Legends 24, plus movement, time, and world stats. Click a name for the full profile. No coordinates. Voting is not a ranking and grants no loot.</p>
-      <p class="lede" id="rank-updated"></p>
+      <div class="page-hero-copy">
+        <p class="kicker">Boards</p>
+        <h1>Rankings</h1>
+        <p class="lede">Every vanilla stat we can read from this map. Hall of Legends 24, plus movement, time, and world stats. Click a name for the full profile. No coordinates. Voting is not a ranking and grants no loot.</p>
+        <p class="lede" id="rank-updated"></p>
+      </div>
+      """ + play_rail() + """
     </section>
     <section class="section wrap">
       <div class="filters" id="rank-tabs"></div>
       <div class="filters rank-boards" id="rank-boards"></div>
-      <div id="rank-table"></div>
+      <div class="board-panel" id="rank-table"></div>
     </section>
     <section class="section wrap">
       <h2>Server Firsts</h2>
       <p class="lede">First-on-this-map records from <code>/firsts</code>. Unclaimed keys are omitted.</p>
-      <div id="rank-firsts"></div>
+      <div class="board-panel" id="rank-firsts"></div>
     </section>
     """,
     '<script src="/js/rankings.js"></script>',
@@ -283,10 +348,15 @@ PAGES["players.html"] = (
     "/players.html",
     """
     <section class="page-hero wrap">
-      <p class="kicker">Roster</p>
-      <h2>Player profiles</h2>
-      <p class="lede">Everyone with a stats file on this map. Each profile lists every vanilla stat we collect, Hall of Legends placements, and Server Firsts. No coordinates, no live location, no vote rewards.</p>
-      <p class="lede" id="players-updated"></p>
+      <div class="page-hero-copy">
+        <p class="kicker">Roster</p>
+        <h1>Player profiles</h1>
+        <p class="lede">Everyone with a stats file on this map. Each profile lists every vanilla stat we collect, Hall of Legends placements, and Server Firsts. No coordinates, no live location, no vote rewards.</p>
+        <p class="lede" id="players-updated"></p>
+        <label class="sr-only" for="player-filter">Filter players</label>
+        <input class="player-filter" id="player-filter" type="search" placeholder="Filter by name" autocomplete="off" spellcheck="false">
+      </div>
+      """ + play_rail() + """
     </section>
     <section class="section wrap">
       <div class="player-grid" id="players"></div>
@@ -301,8 +371,11 @@ PAGES["player.html"] = (
     "/player.html",
     """
     <section class="page-hero wrap">
-      <p class="kicker">Profile</p>
-      <h2 id="profile-title">Player</h2>
+      <div class="page-hero-copy">
+        <p class="kicker">Profile</p>
+        <h1 id="profile-title">Player</h1>
+      </div>
+      """ + play_rail() + """
     </section>
     <section class="section wrap" id="profile"></section>
     """,
@@ -315,26 +388,30 @@ PAGES["vote.html"] = (
     "/vote.html",
     """
     <section class="page-hero wrap">
-      <p class="kicker">Support the lists</p>
-      <h2>Vote. That is the whole thing.</h2>
-      <p class="lede">These seven links keep NO RULES SURVIVAL on public server lists. Voting is support only. There is no loot table, no crate, no key, no rank, no in-game item. You get nothing back except the server staying findable.</p>
+      <div class="page-hero-copy">
+        <p class="kicker">Support the lists</p>
+        <h1>Vote. That is the whole thing.</h1>
+        <p class="lede">These seven links keep NO RULES SURVIVAL on public server lists. Voting is support only. There is no loot table, no crate, no key, no rank, no in-game item. You get nothing back except the server staying findable.</p>
+        <p class="vote-banner">Support only — no loot, crates, keys, ranks, or advantage.</p>
+      </div>
+      """ + play_rail() + """
     </section>
     <section class="section wrap">
-      <div class="grid">
-        <article class="card vote-card"><h3>Minecraft-MP</h3><p>minecraft-mp.com</p><a class="btn" href="https://minecraft-mp.com/server/365985/vote/" rel="noopener">Vote</a></article>
-        <article class="card vote-card"><h3>MinecraftServers.org</h3><p>minecraftservers.org</p><a class="btn" href="https://minecraftservers.org/vote/695286" rel="noopener">Vote</a></article>
-        <article class="card vote-card"><h3>Minecraft Server List</h3><p>minecraft-server-list.com</p><a class="btn" href="https://minecraft-server-list.com/server/524473/vote/" rel="noopener">Vote</a></article>
-        <article class="card vote-card"><h3>Minecraft Toplist</h3><p>minecraft-toplist.com</p><a class="btn" href="https://minecraft-toplist.com/server/no-rules-survival/vote/" rel="noopener">Vote</a></article>
-        <article class="card vote-card"><h3>Minecraft.buzz</h3><p>minecraft.buzz</p><a class="btn" href="https://minecraft.buzz/vote/no-rules-survival" rel="noopener">Vote</a></article>
-        <article class="card vote-card"><h3>TopMinecraftServers</h3><p>topminecraftservers.org</p><a class="btn" href="https://topminecraftservers.org/vote/44883" rel="noopener">Vote</a></article>
-        <article class="card vote-card"><h3>TopG</h3><p>topg.org — click “Vote for server”</p><a class="btn" href="https://topg.org/minecraft-servers/server-687649" rel="noopener">Vote</a></article>
+      <div class="vote-list">
+        <article class="vote-row"><div><h3>Minecraft-MP</h3><p>minecraft-mp.com</p></div><a class="btn" href="https://minecraft-mp.com/server/365985/vote/" rel="noopener">Vote</a></article>
+        <article class="vote-row"><div><h3>MinecraftServers.org</h3><p>minecraftservers.org</p></div><a class="btn" href="https://minecraftservers.org/vote/695286" rel="noopener">Vote</a></article>
+        <article class="vote-row"><div><h3>Minecraft Server List</h3><p>minecraft-server-list.com</p></div><a class="btn" href="https://minecraft-server-list.com/server/524473/vote/" rel="noopener">Vote</a></article>
+        <article class="vote-row"><div><h3>Minecraft Toplist</h3><p>minecraft-toplist.com</p></div><a class="btn" href="https://minecraft-toplist.com/server/no-rules-survival/vote/" rel="noopener">Vote</a></article>
+        <article class="vote-row"><div><h3>Minecraft.buzz</h3><p>minecraft.buzz</p></div><a class="btn" href="https://minecraft.buzz/vote/no-rules-survival" rel="noopener">Vote</a></article>
+        <article class="vote-row"><div><h3>TopMinecraftServers</h3><p>topminecraftservers.org</p></div><a class="btn" href="https://topminecraftservers.org/vote/44883" rel="noopener">Vote</a></article>
+        <article class="vote-row"><div><h3>TopG</h3><p>topg.org — click “Vote for server”</p></div><a class="btn" href="https://topg.org/minecraft-servers/server-687649" rel="noopener">Vote</a></article>
       </div>
     </section>
     <section class="section wrap">
       <h2>Who has listed us</h2>
       <p class="lede">Public count of list-site votes. Not a rank, not a reward — just who clicked. Cheating vote sites is still cheating.</p>
       <p class="lede" id="votetop-updated"></p>
-      <div class="card" id="votetop" style="padding:0"></div>
+      <div class="board-panel" id="votetop"></div>
     </section>
     """,
     '<script src="/js/vote.js"></script>',
@@ -346,9 +423,12 @@ PAGES["gallery.html"] = (
     "/gallery.html",
     """
     <section class="page-hero wrap">
-      <p class="kicker">Screens</p>
-      <h2>Gallery</h2>
-      <p class="lede">Spawn, the statue hall, the practice arena, public dimensions. No base-hunting intel. Click for a lightbox (arrows / Esc). Drop files in <code>/gallery/</code> and add a line to <code>data/gallery.json</code>.</p>
+      <div class="page-hero-copy">
+        <p class="kicker">Screens</p>
+        <h1>Gallery</h1>
+        <p class="lede">Spawn, the statue hall, the practice arena, public dimensions. No base-hunting intel. Click a shot for a lightbox (arrows / Esc).</p>
+      </div>
+      """ + play_rail() + """
     </section>
     <section class="section wrap">
       <div class="masonry" id="gallery"></div>
@@ -374,22 +454,23 @@ PAGES["media.html"] = (
     "/media.html",
     """
     <section class="page-hero wrap">
-      <p class="kicker">Watch</p>
-      <h2>Media</h2>
-      <p class="lede">Killcams auto-export after the fight from the rolling 60-second Flashback buffer — scene camera and first-person, victim and killer. This is not a live kill feed.</p>
+      <div class="page-hero-copy">
+        <p class="kicker">Watch</p>
+        <h1>Media</h1>
+        <p class="lede">Killcams auto-export after the fight from the rolling 60-second Flashback buffer — scene camera and first-person, victim and killer. This is not a live kill feed.</p>
+      </div>
+      """ + play_rail() + """
     </section>
     <section class="section wrap">
-      <h2>YouTube — coming soon</h2>
       <div class="yt-card">
-        <p class="kicker">Subscribe</p>
-        <h3>Channel not live yet</h3>
-        <p class="lede">When the channel exists it will land here. Until then, the killcam archive below is the show.</p>
-        <a class="btn btn-ghost" href="https://www.youtube.com" rel="noopener">YouTube</a>
+        <p class="kicker">YouTube</p>
+        <h2>Channel not live yet</h2>
+        <p class="lede">When a channel exists it will land here. Until then, the killcam archive below is the show.</p>
       </div>
     </section>
     <section class="section wrap">
       <h2>Killfeed archive</h2>
-      <p class="lede">Drop mp4s in <code>/clips/</code> and add a row to <code>data/clips.json</code>.</p>
+      <p class="lede">Posted after the fight. Never live, never a coordinate.</p>
       <div class="clip-grid" id="clips"></div>
     </section>
     """,
@@ -402,16 +483,19 @@ PAGES["changelog.html"] = (
     "/changelog.html",
     """
     <section class="page-hero wrap">
-      <p class="kicker">Ship log</p>
-      <h2>Changelog</h2>
-      <p class="lede">Maintained in <code>data/changelog.json</code>. Filter by tag.</p>
-      <div class="filters" role="toolbar" aria-label="Filter changelog">
-        <button class="filter-btn" type="button" data-filter="ALL" aria-pressed="true">All</button>
-        <button class="filter-btn" type="button" data-filter="PLUGIN" aria-pressed="false">Plugin</button>
-        <button class="filter-btn" type="button" data-filter="SERVER" aria-pressed="false">Server</button>
-        <button class="filter-btn" type="button" data-filter="WEBSITE" aria-pressed="false">Website</button>
-        <button class="filter-btn" type="button" data-filter="FIX" aria-pressed="false">Fix</button>
+      <div class="page-hero-copy">
+        <p class="kicker">Ship log</p>
+        <h1>Changelog</h1>
+        <p class="lede">What shipped. Filter by tag.</p>
+        <div class="filters" role="toolbar" aria-label="Filter changelog">
+          <button class="filter-btn" type="button" data-filter="ALL" aria-pressed="true">All</button>
+          <button class="filter-btn" type="button" data-filter="PLUGIN" aria-pressed="false">Plugin</button>
+          <button class="filter-btn" type="button" data-filter="SERVER" aria-pressed="false">Server</button>
+          <button class="filter-btn" type="button" data-filter="WEBSITE" aria-pressed="false">Website</button>
+          <button class="filter-btn" type="button" data-filter="FIX" aria-pressed="false">Fix</button>
+        </div>
       </div>
+      """ + play_rail() + """
     </section>
     <section class="section wrap">
       <ol class="timeline" id="changelog"></ol>
@@ -426,35 +510,45 @@ PAGES["join.html"] = (
     "/join.html",
     """
     <section class="page-hero wrap">
-      <p class="kicker">Direct connect</p>
-      <h2>How to join</h2>
-      <p class="lede">No whitelist. No account application. If you can reach the IP, you are in. Cheat and you get banned. That is the only rule.</p>
+      <div class="page-hero-copy">
+        <p class="kicker">Direct connect</p>
+        <h1>How to join</h1>
+        <p class="lede">No whitelist. No account application. If you can reach the IP, you are in. Cheat and you get banned. That is the only rule.</p>
+      </div>
+      """ + play_rail() + """
     </section>
     <section class="section wrap">
-      <ol class="steps">
-        <li>
-          <h3>Java Edition</h3>
+      <div class="join-grid">
+        <article class="join-panel">
+          <p class="kicker">01</p>
+          <h2>Java Edition</h2>
           <p>Multiplayer → Direct Connection. Recent Java versions work. Default port 25565.</p>
-          <div class="ip-box"><span>76.176.218.251</span><button class="btn" type="button" data-copy-ip>Copy</button></div>
-        </li>
-        <li>
-          <h3>Bedrock Edition</h3>
+          <div class="ip-box"><span>76.176.218.251</span><button class="btn btn-play" type="button" data-copy-ip>Play now</button></div>
+        </article>
+        <article class="join-panel">
+          <p class="kicker">02</p>
+          <h2>Bedrock Edition</h2>
           <p>Add server. Address <strong>76.176.218.251</strong>, port <strong>19132</strong>. Same world as Java. Proximity voice is Java-mod only — Bedrock will not hear it.</p>
-        </li>
-        <li id="voice">
-          <h3>Optional: Simple Voice Chat</h3>
+        </article>
+      </div>
+      <div class="join-extra">
+        <article class="join-panel" id="voice">
+          <p class="kicker">Optional</p>
+          <h3>Simple Voice Chat</h3>
           <p>Proximity voice. Server runs voicechat-bukkit <strong>2.6.25</strong>. Install the matching <em>client</em> mod for your loader (Fabric, NeoForge, Forge, or Quilt) at the same version. Vanilla Java and Bedrock hear nothing — that is how SVC works. Windows CurseForge: <a href="https://github.com/koevetmc/mc-norules-resourcepack/releases/download/v1.2/install-voicechat.bat">install-voicechat.bat</a> (same release as the anarchy pack).</p>
-        </li>
-        <li>
-          <h3>Optional: anarchy resource pack</h3>
-          <p>No accept/decline popup on join. Opt-in only: run <code>/pack</code> for a clickable menu, or <code>/pack low|medium|high|off</code>. Off returns vanilla UI. Pack v1.2 (charcoal/oxblood iron, veteran Ⓐ glyphs).</p>
-        </li>
-        <li>
+        </article>
+        <article class="join-panel">
+          <p class="kicker">Optional</p>
+          <h3>Anarchy resource pack</h3>
+          <p>No accept/decline popup on join. Opt-in only: run <code>/pack</code> for a clickable menu, or <code>/pack low|medium|high|off</code>. Off returns vanilla UI.</p>
+        </article>
+        <article class="join-panel">
+          <p class="kicker">Then</p>
           <h3>Walk out of spawn — or hit the pit</h3>
-          <p>The cobble ring is a WorldGuard pocket: no build, no pvp. Beyond that line there are no rules. Difficulty is hard. South gate: right-click ArenaMaster for the practice arena (gear vaulted). Nametags are hidden in the wild. <code>/autofollow &lt;player&gt;</code> is staged on disk and will load at the next restart — it is not live yet.</p>
-        </li>
-      </ol>
-      <p><a class="btn" href="/vote.html">Vote</a> <a class="btn btn-ghost" href="/legends.html">Hall of Legends</a></p>
+          <p>The cobble ring is protected spawn: no build, no PvP. Beyond that line there are no rules. Difficulty is hard. South gate: right-click ArenaMaster for the practice arena (gear vaulted). Nametags are hidden in the wild. <code>/autofollow &lt;player&gt;</code> is staged and will load at the next restart — it is not live yet.</p>
+        </article>
+      </div>
+      <p class="join-more"><a class="btn" href="/vote.html">Vote the lists</a> <a class="btn btn-ghost" href="/legends.html">Hall of Legends</a></p>
     </section>
     """,
     "",
@@ -470,7 +564,8 @@ PAGES["404.html"] = (
         <p class="kicker">404</p>
         <h1>CHUNK NOT<br>GENERATED</h1>
         <p class="lede">Someone griefed this URL, or it never existed. Spawn is still that way.</p>
-        <p><a class="btn" href="/">Back to spawn</a> <a class="btn btn-ghost" href="/join.html">How to join</a></p>
+        <p class="ip-display">76.176.218.251</p>
+        <p><button class="btn btn-play" type="button" data-copy-ip>Play now</button> <a class="btn btn-ghost" href="/">Back to spawn</a></p>
       </div>
     </section>
     """,
@@ -484,15 +579,18 @@ PAGES["login.html"] = (
     "/login.html",
     """
     <section class="page-hero wrap">
-      <p class="kicker">Account</p>
-      <h2>Sign in</h2>
-      <p class="lede">One email, one site account. After you are in, run <code>/link</code> in-game and type the code here. The site never asks for your Minecraft password.</p>
+      <div class="page-hero-copy">
+        <p class="kicker">Account</p>
+        <h1>Sign in</h1>
+        <p class="lede">One email, one site account. After you are in, run <code>/link</code> in-game and type the code here. The site never asks for your Minecraft password.</p>
+      </div>
+      """ + play_rail() + """
     </section>
     <section class="section wrap">
       <form id="login-form" class="stack-form" autocomplete="on">
         <label for="email">Email</label>
         <input id="email" name="email" type="email" required maxlength="254" autocomplete="email" inputmode="email">
-        <button class="btn" type="submit">Send sign-in link</button>
+        <button class="btn btn-play" type="submit">Send sign-in link</button>
         <p id="form-msg" class="form-msg" role="status"></p>
       </form>
     </section>
@@ -510,7 +608,7 @@ PAGES["me.html"] = (
         <img id="d-avatar" class="avatar" alt="" width="84" height="84">
         <div>
           <p class="kicker"><i id="live-dot"></i> <span id="d-live">Live</span></p>
-          <h2 id="d-name">Your account</h2>
+          <h1 id="d-name">Your account</h1>
           <p id="d-rank" class="rank-line"></p>
           <div class="rank-bar" id="rank-bar" hidden><span id="rank-fill"></span></div>
           <p id="d-rank-next" class="form-msg"></p>

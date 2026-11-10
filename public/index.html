@@ -31,7 +31,6 @@
         <span class="logo-slot"><img src="/img/logo.svg" class="logo" width="42" height="42" alt=""></span>
         <span class="brand-text">NO RULES SURVIVAL<small>true anarchy</small></span>
       </a>
-      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">Menu</button>
       <nav class="site-nav" id="site-nav" aria-label="Primary">
         <a href="/">Home</a>
         <a href="/legends.html">Legends</a>
@@ -39,11 +38,25 @@
         <a href="/players.html">Players</a>
         <a href="/vote.html">Vote</a>
         <a href="/gallery.html">Gallery</a>
+        <div class="nav-more">
+          <button type="button" aria-expanded="false" aria-controls="nav-more-list">More</button>
+          <div class="nav-more-list" id="nav-more-list">
+        <a href="/join.html">Join</a>
         <a href="/media.html">Media</a>
         <a href="/changelog.html">Log</a>
-        <a href="/join.html">Join</a>
         <a href="/me.html">Account</a>
+          </div>
+        </div>
       </nav>
+      <div class="header-cta">
+        <span class="status" data-status data-state="unknown">
+          <span class="status-dot" aria-hidden="true"></span>
+          <span data-count>— / 30</span>
+          <span data-label>checking</span>
+        </span>
+        <button class="btn btn-play" type="button" data-copy-ip>Play now</button>
+      </div>
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">Menu</button>
     </div>
   </header>
   <main id="main">
@@ -55,28 +68,38 @@
       </div>
     </section>
 
-    <section class="hero wrap">
-      <div class="hero-logo logo-slot" aria-hidden="true"><img src="/img/logo.svg" alt=""></div>
-      <p class="kicker">Java + Bedrock · no whitelist</p>
-      <h1>NO RULES<br>SURVIVAL</h1>
-      <p class="tagline">Copy the IP. You're in.</p>
-      <div class="hero-actions">
-        <button class="btn btn-lg" type="button" data-copy-ip>Copy IP · 76.176.218.251</button>
-        <a class="btn btn-ghost" href="/join.html">Bedrock + voice</a>
-        <span class="status" data-status data-state="unknown">
-          <span class="status-dot" aria-hidden="true"></span>
-          <span data-count>— / 30</span>
-          <span data-label>checking</span>
-        </span>
-      </div>
-      <div class="badges">
-        <span class="badge badge-ok">Java</span>
-        <span class="badge badge-ok">Bedrock · 19132</span>
-        <span class="badge">No whitelist</span>
-        <span class="badge">No ops</span>
-        <span class="badge">No claims</span>
-        <span class="badge">Hard</span>
-        <span class="badge">Max 30</span>
+    <section class="hero">
+      <div class="hero-stage">
+        <div class="hero-bg" aria-hidden="true"></div>
+        <div class="wrap hero-inner">
+          <div class="hero-copy">
+            <p class="kicker">Java · Bedrock · no whitelist</p>
+            <h1>NO RULES<br>SURVIVAL</h1>
+            <p class="tagline">True anarchy. Copy the IP. You're in.</p>
+            <p class="lede hero-lede">PvP, griefing, and stealing are the game. Spawn is a small safe pocket. After that, the only law is no cheating.</p>
+            <div class="hero-actions">
+              <button class="btn btn-play btn-lg" type="button" data-copy-ip>Play now</button>
+              <a class="btn btn-ghost" href="/join.html">Bedrock + voice</a>
+            </div>
+            <div class="hero-ip-row">
+              <p class="ip-display">76.176.218.251</p>
+              <span class="status" data-status data-state="unknown">
+                <span class="status-dot" aria-hidden="true"></span>
+                <span data-count>— / 30</span>
+                <span data-label>checking</span>
+              </span>
+            </div>
+            <div class="badges">
+              <span class="badge badge-ok">Java</span>
+              <span class="badge badge-ok">Bedrock · 19132</span>
+              <span class="badge">No whitelist</span>
+              <span class="badge">No ops</span>
+              <span class="badge">No claims</span>
+              <span class="badge">Hard</span>
+              <span class="badge">Max 30</span>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
 
@@ -102,28 +125,58 @@
       <div class="wrap">
       <p class="kicker">What you get</p>
       <h2>Everything is allowed. Except cheating.</h2>
-      <p class="lede">PvP, griefing, and stealing are the game. Spawn is a small safe pocket so you can walk out. After that, the only law is no cheating. Hover a card to pause.</p>
+      <p class="lede">Hover a card to pause. The full list is here — nothing invented, nothing for sale.</p>
       </div>
       <div class="feat-marquee" aria-label="Server features">
         <div class="feat-row"><article class="card"><div class="icon-pill">Ⓐ</div><h3>True anarchy</h3><p>No rules, no land claims, no map resets, no whitelist. Griefing allowed. Protected spawn is the only safe tile on the map.</p></article><article class="card"><div class="icon-pill">⧉</div><h3>Java + Bedrock</h3><p>Same world. Java and Bedrock. Recent Java versions can join — you do not need a special client.</p></article><article class="card"><div class="icon-pill">⚔</div><h3>The Arena</h3><p>Void-world pit. Right-click ArenaMaster at the south spawn gate (not from the wild). Gear is vaulted, diamond kit on entry, <code>/arena leave</code> restores it at spawn. PvE waves, named bosses, 1v1 or a bot. Punch a boss head in the lobby to spar. Party of 3 max.</p></article><article class="card"><div class="icon-pill">🎤</div><h3>Proximity voice</h3><p>Simple Voice Chat on the server. You need the matching client mod (Fabric / NeoForge / Forge / Quilt). Vanilla and Bedrock have no voice — that is how SVC works. See <a href="/join.html#voice">install notes</a>.</p></article><article class="card"><div class="icon-pill">⚖</div><h3>Anti-cheat, not anti-fun</h3><p>Cheating is the only bannable offense. Anti-xray is on. Everything else is the game.</p></article><article class="card"><div class="icon-pill">🏛</div><h3>Hall of Legends</h3><p>In-game statue hall at spawn for the #1 player in 24 vanilla stat categories, plus Server Firsts (<code>/firsts</code>) for first-on-this-map records. This site mirrors the legends boards. <a href="/legends.html">Open the hall</a>.</p></article><article class="card"><div class="icon-pill">▣</div><h3>Anarchy resource pack</h3><p>Optional UI pack. No popup on join. In game: <code>/pack</code> menu or <code>/pack low|medium|high|off</code> — chunky iron / worn iron + oxblood / extra rust, rivets, ember trim, or vanilla UI.</p></article><article class="card"><div class="icon-pill">;</div><h3>VGS quick-chat</h3><p>Tribes-style voice-game-soundboard. Press <code>;</code> for a sidebar of 70+ tactical callouts, or fire a code like <code>;af</code>. F-key hand swap is vanilla (no dupe). Plays a sound to everyone.</p></article><article class="card feat-dup" aria-hidden="true"><div class="icon-pill">Ⓐ</div><h3>True anarchy</h3><p>No rules, no land claims, no map resets, no whitelist. Griefing allowed. Protected spawn is the only safe tile on the map.</p></article><article class="card feat-dup" aria-hidden="true"><div class="icon-pill">⧉</div><h3>Java + Bedrock</h3><p>Same world. Java and Bedrock. Recent Java versions can join — you do not need a special client.</p></article><article class="card feat-dup" aria-hidden="true"><div class="icon-pill">⚔</div><h3>The Arena</h3><p>Void-world pit. Right-click ArenaMaster at the south spawn gate (not from the wild). Gear is vaulted, diamond kit on entry, <code>/arena leave</code> restores it at spawn. PvE waves, named bosses, 1v1 or a bot. Punch a boss head in the lobby to spar. Party of 3 max.</p></article><article class="card feat-dup" aria-hidden="true"><div class="icon-pill">🎤</div><h3>Proximity voice</h3><p>Simple Voice Chat on the server. You need the matching client mod (Fabric / NeoForge / Forge / Quilt). Vanilla and Bedrock have no voice — that is how SVC works. See <a href="/join.html#voice">install notes</a>.</p></article><article class="card feat-dup" aria-hidden="true"><div class="icon-pill">⚖</div><h3>Anti-cheat, not anti-fun</h3><p>Cheating is the only bannable offense. Anti-xray is on. Everything else is the game.</p></article><article class="card feat-dup" aria-hidden="true"><div class="icon-pill">🏛</div><h3>Hall of Legends</h3><p>In-game statue hall at spawn for the #1 player in 24 vanilla stat categories, plus Server Firsts (<code>/firsts</code>) for first-on-this-map records. This site mirrors the legends boards. <a href="/legends.html">Open the hall</a>.</p></article><article class="card feat-dup" aria-hidden="true"><div class="icon-pill">▣</div><h3>Anarchy resource pack</h3><p>Optional UI pack. No popup on join. In game: <code>/pack</code> menu or <code>/pack low|medium|high|off</code> — chunky iron / worn iron + oxblood / extra rust, rivets, ember trim, or vanilla UI.</p></article><article class="card feat-dup" aria-hidden="true"><div class="icon-pill">;</div><h3>VGS quick-chat</h3><p>Tribes-style voice-game-soundboard. Press <code>;</code> for a sidebar of 70+ tactical callouts, or fire a code like <code>;af</code>. F-key hand swap is vanilla (no dupe). Plays a sound to everyone.</p></article></div>
-        <div class="feat-row feat-row-rev"><article class="card"><div class="icon-pill">※</div><h3>Party ping + share</h3><p>Middle-click a block or player to ping that spot for your <code>/party</code> (or <code>/ping</code>). Marker on the locator bar. <code>/share</code> still broadcasts a held item. Not in a party = invite someone first.</p></article><article class="card"><div class="icon-pill">◉</div><h3>Locator bar + /wp</h3><p>Party members see each other on the vanilla locator bar. <code>/wp</code> waypoints: private by default, share with a player or <code>party</code>, HUD roster with distance. Outsiders see nothing.</p></article><article class="card"><div class="icon-pill">→</div><h3>/autofollow</h3><p><code>/autofollow &lt;player&gt;</code> (alias <code>/follow</code>) follows someone within 5 blocks. Sneak, damage, or <code>/autofollow off</code> cancels. The jar is staged on the server — it loads at the next restart, not before.</p></article><article class="card"><div class="icon-pill">✦</div><h3>ChatFX</h3><p><code>/chatfx</code> (or <code>/cfx</code>) for text effects and signature chat sounds. Mention chime. Currently all free — not a rank shop.</p></article><article class="card"><div class="icon-pill">★</div><h3>Vote the lists</h3><p>Seven public server lists. Voting is support only — no loot, crates, keys, or ranks. It just keeps the IP visible. <a href="/vote.html">Vote</a>.</p></article><article class="card"><div class="icon-pill">!</div><h3>Report &amp; suggest</h3><p><code>/report</code>, <code>/suggest</code>, and <code>/feedback</code> with anti-spam cooldowns. Still anarchy — these are optional, not a ticket system that will save your base.</p></article><article class="card"><div class="icon-pill">▶</div><h3>Flashback killcams</h3><p>Rolling 60-second clip. PvP deaths auto-clip from both victim and killer. Exports land after the fact in <a href="/media.html">Media</a>.</p></article><article class="card"><div class="icon-pill">文</div><h3>Chat + veterans</h3><p>Per-viewer translator (whispers too). 5h+ playtime gets a veteran Ⓐ badge, with later hour tiers in the same font. Pregenned world (Chunky r=3000). Daily restart ~4am PT with warnings, daily backups.</p></article><article class="card feat-dup" aria-hidden="true"><div class="icon-pill">※</div><h3>Party ping + share</h3><p>Middle-click a block or player to ping that spot for your <code>/party</code> (or <code>/ping</code>). Marker on the locator bar. <code>/share</code> still broadcasts a held item. Not in a party = invite someone first.</p></article><article class="card feat-dup" aria-hidden="true"><div class="icon-pill">◉</div><h3>Locator bar + /wp</h3><p>Party members see each other on the vanilla locator bar. <code>/wp</code> waypoints: private by default, share with a player or <code>party</code>, HUD roster with distance. Outsiders see nothing.</p></article><article class="card feat-dup" aria-hidden="true"><div class="icon-pill">→</div><h3>/autofollow</h3><p><code>/autofollow &lt;player&gt;</code> (alias <code>/follow</code>) follows someone within 5 blocks. Sneak, damage, or <code>/autofollow off</code> cancels. The jar is staged on the server — it loads at the next restart, not before.</p></article><article class="card feat-dup" aria-hidden="true"><div class="icon-pill">✦</div><h3>ChatFX</h3><p><code>/chatfx</code> (or <code>/cfx</code>) for text effects and signature chat sounds. Mention chime. Currently all free — not a rank shop.</p></article><article class="card feat-dup" aria-hidden="true"><div class="icon-pill">★</div><h3>Vote the lists</h3><p>Seven public server lists. Voting is support only — no loot, crates, keys, or ranks. It just keeps the IP visible. <a href="/vote.html">Vote</a>.</p></article><article class="card feat-dup" aria-hidden="true"><div class="icon-pill">!</div><h3>Report &amp; suggest</h3><p><code>/report</code>, <code>/suggest</code>, and <code>/feedback</code> with anti-spam cooldowns. Still anarchy — these are optional, not a ticket system that will save your base.</p></article><article class="card feat-dup" aria-hidden="true"><div class="icon-pill">▶</div><h3>Flashback killcams</h3><p>Rolling 60-second clip. PvP deaths auto-clip from both victim and killer. Exports land after the fact in <a href="/media.html">Media</a>.</p></article><article class="card feat-dup" aria-hidden="true"><div class="icon-pill">文</div><h3>Chat + veterans</h3><p>Per-viewer translator (whispers too). 5h+ playtime gets a veteran Ⓐ badge, with later hour tiers in the same font. Pregenned world (Chunky r=3000). Daily restart ~4am PT with warnings, daily backups.</p></article></div>
+        <div class="feat-row feat-row-rev"><article class="card"><div class="icon-pill">※</div><h3>Party ping + share</h3><p>Middle-click a block or player to ping that spot for your <code>/party</code> (or <code>/ping</code>). Marker on the locator bar. <code>/share</code> still broadcasts a held item. Not in a party = invite someone first.</p></article><article class="card"><div class="icon-pill">◉</div><h3>Locator bar + /wp</h3><p>Party members see each other on the vanilla locator bar. <code>/wp</code> waypoints: private by default, share with a player or <code>party</code>, HUD roster with distance. Outsiders see nothing.</p></article><article class="card"><div class="icon-pill">→</div><h3>/autofollow</h3><p><code>/autofollow &lt;player&gt;</code> (alias <code>/follow</code>) follows someone within 5 blocks. Sneak, damage, or <code>/autofollow off</code> cancels. The jar is staged on the server — it loads at the next restart, not before.</p></article><article class="card"><div class="icon-pill">✦</div><h3>ChatFX</h3><p><code>/chatfx</code> (or <code>/cfx</code>) for text effects and signature chat sounds. Mention chime. Currently all free — not a rank shop.</p></article><article class="card"><div class="icon-pill">★</div><h3>Vote the lists</h3><p>Seven public server lists. Voting is support only — no loot, crates, keys, or ranks. It just keeps the IP visible. <a href="/vote.html">Vote</a>.</p></article><article class="card"><div class="icon-pill">!</div><h3>Report &amp; suggest</h3><p><code>/report</code>, <code>/suggest</code>, and <code>/feedback</code> with anti-spam cooldowns. Still anarchy — these are optional, not a ticket system that will save your base.</p></article><article class="card"><div class="icon-pill">▶</div><h3>Flashback killcams</h3><p>Rolling 60-second clip. PvP deaths auto-clip from both victim and killer. Exports land after the fact in <a href="/media.html">Media</a>.</p></article><article class="card"><div class="icon-pill">文</div><h3>Chat + veterans</h3><p>Per-viewer translator (whispers too). 5h+ playtime gets a veteran Ⓐ badge, with later hour tiers in the same font. Daily restart around 4am PT with warnings, daily backups.</p></article><article class="card feat-dup" aria-hidden="true"><div class="icon-pill">※</div><h3>Party ping + share</h3><p>Middle-click a block or player to ping that spot for your <code>/party</code> (or <code>/ping</code>). Marker on the locator bar. <code>/share</code> still broadcasts a held item. Not in a party = invite someone first.</p></article><article class="card feat-dup" aria-hidden="true"><div class="icon-pill">◉</div><h3>Locator bar + /wp</h3><p>Party members see each other on the vanilla locator bar. <code>/wp</code> waypoints: private by default, share with a player or <code>party</code>, HUD roster with distance. Outsiders see nothing.</p></article><article class="card feat-dup" aria-hidden="true"><div class="icon-pill">→</div><h3>/autofollow</h3><p><code>/autofollow &lt;player&gt;</code> (alias <code>/follow</code>) follows someone within 5 blocks. Sneak, damage, or <code>/autofollow off</code> cancels. The jar is staged on the server — it loads at the next restart, not before.</p></article><article class="card feat-dup" aria-hidden="true"><div class="icon-pill">✦</div><h3>ChatFX</h3><p><code>/chatfx</code> (or <code>/cfx</code>) for text effects and signature chat sounds. Mention chime. Currently all free — not a rank shop.</p></article><article class="card feat-dup" aria-hidden="true"><div class="icon-pill">★</div><h3>Vote the lists</h3><p>Seven public server lists. Voting is support only — no loot, crates, keys, or ranks. It just keeps the IP visible. <a href="/vote.html">Vote</a>.</p></article><article class="card feat-dup" aria-hidden="true"><div class="icon-pill">!</div><h3>Report &amp; suggest</h3><p><code>/report</code>, <code>/suggest</code>, and <code>/feedback</code> with anti-spam cooldowns. Still anarchy — these are optional, not a ticket system that will save your base.</p></article><article class="card feat-dup" aria-hidden="true"><div class="icon-pill">▶</div><h3>Flashback killcams</h3><p>Rolling 60-second clip. PvP deaths auto-clip from both victim and killer. Exports land after the fact in <a href="/media.html">Media</a>.</p></article><article class="card feat-dup" aria-hidden="true"><div class="icon-pill">文</div><h3>Chat + veterans</h3><p>Per-viewer translator (whispers too). 5h+ playtime gets a veteran Ⓐ badge, with later hour tiers in the same font. Daily restart around 4am PT with warnings, daily backups.</p></article></div>
       </div>
     </section>
     <section class="section wrap join-again">
       <p class="kicker">That's the pitch</p>
-      <h2>Copy the IP. You're in.</h2>
+      <h2>Play now</h2>
       <p class="lede">Java or Bedrock. No application. Bedrock uses port 19132. Cheating is the only ban. Voting is support only — it does not give loot.</p>
+      <div class="hero-ip-row">
+        <p class="ip-display">76.176.218.251</p>
+        <span class="status" data-status data-state="unknown">
+          <span class="status-dot" aria-hidden="true"></span>
+          <span data-count>— / 30</span>
+          <span data-label>checking</span>
+        </span>
+      </div>
       <div class="hero-actions">
-        <button class="btn btn-lg" type="button" data-copy-ip>Copy IP · 76.176.218.251</button>
+        <button class="btn btn-play btn-lg" type="button" data-copy-ip>Play now</button>
         <a class="btn btn-ghost" href="/join.html">Bedrock + voice</a>
+        <a class="btn btn-ghost" href="/vote.html">Vote the lists</a>
       </div>
     </section>
     
   </main>
   <footer class="site-footer">
-    <div class="wrap">
-      <p>© <span data-year>2026</span> NO RULES SURVIVAL · 76.176.218.251</p>
-      <p class="fairness-note">Anarchy fairness: this site never shows coordinates, live location, or who is online by name. Leaderboards and clips are public in-game data posted after the fact.</p>
+    <div class="wrap footer-grid">
+      <div>
+        <p class="brand-text">NO RULES SURVIVAL<small>true anarchy</small></p>
+        <p class="ip-display ip-display-sm">76.176.218.251</p>
+        <p><button class="btn btn-play" type="button" data-copy-ip>Play now</button></p>
+      </div>
+      <nav class="footer-nav" aria-label="Footer">
+        <a href="/">Home</a>
+        <a href="/legends.html">Legends</a>
+        <a href="/rankings.html">Rankings</a>
+        <a href="/players.html">Players</a>
+        <a href="/vote.html">Vote</a>
+        <a href="/gallery.html">Gallery</a>
+        <a href="/join.html">Join</a>
+        <a href="/media.html">Media</a>
+        <a href="/changelog.html">Log</a>
+        <a href="/me.html">Account</a>
+      </nav>
+      <div>
+        <p>Java or Bedrock. No whitelist. Cheating is the only ban.</p>
+        <p><a href="/vote.html">Vote</a> is support only — no loot, crates, keys, ranks, or advantage.</p>
+        <p class="fairness-note">This site never shows coordinates, live location, or who is online by name. Leaderboards and clips are public in-game data posted after the fact.</p>
+        <p>© <span data-year>2026</span> NO RULES SURVIVAL</p>
+      </div>
     </div>
   </footer>
   <div id="toast" class="toast" role="status" aria-live="polite"></div>

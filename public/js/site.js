@@ -25,6 +25,21 @@
     });
   }
 
+  // 2026-11-09: More dropdown for Join / Media / Log / Account.
+  const more = document.querySelector(".nav-more");
+  const moreBtn = more && more.querySelector(":scope > button");
+  if (more && moreBtn) {
+    moreBtn.addEventListener("click", (e) => {
+      e.stopPropagation();
+      const open = more.classList.toggle("open");
+      moreBtn.setAttribute("aria-expanded", String(open));
+    });
+    document.addEventListener("click", () => {
+      more.classList.remove("open");
+      moreBtn.setAttribute("aria-expanded", "false");
+    });
+  }
+
   const here = location.pathname.replace(/\/+$/, "") || "/";
   document.querySelectorAll(".site-nav a").forEach((a) => {
     const href = a.getAttribute("href").replace(/\/+$/, "") || "/";
@@ -47,37 +62,43 @@
     btn.addEventListener("click", async () => {
       try {
         await navigator.clipboard.writeText(ip);
-        showToast("copied");
+        showToast("Copied · " + ip);
       } catch {
         showToast("copy failed — " + ip);
       }
     });
   });
 
-  // Live player count. Degrade if mcsrvstat.us is down. Never list who is online.
-  document.querySelectorAll("[data-status]").forEach((el) => {
-    const countEl = el.querySelector("[data-count]");
-    const labelEl = el.querySelector("[data-label]");
+  // Live player count. One fetch, every [data-status] chip. Never list who is online.
+  const statusEls = document.querySelectorAll("[data-status]");
+  if (statusEls.length) {
     fetch(NR.statusApi, { cache: "no-store" })
       .then((r) => (r.ok ? r.json() : Promise.reject()))
       .then((data) => {
-        if (data && data.online) {
-          el.dataset.state = "online";
-          const n = data.players && typeof data.players.online === "number" ? data.players.online : 0;
-          const max = data.players && data.players.max ? data.players.max : 30;
-          if (countEl) countEl.textContent = n + " / " + max;
-          if (labelEl) labelEl.textContent = "online";
-        } else {
-          el.dataset.state = "offline";
-          if (countEl) countEl.textContent = "0 / 30";
-          if (labelEl) labelEl.textContent = "offline";
-        }
+        statusEls.forEach((el) => {
+          const countEl = el.querySelector("[data-count]");
+          const labelEl = el.querySelector("[data-label]");
+          if (data && data.online) {
+            el.dataset.state = "online";
+            const n = data.players && typeof data.players.online === "number" ? data.players.online : 0;
+            const max = data.players && data.players.max ? data.players.max : 30;
+            if (countEl) countEl.textContent = n + " / " + max;
+            if (labelEl) labelEl.textContent = "online";
+          } else {
+            el.dataset.state = "offline";
+            if (countEl) countEl.textContent = "0 / 30";
+            if (labelEl) labelEl.textContent = "offline";
+          }
+        });
       })
       .catch(() => {
-        el.dataset.state = "unknown";
-        if (labelEl) labelEl.textContent = "status unknown";
+        statusEls.forEach((el) => {
+          el.dataset.state = "unknown";
+          const labelEl = el.querySelector("[data-label]");
+          if (labelEl) labelEl.textContent = "status unknown";
+        });
       });
-  });
+  }
 
   document.querySelectorAll("[data-year]").forEach((el) => {
     el.textContent = String(new Date().getFullYear());

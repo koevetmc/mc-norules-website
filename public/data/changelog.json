@@ -3,6 +3,13 @@
   "entries": [
     {
       "date": "2026-11-09",
+      "version": "web-1.17",
+      "tags": ["WEBSITE"],
+      "title": "Site redesign",
+      "body": "Every page rebuilt around the hall: cinematic hero, PLAY NOW and the IP on every screen, live count in the header, and player-facing copy only. Voting is still support only — no loot, crates, keys, or ranks."
+    },
+    {
+      "date": "2026-11-09",
       "version": "web-1.16",
       "tags": ["WEBSITE"],
       "title": "Homepage gallery is a compact cycle",
@@ -13,7 +20,7 @@
       "version": "web-1.15",
       "tags": ["WEBSITE"],
       "title": "Homepage talks like a player",
-      "body": "Paper and plugin names are off the first screen. The pitch is copy the IP. Same CTA after the feature ticker. Voting is still support only — no loot, crates, keys, or ranks."
+      "body": "Plugin names are off the first screen. The pitch is copy the IP. Same CTA after the feature ticker. Voting is still support only — no loot, crates, keys, or ranks."
     },
     {
       "date": "2026-11-08",
@@ -200,7 +207,7 @@
       "date": "2026-11-02",
       "tags": ["SERVER"],
       "title": "Spawn lively pass — tavern, market, hall pavilion",
-      "body": "Protected spawn gained the Broken Crown tavern, scrap market, smithy, and the red-nether Hall of Legends pavilion over the statue hall. WorldGuard still denies build/pvp inside the zone."
+      "body": "Protected spawn gained the Broken Crown tavern, scrap market, smithy, and the red-nether Hall of Legends pavilion over the statue hall. Build and PvP stay denied inside the zone."
     },
     {
       "date": "2026-11-01",
@@ -225,8 +232,8 @@
     {
       "date": "2026-10-29",
       "tags": ["SERVER"],
-      "title": "Bedrock crossplay via Geyser + floodgate",
-      "body": "Java 76.176.218.251:25565. Bedrock same host, UDP 19132. ViaVersion + ViaBackwards let older and newer Java clients join Paper 26.3."
+      "title": "Bedrock crossplay",
+      "body": "Java 76.176.218.251:25565. Bedrock same host, UDP 19132. Older and newer Java clients can join the same world."
     },
     {
       "date": "2026-10-29",

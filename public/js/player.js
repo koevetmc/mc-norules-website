@@ -115,7 +115,7 @@
         p.name.replace(/"/g, "") +
         '" width="180" height="360"></div>' +
         "<div>" +
-        (p.bedrock ? "<p class='lede'>Bedrock (Geyser/floodgate).</p>" : "") +
+        (p.bedrock ? "<p class='lede'>Joined from Bedrock.</p>" : "") +
         (badges.length
           ? '<div class="rank-list">' +
             badges

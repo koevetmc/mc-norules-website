@@ -32,8 +32,8 @@ def main() -> None:
             "<title>Player · NO RULES SURVIVAL</title>",
             f"<title>{name} · NO RULES SURVIVAL</title>",
         ).replace(
-            '<h2 id="profile-title">Player</h2>',
-            f'<h2 id="profile-title">{name}</h2>',
+            '<h1 id="profile-title">Player</h1>',
+            f'<h1 id="profile-title">{name}</h1>',
         )
         dest.write_text(page, encoding="utf-8")
         names.append(name)

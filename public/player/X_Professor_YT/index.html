@@ -31,7 +31,6 @@
         <span class="logo-slot"><img src="/img/logo.svg" class="logo" width="42" height="42" alt=""></span>
         <span class="brand-text">NO RULES SURVIVAL<small>true anarchy</small></span>
       </a>
-      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">Menu</button>
       <nav class="site-nav" id="site-nav" aria-label="Primary">
         <a href="/">Home</a>
         <a href="/legends.html">Legends</a>
@@ -39,26 +38,75 @@
         <a href="/players.html">Players</a>
         <a href="/vote.html">Vote</a>
         <a href="/gallery.html">Gallery</a>
+        <div class="nav-more">
+          <button type="button" aria-expanded="false" aria-controls="nav-more-list">More</button>
+          <div class="nav-more-list" id="nav-more-list">
+        <a href="/join.html">Join</a>
         <a href="/media.html">Media</a>
         <a href="/changelog.html">Log</a>
-        <a href="/join.html">Join</a>
         <a href="/me.html">Account</a>
+          </div>
+        </div>
       </nav>
+      <div class="header-cta">
+        <span class="status" data-status data-state="unknown">
+          <span class="status-dot" aria-hidden="true"></span>
+          <span data-count>— / 30</span>
+          <span data-label>checking</span>
+        </span>
+        <button class="btn btn-play" type="button" data-copy-ip>Play now</button>
+      </div>
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">Menu</button>
     </div>
   </header>
   <main id="main">
 
     <section class="page-hero wrap">
-      <p class="kicker">Profile</p>
-      <h2 id="profile-title">X_Professor_YT</h2>
+      <div class="page-hero-copy">
+        <p class="kicker">Profile</p>
+        <h1 id="profile-title">X_Professor_YT</h1>
+      </div>
+      
+      <aside class="play-rail" aria-label="Join the server">
+        <p class="play-rail-kicker">Direct connect</p>
+        <p class="ip-display">76.176.218.251</p>
+        <button class="btn btn-play" type="button" data-copy-ip>Play now</button>
+        <span class="status" data-status data-state="unknown">
+          <span class="status-dot" aria-hidden="true"></span>
+          <span data-count>— / 30</span>
+          <span data-label>checking</span>
+        </span>
+        <p class="play-rail-note">Java default port. Bedrock 19132. Voting is support only — no loot.</p>
+      </aside>
     </section>
     <section class="section wrap" id="profile"></section>
     
   </main>
   <footer class="site-footer">
-    <div class="wrap">
-      <p>© <span data-year>2026</span> NO RULES SURVIVAL · 76.176.218.251</p>
-      <p class="fairness-note">Anarchy fairness: this site never shows coordinates, live location, or who is online by name. Leaderboards and clips are public in-game data posted after the fact.</p>
+    <div class="wrap footer-grid">
+      <div>
+        <p class="brand-text">NO RULES SURVIVAL<small>true anarchy</small></p>
+        <p class="ip-display ip-display-sm">76.176.218.251</p>
+        <p><button class="btn btn-play" type="button" data-copy-ip>Play now</button></p>
+      </div>
+      <nav class="footer-nav" aria-label="Footer">
+        <a href="/">Home</a>
+        <a href="/legends.html">Legends</a>
+        <a href="/rankings.html">Rankings</a>
+        <a href="/players.html">Players</a>
+        <a href="/vote.html">Vote</a>
+        <a href="/gallery.html">Gallery</a>
+        <a href="/join.html">Join</a>
+        <a href="/media.html">Media</a>
+        <a href="/changelog.html">Log</a>
+        <a href="/me.html">Account</a>
+      </nav>
+      <div>
+        <p>Java or Bedrock. No whitelist. Cheating is the only ban.</p>
+        <p><a href="/vote.html">Vote</a> is support only — no loot, crates, keys, ranks, or advantage.</p>
+        <p class="fairness-note">This site never shows coordinates, live location, or who is online by name. Leaderboards and clips are public in-game data posted after the fact.</p>
+        <p>© <span data-year>2026</span> NO RULES SURVIVAL</p>
+      </div>
     </div>
   </footer>
   <div id="toast" class="toast" role="status" aria-live="polite"></div>

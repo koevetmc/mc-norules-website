@@ -7,7 +7,7 @@
     .then((data) => {
       const items = data.items || [];
       if (!items.length) {
-        root.innerHTML = "<p class='lede'>No clips uploaded yet. Drop mp4s in /clips/ and add a line to data/clips.json.</p>";
+        root.innerHTML = "<p class='lede'>No killcams posted yet.</p>";
         return;
       }
       root.innerHTML = items
