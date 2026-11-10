@@ -58,18 +58,55 @@
   }
   window.nrToast = showToast;
 
+  const port = NR.bedrockPort || 19132;
+  let edition = "java";
+
   document.querySelectorAll("[data-copy-ip]").forEach((btn) => {
     btn.addEventListener("click", async () => {
+      const mode = btn.getAttribute("data-copy-ip");
+      const bedrock = mode === "bedrock" || (mode === "auto" && edition === "bedrock");
+      // Host is the same. Bedrock toast names port 19132 so Add Server is obvious.
+      const text = ip;
+      const note = bedrock ? "Copied · " + ip + " port " + port : "Copied · " + ip;
+      const label = btn.textContent;
       try {
-        await navigator.clipboard.writeText(ip);
-        showToast("Copied · " + ip);
+        await navigator.clipboard.writeText(text);
+        showToast(note);
+        btn.textContent = "Copied";
+        clearTimeout(btn._nrCopy);
+        btn._nrCopy = setTimeout(() => {
+          btn.textContent = label;
+        }, 1600);
       } catch {
         showToast("copy failed — " + ip);
       }
     });
   });
 
-  // Live player count. One fetch, every [data-status] chip. Never list who is online.
+  // Java / Bedrock plaque on the homepage. Same host; Bedrock uses port 19132.
+  const editionBtns = document.querySelectorAll("[data-edition]");
+  const ipFaces = document.querySelectorAll("[data-ip-face]");
+  const editionNote = document.querySelector("[data-edition-note]");
+  function setEdition(next) {
+    edition = next;
+    editionBtns.forEach((b) => {
+      const on = b.getAttribute("data-edition") === next;
+      b.classList.toggle("is-on", on);
+      b.setAttribute("aria-selected", String(on));
+    });
+    ipFaces.forEach((el) => {
+      el.textContent = next === "bedrock" ? ip + ":" + port : ip;
+    });
+    if (editionNote) {
+      editionNote.textContent =
+        next === "bedrock" ? "Add server. Port " + port + "." : "Direct connect. Default port 25565.";
+    }
+  }
+  editionBtns.forEach((b) => {
+    b.addEventListener("click", () => setEdition(b.getAttribute("data-edition")));
+  });
+
+  // Live count only. Cap 30 is the product, not a half-empty bar. Never list who is online.
   const statusEls = document.querySelectorAll("[data-status]");
   if (statusEls.length) {
     fetch(NR.statusApi, { cache: "no-store" })
@@ -78,16 +115,16 @@
         statusEls.forEach((el) => {
           const countEl = el.querySelector("[data-count]");
           const labelEl = el.querySelector("[data-label]");
+          const max = data.players && data.players.max ? data.players.max : 30;
           if (data && data.online) {
             el.dataset.state = "online";
             const n = data.players && typeof data.players.online === "number" ? data.players.online : 0;
-            const max = data.players && data.players.max ? data.players.max : 30;
-            if (countEl) countEl.textContent = n + " / " + max;
-            if (labelEl) labelEl.textContent = "online";
+            if (countEl) countEl.textContent = String(n);
+            if (labelEl) labelEl.textContent = "online · cap " + max;
           } else {
             el.dataset.state = "offline";
-            if (countEl) countEl.textContent = "0 / 30";
-            if (labelEl) labelEl.textContent = "offline";
+            if (countEl) countEl.textContent = "0";
+            if (labelEl) labelEl.textContent = "offline · cap " + max;
           }
         });
       })

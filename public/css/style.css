@@ -62,13 +62,13 @@ body::before {
   position: fixed;
   inset: 0;
   z-index: 0;
-  opacity: 0.07;
+  opacity: 0.035;
   background: repeating-linear-gradient(
     -32deg,
     transparent,
-    transparent 11px,
-    #000 11px,
-    #000 12px
+    transparent 13px,
+    #000 13px,
+    #000 14px
   );
 }
 
@@ -241,41 +241,47 @@ a:hover { color: var(--ember-core); }
 .header-cta .status { padding: 0.28rem 0.6rem; font-size: 0.78rem; }
 .header-cta .btn-play { padding: 0.5rem 0.9rem; font-size: 0.82rem; }
 
-/* ---------- hero ---------- */
+/* ---------- hero: hall entrance plaque, not a left-locked landing ---------- */
 .hero { padding: 0; }
 .hero-stage {
   position: relative;
   isolation: isolate;
-  min-height: min(78vh, 42rem);
+  min-height: min(86vh, 48rem);
   display: grid;
   align-items: end;
   overflow: hidden;
   border-bottom: 1px solid var(--iron-dim);
 }
-.hero-bg {
+.hero-photo {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 42%;
+  z-index: -2;
+  max-width: none;
+}
+.hero-veil {
   position: absolute;
   inset: 0;
   z-index: -1;
   background:
-    linear-gradient(180deg, rgba(7, 6, 5, 0.35) 0%, rgba(7, 6, 5, 0.72) 48%, var(--bg) 100%),
-    radial-gradient(ellipse at 50% 70%, rgba(232, 93, 4, 0.22), transparent 55%),
-    url("/gallery/hall-aisle.jpg") center 42% / cover no-repeat,
-    var(--bg);
+    linear-gradient(180deg, rgba(7, 6, 5, 0.2) 0%, rgba(7, 6, 5, 0.18) 38%, rgba(7, 6, 5, 0.88) 100%),
+    radial-gradient(ellipse at 50% 100%, rgba(232, 93, 4, 0.18), transparent 50%);
 }
-.hero-inner {
-  padding: 3.2rem 0 2.6rem;
-  max-width: min(100% - 2rem, 46rem);
-  margin-inline: auto 0;
-  margin-left: max(1rem, calc((100% - var(--max)) / 2));
+.hero-plaque {
+  padding: 2.4rem 0 2.2rem;
+  text-align: center;
+  max-width: min(100% - 2rem, 40rem);
 }
-.hero-copy { text-align: left; }
 .hero h1 {
   font-family: var(--font-display);
-  font-size: clamp(3.4rem, 10vw, 7.2rem);
-  letter-spacing: 0.03em;
-  line-height: 0.86;
+  font-size: clamp(3.2rem, 9vw, 6.4rem);
+  letter-spacing: 0.06em;
+  line-height: 0.88;
   margin: 0;
-  text-shadow: 0 8px 40px rgba(0, 0, 0, 0.65);
+  text-shadow: 0 10px 40px rgba(0, 0, 0, 0.75);
 }
 .tagline {
   margin: 0.85rem 0 0.7rem;
@@ -285,13 +291,41 @@ a:hover { color: var(--ember-core); }
   text-transform: uppercase;
   font-size: 0.82rem;
 }
-.hero-lede { margin-bottom: 1.2rem; max-width: 44ch; color: var(--text); }
+.hero-lede { margin: 0 auto 1.1rem; max-width: 46ch; color: var(--text); }
 .hero-actions {
   display: flex;
   flex-wrap: wrap;
   gap: 0.75rem;
-  justify-content: flex-start;
+  justify-content: center;
   align-items: center;
+}
+.edition {
+  display: flex;
+  justify-content: center;
+  gap: 0;
+  margin: 0 auto 0.75rem;
+  width: max-content;
+  border: 1px solid var(--iron-dim);
+}
+.edition-btn {
+  appearance: none;
+  background: transparent;
+  border: 0;
+  color: var(--muted);
+  font: 700 0.72rem var(--font-body);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  padding: 0.45rem 0.9rem;
+  cursor: pointer;
+}
+.edition-btn.is-on {
+  background: #1a0c05;
+  color: var(--ember-core);
+}
+.edition-note {
+  margin: 0.35rem 0 1rem;
+  color: var(--muted);
+  font-size: 0.8rem;
 }
 .hero-ip-row {
   display: flex;
@@ -300,11 +334,13 @@ a:hover { color: var(--ember-core); }
   align-items: center;
   margin: 1.05rem 0 0.35rem;
 }
-.join-again .hero-actions { justify-content: flex-start; }
+.join-again { text-align: center; }
+.join-again .lede { margin-inline: auto; }
+.join-again .hero-actions { justify-content: center; }
 .badges {
   display: flex;
   gap: 0.45rem;
-  justify-content: flex-start;
+  justify-content: center;
   margin-top: 1.05rem;
   flex-wrap: wrap;
 }
@@ -413,10 +449,6 @@ h1, h2 {
 h2 { font-size: clamp(2rem, 5vw, 3.15rem); }
 .lede { color: var(--muted); max-width: 62ch; margin: 0 0 1.5rem; }
 .page-hero {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) 16.5rem;
-  gap: 2rem;
-  align-items: end;
   padding: 2.6rem 0 0.4rem;
 }
 .page-hero h1 {
@@ -439,11 +471,20 @@ h2 { font-size: clamp(2rem, 5vw, 3.15rem); }
   margin: 0;
   font-family: ui-monospace, "Cascadia Code", monospace;
   font-size: 1.15rem;
-  letter-spacing: 0.04em;
+  letter-spacing: 0.08em;
   color: var(--lantern);
-  background: #000;
+  background: #0c0a08;
   border: 1px solid var(--iron-dim);
-  padding: 0.45rem 0.75rem;
+  box-shadow: inset 0 0 0 1px rgba(232, 93, 4, 0.18), 0 12px 32px rgba(0, 0, 0, 0.35);
+  padding: 0.55rem 0.9rem;
+}
+.ip-plaque {
+  display: block;
+  width: max-content;
+  max-width: 100%;
+  margin-inline: auto;
+  font-size: clamp(1.15rem, 3vw, 1.7rem);
+  padding: 0.7rem 1.15rem;
 }
 .ip-display-sm { font-size: 0.95rem; display: inline-block; margin: 0.4rem 0 0.7rem; }
 
@@ -928,6 +969,8 @@ html.nr-shot-features .lightbox { display: none !important; }
 .rank-table td:first-child { width: 2.6rem; }
 .rank-table th:last-child,
 .rank-table td:last-child { text-align: right; }
+.rank-table tbody tr:nth-child(odd) { background: rgba(255, 255, 255, 0.02); }
+.rank-table tbody tr:hover { background: rgba(232, 93, 4, 0.08); }
 .rank-sort {
   background: none;
   border: 0;
@@ -1153,7 +1196,7 @@ html.nr-shot-features .lightbox { display: none !important; }
 .home-cycle-stage {
   position: relative;
   margin: 0;
-  height: min(18rem, 40vh);
+  height: min(22rem, 48vh);
   overflow: hidden;
   border: 1px solid var(--iron-dim);
   background: #000;
@@ -1389,9 +1432,9 @@ html.nr-shot-features .lightbox { display: none !important; }
 
 .toast {
   position: fixed;
-  bottom: 1.1rem;
+  top: calc(var(--header-h) + 0.75rem);
   left: 50%;
-  transform: translateX(-50%) translateY(120%);
+  transform: translateX(-50%) translateY(-140%);
   background: #1a0c05;
   color: var(--text);
   border: 1px solid var(--ember);
@@ -1407,14 +1450,14 @@ html.nr-shot-features .lightbox { display: none !important; }
   to { opacity: 1; transform: none; }
 }
 .death-strip { animation: nr-rise 0.5s var(--ease) both; }
-.hero-copy > * { animation: nr-rise 0.6s var(--ease) both; }
-.hero-copy > *:nth-child(1) { animation-delay: 0.04s; }
-.hero-copy > *:nth-child(2) { animation-delay: 0.08s; }
-.hero-copy > *:nth-child(3) { animation-delay: 0.12s; }
-.hero-copy > *:nth-child(4) { animation-delay: 0.16s; }
-.hero-copy > *:nth-child(5) { animation-delay: 0.2s; }
-.hero-copy > *:nth-child(6) { animation-delay: 0.24s; }
-.hero-copy > *:nth-child(7) { animation-delay: 0.28s; }
+.hero-plaque > * { animation: nr-rise 0.6s var(--ease) both; }
+.hero-plaque > *:nth-child(1) { animation-delay: 0.04s; }
+.hero-plaque > *:nth-child(2) { animation-delay: 0.08s; }
+.hero-plaque > *:nth-child(3) { animation-delay: 0.12s; }
+.hero-plaque > *:nth-child(4) { animation-delay: 0.16s; }
+.hero-plaque > *:nth-child(5) { animation-delay: 0.2s; }
+.hero-plaque > *:nth-child(6) { animation-delay: 0.24s; }
+.hero-plaque > *:nth-child(7) { animation-delay: 0.28s; }
 .page-hero { animation: nr-rise 0.5s var(--ease) both; }
 .grid .card:nth-child(1) { animation: nr-rise 0.5s var(--ease) 0.04s both; }
 .grid .card:nth-child(2) { animation: nr-rise 0.5s var(--ease) 0.08s both; }
@@ -1630,8 +1673,6 @@ html.nr-shot-features .lightbox { display: none !important; }
 /* ---------- reduced motion / mobile ---------- */
 @media (max-width: 980px) {
   .header-cta .status { display: none; }
-  .page-hero { grid-template-columns: 1fr; }
-  .play-rail { max-width: 22rem; }
   .footer-grid { grid-template-columns: 1fr 1fr; }
   .join-grid { grid-template-columns: 1fr; }
 }
@@ -1665,8 +1706,9 @@ html.nr-shot-features .lightbox { display: none !important; }
     box-shadow: none;
   }
   .site-nav a { font-size: 0.95rem; padding: 0.35rem 0; }
-  .hero-stage { min-height: 0; }
-  .hero-inner { padding: 2.2rem 0 1.8rem; margin-left: auto; }
+  .hero-stage { min-height: min(78vh, 40rem); }
+  .hero-plaque { padding: 1.6rem 0 1.5rem; }
+  .brand-text { display: none; }
   .profile { grid-template-columns: 1fr; }
   .masonry { columns: 2 12rem; }
   .home-cycle-stage { height: min(14.5rem, 36vh); }
@@ -1687,8 +1729,8 @@ html.nr-shot-features .lightbox { display: none !important; }
   .death-strip-inner { grid-template-columns: 1fr; gap: 0.2rem; }
   .death-strip-kicker { font-size: 0.85rem; }
   .death-day:not(.death-day-end) { display: none; }
-  .hero h1 { font-size: clamp(2.8rem, 16vw, 4.4rem); }
-  .play-rail { max-width: none; }
+  .hero h1 { font-size: clamp(2.6rem, 14vw, 4rem); }
+  .ip-plaque { font-size: 1.05rem; }
   .stat-cards { grid-template-columns: 1fr 1fr; }
 }
 

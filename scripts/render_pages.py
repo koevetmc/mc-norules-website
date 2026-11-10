@@ -1,22 +1,23 @@
 #!/usr/bin/env python3
 """Stamp shared chrome onto every HTML page so header/footer stay in sync.
-2026-11-09: full visual redesign — cinematic hall hero, PLAY NOW + IP on
-every page, header live count, no Paper / operator jargon in public copy.
+2026-11-09 later: critique pass — Join in primary, hall plaque hero, no
+play-rail spam, absolute OG URLs, death strip after the pitch.
 Voting stays support-only — no loot, crates, ranks, or in-game advantage."""
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1] / "public"
+ORIGIN = "https://no-rules-survival.koevetmc.workers.dev"
 
+# Logo is Home. Join is a conversion page — never hide it in More.
 NAV_PRIMARY = [
-    ("/", "Home"),
     ("/legends.html", "Legends"),
     ("/rankings.html", "Rankings"),
-    ("/players.html", "Players"),
-    ("/vote.html", "Vote"),
     ("/gallery.html", "Gallery"),
+    ("/join.html", "Join"),
+    ("/vote.html", "Vote"),
 ]
 NAV_MORE = [
-    ("/join.html", "Join"),
+    ("/players.html", "Players"),
     ("/media.html", "Media"),
     ("/changelog.html", "Log"),
     ("/me.html", "Account"),
@@ -24,7 +25,7 @@ NAV_MORE = [
 
 
 def head(title: str, desc: str, path: str, extra: str = "") -> str:
-    canon = path
+    canon = ORIGIN + ("" if path == "/" else path)
     return f"""<!DOCTYPE html>
 <html lang="en">
 <head>
@@ -42,7 +43,7 @@ def head(title: str, desc: str, path: str, extra: str = "") -> str:
   <meta property="og:site_name" content="NO RULES SURVIVAL">
   <meta property="og:title" content="{title}">
   <meta property="og:description" content="{desc}">
-  <meta property="og:image" content="/img/og-image.jpg">
+  <meta property="og:image" content="{ORIGIN}/img/og-image.jpg">
   <meta property="og:url" content="{canon}">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -56,22 +57,6 @@ def _nav_links(pairs) -> str:
     return "\n        ".join(f'<a href="{href}">{label}</a>' for href, label in pairs)
 
 
-def play_rail() -> str:
-    # 2026-11-09: every inner page repeats PLAY NOW + the IP + live count.
-    return """
-      <aside class="play-rail" aria-label="Join the server">
-        <p class="play-rail-kicker">Direct connect</p>
-        <p class="ip-display">76.176.218.251</p>
-        <button class="btn btn-play" type="button" data-copy-ip>Play now</button>
-        <span class="status" data-status data-state="unknown">
-          <span class="status-dot" aria-hidden="true"></span>
-          <span data-count>— / 30</span>
-          <span data-label>checking</span>
-        </span>
-        <p class="play-rail-note">Java default port. Bedrock 19132. Voting is support only — no loot.</p>
-      </aside>"""
-
-
 def chrome(main: str, scripts: str) -> str:
     primary = _nav_links(NAV_PRIMARY)
     more = _nav_links(NAV_MORE)
@@ -81,7 +66,7 @@ def chrome(main: str, scripts: str) -> str:
   <a class="skip-link" href="#main">Skip to content</a>
   <header class="site-header">
     <div class="wrap">
-      <a class="brand" href="/">
+      <a class="brand" href="/" aria-label="NO RULES SURVIVAL home">
         <span class="logo-slot"><img src="/img/logo.svg" class="logo" width="42" height="42" alt=""></span>
         <span class="brand-text">NO RULES SURVIVAL<small>true anarchy</small></span>
       </a>
@@ -97,10 +82,10 @@ def chrome(main: str, scripts: str) -> str:
       <div class="header-cta">
         <span class="status" data-status data-state="unknown">
           <span class="status-dot" aria-hidden="true"></span>
-          <span data-count>— / 30</span>
+          <span data-count>—</span>
           <span data-label>checking</span>
         </span>
-        <button class="btn btn-play" type="button" data-copy-ip>Play now</button>
+        <button class="btn btn-play" type="button" data-copy-ip="auto">Play now</button>
       </div>
       <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">Menu</button>
     </div>
@@ -165,7 +150,7 @@ FEAT_ROW_A = [
 FEAT_ROW_B = [
     ("※", "Party ping + share", "Middle-click a block or player to ping that spot for your <code>/party</code> (or <code>/ping</code>). Marker on the locator bar. <code>/share</code> still broadcasts a held item. Not in a party = invite someone first."),
     ("◉", "Locator bar + /wp", "Party members see each other on the vanilla locator bar. <code>/wp</code> waypoints: private by default, share with a player or <code>party</code>, HUD roster with distance. Outsiders see nothing."),
-    ("→", "/autofollow", "<code>/autofollow &lt;player&gt;</code> (alias <code>/follow</code>) follows someone within 5 blocks. Sneak, damage, or <code>/autofollow off</code> cancels. The jar is staged on the server — it loads at the next restart, not before."),
+    ("→", "/autofollow", "<code>/autofollow &lt;player&gt;</code> (alias <code>/follow</code>) follows someone within 5 blocks. Sneak, damage, or <code>/autofollow off</code> cancels. Not live until the next restart."),
     ("✦", "ChatFX", "<code>/chatfx</code> (or <code>/cfx</code>) for text effects and signature chat sounds. Mention chime. Currently all free — not a rank shop."),
     ("★", "Vote the lists", "Seven public server lists. Voting is support only — no loot, crates, keys, or ranks. It just keeps the IP visible. <a href=\"/vote.html\">Vote</a>."),
     ("!", "Report &amp; suggest", "<code>/report</code>, <code>/suggest</code>, and <code>/feedback</code> with anti-spam cooldowns. Still anarchy — these are optional, not a ticket system that will save your base."),
@@ -181,45 +166,47 @@ PAGES["index.html"] = (
     "True Minecraft anarchy. No whitelist, no ops, no claims, no rules. Java and Bedrock. Join 76.176.218.251.",
     "/",
     """
+    <section class="hero">
+      <div class="hero-stage">
+        <img class="hero-photo" src="/gallery/hall-aisle.jpg" alt="" width="1920" height="1080" fetchpriority="high">
+        <div class="hero-veil" aria-hidden="true"></div>
+        <div class="wrap hero-plaque">
+          <p class="kicker">Java · Bedrock · no whitelist</p>
+          <h1>NO RULES SURVIVAL</h1>
+          <p class="tagline">Copy the IP. You're in.</p>
+          <p class="lede hero-lede">PvP, griefing, and stealing are the game. Spawn is a small safe pocket. After that, the only law is no cheating.</p>
+          <div class="edition" role="tablist" aria-label="Edition">
+            <button class="edition-btn is-on" type="button" role="tab" aria-selected="true" data-edition="java">Java</button>
+            <button class="edition-btn" type="button" role="tab" aria-selected="false" data-edition="bedrock">Bedrock</button>
+          </div>
+          <p class="ip-display ip-plaque" data-ip-face>76.176.218.251</p>
+          <p class="edition-note" data-edition-note>Direct connect. Default port 25565.</p>
+          <div class="hero-actions">
+            <button class="btn btn-play btn-lg" type="button" data-copy-ip="auto">Play now</button>
+            <a class="btn btn-ghost" href="/join.html">How to join</a>
+            <span class="status" data-status data-state="unknown">
+              <span class="status-dot" aria-hidden="true"></span>
+              <span data-count>—</span>
+              <span data-label>checking</span>
+            </span>
+          </div>
+          <div class="badges">
+            <span class="badge badge-ok">Java</span>
+            <span class="badge badge-ok">Bedrock</span>
+            <span class="badge">No whitelist</span>
+            <span class="badge">No ops</span>
+            <span class="badge">No claims</span>
+            <span class="badge">Hard</span>
+            <span class="badge">Cap 30</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <section class="death-strip" id="killfeed" aria-label="Deaths on this map">
       <div class="wrap death-strip-inner">
         <p class="death-strip-kicker">Deaths</p>
         <div class="death-axis" id="deaths"></div>
-      </div>
-    </section>
-
-    <section class="hero">
-      <div class="hero-stage">
-        <div class="hero-bg" aria-hidden="true"></div>
-        <div class="wrap hero-inner">
-          <div class="hero-copy">
-            <p class="kicker">Java · Bedrock · no whitelist</p>
-            <h1>NO RULES<br>SURVIVAL</h1>
-            <p class="tagline">True anarchy. Copy the IP. You're in.</p>
-            <p class="lede hero-lede">PvP, griefing, and stealing are the game. Spawn is a small safe pocket. After that, the only law is no cheating.</p>
-            <div class="hero-actions">
-              <button class="btn btn-play btn-lg" type="button" data-copy-ip>Play now</button>
-              <a class="btn btn-ghost" href="/join.html">Bedrock + voice</a>
-            </div>
-            <div class="hero-ip-row">
-              <p class="ip-display">76.176.218.251</p>
-              <span class="status" data-status data-state="unknown">
-                <span class="status-dot" aria-hidden="true"></span>
-                <span data-count>— / 30</span>
-                <span data-label>checking</span>
-              </span>
-            </div>
-            <div class="badges">
-              <span class="badge badge-ok">Java</span>
-              <span class="badge badge-ok">Bedrock · 19132</span>
-              <span class="badge">No whitelist</span>
-              <span class="badge">No ops</span>
-              <span class="badge">No claims</span>
-              <span class="badge">Hard</span>
-              <span class="badge">Max 30</span>
-            </div>
-          </div>
-        </div>
       </div>
     </section>
 
@@ -245,7 +232,7 @@ PAGES["index.html"] = (
       <div class="wrap">
       <p class="kicker">What you get</p>
       <h2>Everything is allowed. Except cheating.</h2>
-      <p class="lede">Hover a card to pause. The full list is here — nothing invented, nothing for sale.</p>
+      <p class="lede">The cobble ring is safe. After that, the only law is no cheating. Hover a card to pause.</p>
       </div>
       <div class="feat-marquee" aria-label="Server features">
         """ + _feat_row(FEAT_ROW_A) + """
@@ -253,25 +240,19 @@ PAGES["index.html"] = (
       </div>
     </section>
     <section class="section wrap join-again">
-      <p class="kicker">That's the pitch</p>
+      <p class="kicker">Direct connect</p>
       <h2>Play now</h2>
-      <p class="lede">Java or Bedrock. No application. Bedrock uses port 19132. Cheating is the only ban. Voting is support only — it does not give loot.</p>
-      <div class="hero-ip-row">
-        <p class="ip-display">76.176.218.251</p>
-        <span class="status" data-status data-state="unknown">
-          <span class="status-dot" aria-hidden="true"></span>
-          <span data-count>— / 30</span>
-          <span data-label>checking</span>
-        </span>
-      </div>
-      <div class="hero-actions">
-        <button class="btn btn-play btn-lg" type="button" data-copy-ip>Play now</button>
-        <a class="btn btn-ghost" href="/join.html">Bedrock + voice</a>
+      <p class="lede">Java or Bedrock. No application. Cheating is the only ban. Voting is support only — it does not give loot.</p>
+      <p class="ip-display ip-plaque" data-ip-face>76.176.218.251</p>
+          <div class="hero-actions">
+            <button class="btn btn-play btn-lg" type="button" data-copy-ip="auto">Play now</button>
+            <a class="btn btn-ghost" href="/join.html">How to join</a>
         <a class="btn btn-ghost" href="/vote.html">Vote the lists</a>
       </div>
     </section>
     """,
     '<script src="/js/gallery.js"></script>\n  <script src="/js/deaths.js"></script>',
+    '<link rel="preload" as="image" href="/gallery/hall-aisle.jpg">',
 )
 
 PAGES["legends.html"] = (
@@ -286,7 +267,6 @@ PAGES["legends.html"] = (
         <p class="lede">Same 24 boards as <code>/legends</code> in game — walk the lantern-lit aisle, click a statue. Full sortable lists live on <a href="/rankings.html">Rankings</a>. Server Firsts are <code>/firsts</code>. Unclaimed pedestals stay empty until someone logs the first point.</p>
         <p class="lede" id="legends-updated"></p>
       </div>
-      """ + play_rail() + """
     </section>
     <section class="section hall-stage wrap">
       <div class="hall-viewport" id="hall-view" tabindex="0" aria-label="Hall of Legends aisle. Drag to look, W S or scroll to walk, click a statue.">
@@ -326,7 +306,6 @@ PAGES["rankings.html"] = (
         <p class="lede">Every vanilla stat we can read from this map. Hall of Legends 24, plus movement, time, and world stats. Click a name for the full profile. No coordinates. Voting is not a ranking and grants no loot.</p>
         <p class="lede" id="rank-updated"></p>
       </div>
-      """ + play_rail() + """
     </section>
     <section class="section wrap">
       <div class="filters" id="rank-tabs"></div>
@@ -356,7 +335,6 @@ PAGES["players.html"] = (
         <label class="sr-only" for="player-filter">Filter players</label>
         <input class="player-filter" id="player-filter" type="search" placeholder="Filter by name" autocomplete="off" spellcheck="false">
       </div>
-      """ + play_rail() + """
     </section>
     <section class="section wrap">
       <div class="player-grid" id="players"></div>
@@ -375,7 +353,6 @@ PAGES["player.html"] = (
         <p class="kicker">Profile</p>
         <h1 id="profile-title">Player</h1>
       </div>
-      """ + play_rail() + """
     </section>
     <section class="section wrap" id="profile"></section>
     """,
@@ -390,11 +367,10 @@ PAGES["vote.html"] = (
     <section class="page-hero wrap">
       <div class="page-hero-copy">
         <p class="kicker">Support the lists</p>
-        <h1>Vote. That is the whole thing.</h1>
+        <h1>Vote</h1>
         <p class="lede">These seven links keep NO RULES SURVIVAL on public server lists. Voting is support only. There is no loot table, no crate, no key, no rank, no in-game item. You get nothing back except the server staying findable.</p>
         <p class="vote-banner">Support only — no loot, crates, keys, ranks, or advantage.</p>
       </div>
-      """ + play_rail() + """
     </section>
     <section class="section wrap">
       <div class="vote-list">
@@ -428,7 +404,6 @@ PAGES["gallery.html"] = (
         <h1>Gallery</h1>
         <p class="lede">Spawn, the statue hall, the practice arena, public dimensions. No base-hunting intel. Click a shot for a lightbox (arrows / Esc).</p>
       </div>
-      """ + play_rail() + """
     </section>
     <section class="section wrap">
       <div class="masonry" id="gallery"></div>
@@ -459,7 +434,6 @@ PAGES["media.html"] = (
         <h1>Media</h1>
         <p class="lede">Killcams auto-export after the fight from the rolling 60-second Flashback buffer — scene camera and first-person, victim and killer. This is not a live kill feed.</p>
       </div>
-      """ + play_rail() + """
     </section>
     <section class="section wrap">
       <div class="yt-card">
@@ -495,7 +469,6 @@ PAGES["changelog.html"] = (
           <button class="filter-btn" type="button" data-filter="FIX" aria-pressed="false">Fix</button>
         </div>
       </div>
-      """ + play_rail() + """
     </section>
     <section class="section wrap">
       <ol class="timeline" id="changelog"></ol>
@@ -515,7 +488,6 @@ PAGES["join.html"] = (
         <h1>How to join</h1>
         <p class="lede">No whitelist. No account application. If you can reach the IP, you are in. Cheat and you get banned. That is the only rule.</p>
       </div>
-      """ + play_rail() + """
     </section>
     <section class="section wrap">
       <div class="join-grid">
@@ -529,13 +501,14 @@ PAGES["join.html"] = (
           <p class="kicker">02</p>
           <h2>Bedrock Edition</h2>
           <p>Add server. Address <strong>76.176.218.251</strong>, port <strong>19132</strong>. Same world as Java. Proximity voice is Java-mod only — Bedrock will not hear it.</p>
+          <div class="ip-box"><span>76.176.218.251:19132</span><button class="btn btn-play" type="button" data-copy-ip="bedrock">Play now</button></div>
         </article>
       </div>
       <div class="join-extra">
         <article class="join-panel" id="voice">
           <p class="kicker">Optional</p>
           <h3>Simple Voice Chat</h3>
-          <p>Proximity voice. Server runs voicechat-bukkit <strong>2.6.25</strong>. Install the matching <em>client</em> mod for your loader (Fabric, NeoForge, Forge, or Quilt) at the same version. Vanilla Java and Bedrock hear nothing — that is how SVC works. Windows CurseForge: <a href="https://github.com/koevetmc/mc-norules-resourcepack/releases/download/v1.2/install-voicechat.bat">install-voicechat.bat</a> (same release as the anarchy pack).</p>
+          <p>Proximity voice. Server runs Simple Voice Chat <strong>2.6.25</strong>. Install the matching <em>client</em> mod for your loader (Fabric, NeoForge, Forge, or Quilt) at the same version. Vanilla Java and Bedrock hear nothing — that is how SVC works. Windows CurseForge: <a href="https://github.com/koevetmc/mc-norules-resourcepack/releases/download/v1.2/install-voicechat.bat">install-voicechat.bat</a> (same release as the anarchy pack).</p>
         </article>
         <article class="join-panel">
           <p class="kicker">Optional</p>
@@ -545,7 +518,7 @@ PAGES["join.html"] = (
         <article class="join-panel">
           <p class="kicker">Then</p>
           <h3>Walk out of spawn — or hit the pit</h3>
-          <p>The cobble ring is protected spawn: no build, no PvP. Beyond that line there are no rules. Difficulty is hard. South gate: right-click ArenaMaster for the practice arena (gear vaulted). Nametags are hidden in the wild. <code>/autofollow &lt;player&gt;</code> is staged and will load at the next restart — it is not live yet.</p>
+          <p>The cobble ring is protected spawn: no build, no PvP. Beyond that line there are no rules. Difficulty is hard. South gate: right-click ArenaMaster for the practice arena (gear vaulted). Nametags are hidden in the wild. <code>/autofollow</code> is not live until the next restart.</p>
         </article>
       </div>
       <p class="join-more"><a class="btn" href="/vote.html">Vote the lists</a> <a class="btn btn-ghost" href="/legends.html">Hall of Legends</a></p>
@@ -584,7 +557,6 @@ PAGES["login.html"] = (
         <h1>Sign in</h1>
         <p class="lede">One email, one site account. After you are in, run <code>/link</code> in-game and type the code here. The site never asks for your Minecraft password.</p>
       </div>
-      """ + play_rail() + """
     </section>
     <section class="section wrap">
       <form id="login-form" class="stack-form" autocomplete="on">

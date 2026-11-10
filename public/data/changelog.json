@@ -3,6 +3,13 @@
   "entries": [
     {
       "date": "2026-11-09",
+      "version": "web-1.18",
+      "tags": ["WEBSITE"],
+      "title": "Join is in the nav. The hall is the homepage.",
+      "body": "Join is a primary link, not buried in More. The homepage is a hall plaque with Java/Bedrock and a copyable IP. Deaths sit under the pitch. PLAY NOW still copies the IP. Voting is still support only — no loot, crates, keys, or ranks."
+    },
+    {
+      "date": "2026-11-09",
       "version": "web-1.17",
       "tags": ["WEBSITE"],
       "title": "Site redesign",
