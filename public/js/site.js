@@ -282,6 +282,13 @@
   }
 })();
 
+/** 2026-11-09: short calendar date — dump ISO timestamps look like an ops panel. */
+window.nrWhen = function (iso) {
+  const d = new Date(iso);
+  if (Number.isNaN(d.getTime())) return String(iso || "");
+  return d.toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" });
+};
+
 /** Format a Hall of Legends raw value the same way /legends does in-game. */
 window.nrFormatStat = function (format, value, unit) {
   const n = Number(value) || 0;

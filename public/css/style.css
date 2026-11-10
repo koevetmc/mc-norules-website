@@ -87,15 +87,17 @@ a:hover { color: var(--ember-core); }
 
 .skip-link {
   position: absolute;
-  left: 0.75rem;
-  top: -3rem;
+  left: -9999px;
+  top: 0.5rem;
   z-index: 100;
   background: var(--ember);
   color: #1a0d00;
   padding: 0.4rem 0.8rem;
   font-weight: 700;
 }
-.skip-link:focus { top: 0.5rem; }
+/* 2026-11-09: park off-canvas on the x axis. top:-3rem still peeked as an
+   ember square under the header in some Chrome focus states. */
+.skip-link:focus { left: 0.75rem; }
 
 .wrap {
   position: relative;

@@ -19,9 +19,8 @@
     .then(([playersDoc, catalog, firstsDoc]) => {
       if (note) {
         note.textContent =
-          (playersDoc.sample ? "Sample data · " : "Live vanilla stats · ") +
-          "updated " +
-          (playersDoc.updated || "").replace("T", " ").replace("Z", " UTC");
+          (playersDoc.sample ? "Sample · " : "Live · ") +
+          window.nrWhen(playersDoc.updated);
       }
       const players = playersDoc.players || [];
       const stats = catalog.stats || [];

@@ -284,7 +284,7 @@
     .then((data) => {
       const updated = document.getElementById("legends-updated");
       if (updated && data.updated) {
-        updated.textContent = "Updated " + data.updated.replace("T", " ").replace("Z", " UTC");
+        updated.textContent = "Updated " + window.nrWhen(data.updated);
         if (data.sample) updated.textContent += " · sample data";
       }
       const cats = data.categories || {};
@@ -324,6 +324,10 @@
         })
         .catch((err) => {
           console.warn("WebGL hall unavailable, CSS ring fallback", err);
+          // 2026-11-09: strip a leftover lighting overlay if mount threw mid-setup.
+          view.classList.remove("is-gl", "is-ready");
+          const leftover = view.querySelector(".hall-load");
+          if (leftover) leftover.remove();
           hall = paintHall(order, cats, go);
           go(0, true);
         });

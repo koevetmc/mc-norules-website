@@ -262,7 +262,7 @@ PAGES["legends.html"] = (
     """
     <section class="page-hero wrap">
       <div class="page-hero-copy">
-        <p class="kicker">Flagship</p>
+        <p class="kicker">In game</p>
         <h1>Hall of Legends</h1>
         <p class="lede">Same 24 boards as <code>/legends</code> in game — walk the lantern-lit aisle, click a statue. Full sortable lists live on <a href="/rankings.html">Rankings</a>. Server Firsts are <code>/firsts</code>. Unclaimed pedestals stay empty until someone logs the first point.</p>
         <p class="lede" id="legends-updated"></p>
@@ -303,7 +303,7 @@ PAGES["rankings.html"] = (
       <div class="page-hero-copy">
         <p class="kicker">Boards</p>
         <h1>Rankings</h1>
-        <p class="lede">Every vanilla stat we can read from this map. Hall of Legends 24, plus movement, time, and world stats. Click a name for the full profile. No coordinates. Voting is not a ranking and grants no loot.</p>
+        <p class="lede">Kills, deaths, time alive, distance walked — the same boards as the Hall of Legends, plus movement and world stats. Click a name for the full profile. No coordinates. Voting is not a ranking and grants no loot.</p>
         <p class="lede" id="rank-updated"></p>
       </div>
     </section>

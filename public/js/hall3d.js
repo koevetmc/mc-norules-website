@@ -230,24 +230,31 @@ export function mount(opts) {
 
   const worldEl = document.getElementById("hall-world");
   if (worldEl) worldEl.hidden = true;
-  view.classList.add("is-gl");
 
+  // Build the renderer before the lighting overlay. A failed WebGL context
+  // used to leave "Lighting the hall…" covering the CSS ring fallback.
+  const canvas = document.createElement("canvas");
+  canvas.setAttribute("aria-hidden", "true");
+  let renderer;
+  try {
+    renderer = new THREE.WebGLRenderer({
+      canvas,
+      antialias: true,
+      powerPreference: "high-performance",
+      failIfMajorPerformanceCaveat: false
+    });
+    if (!renderer.getContext()) throw new Error("no webgl");
+  } catch (err) {
+    if (worldEl) worldEl.hidden = false;
+    throw err;
+  }
+
+  view.classList.add("is-gl");
   const loadEl = document.createElement("p");
   loadEl.className = "hall-load";
   loadEl.textContent = "Lighting the hall…";
   view.appendChild(loadEl);
-
-  const canvas = document.createElement("canvas");
-  canvas.setAttribute("aria-hidden", "true");
   view.appendChild(canvas);
-
-  const renderer = new THREE.WebGLRenderer({
-    canvas,
-    antialias: true,
-    powerPreference: "high-performance",
-    failIfMajorPerformanceCaveat: false
-  });
-  if (!renderer.getContext()) throw new Error("no webgl");
   renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 1.75));
   renderer.setClearColor(0x0c0a08, 1);
   renderer.outputColorSpace = THREE.SRGBColorSpace;
@@ -594,14 +601,15 @@ export function mount(opts) {
     camera.position.y = 1.62;
     applyLook();
     renderer.render(scene, camera);
+    // Drop the overlay on the first painted frame, not a sibling rAF —
+    // background-tab / headless Chrome can skip that extra callback.
+    if (loadEl.parentNode) {
+      loadEl.remove();
+      view.classList.add("is-ready");
+    }
     raf = requestAnimationFrame(tick);
   }
   raf = requestAnimationFrame(tick);
-
-  requestAnimationFrame(() => {
-    loadEl.remove();
-    view.classList.add("is-ready");
-  });
 
   function dispose() {
     disposed = true;
