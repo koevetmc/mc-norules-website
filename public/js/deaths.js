@@ -1,6 +1,6 @@
-/* 2026-11-09: thin horizontal rail by server day — one row of ticks, not
-   stacked heads. Hover/tap fills the tray (victim, how, killer if a player).
-   Every JSON death is a tick. No coordinates. */
+/* 2026-11-09: thin horizontal rail by server day — one row of readable
+   heads (24px), not 8px ticks and not stacked columns. Hover/tap fills
+   the tray. Every JSON death is a tick. No coordinates. */
 (function () {
   const root = document.getElementById("deaths");
   const tray = document.getElementById("death-tray");
@@ -141,14 +141,16 @@
                 label +
                 '"><img src="' +
                 headUrl(e.name) +
-                '" alt="" width="8" height="8"></button>'
+                '" alt="" width="24" height="24"></button>'
               );
             })
             .join("");
+          // Size the day to its heads so 24px faces never compress into a smear.
+          const dayPx = Math.max(68, list.length * 27 + 8);
           return (
-            '<div class="death-day" style="flex-grow:' +
-            Math.max(list.length, 1) +
-            '"><div class="death-day-ticks">' +
+            '<div class="death-day" style="flex:0 0 ' +
+            dayPx +
+            'px"><div class="death-day-ticks">' +
             ticks +
             '</div><span class="death-day-label">' +
             dayLabel(ms) +
@@ -158,6 +160,8 @@
         .join("");
 
       root.innerHTML = '<div class="death-rail"><div class="death-track">' + days + "</div></div>";
+      const track = root.querySelector(".death-track");
+      if (track) track.scrollLeft = track.scrollWidth;
       root.addEventListener("click", function (ev) {
         const btn = ev.target.closest(".death-tick");
         if (!btn) return;

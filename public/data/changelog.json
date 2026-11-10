@@ -3,6 +3,13 @@
   "entries": [
     {
       "date": "2026-11-09",
+      "version": "web-1.23",
+      "tags": ["WEBSITE"],
+      "title": "Death timeline heads are readable",
+      "body": "Ticks on the horizontal rail are 24px faces with a gap, not 8px smear. The rail scrolls. All 147 real deaths stay on the axis. Vote is still support only."
+    },
+    {
+      "date": "2026-11-09",
       "version": "web-1.22",
       "tags": ["WEBSITE"],
       "title": "Deaths is a thin horizontal timeline",
