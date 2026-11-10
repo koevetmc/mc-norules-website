@@ -25,7 +25,7 @@
     });
   }
 
-  // 2026-11-09: More dropdown for Join / Media / Log / Account.
+  // 2026-11-09: More dropdown for Players / Media / Log / Account.
   const more = document.querySelector(".nav-more");
   const moreBtn = more && more.querySelector(":scope > button");
   if (more && moreBtn) {

@@ -1442,9 +1442,19 @@ html.nr-shot-features .lightbox { display: none !important; }
   border: 1px solid var(--ember);
   padding: 0.55rem 0.9rem;
   z-index: 90;
-  transition: transform 0.25s ease;
+  transition: transform 0.25s ease, opacity 0.25s ease;
+  /* 2026-11-09: empty toast sat as an ember square under the header on every
+     page because translateY(-140%) still peaked below the sticky bar. */
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
 }
-.toast.show { transform: translateX(-50%) translateY(0); }
+.toast.show {
+  transform: translateX(-50%) translateY(0);
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
 
 /* 2026-11-08: page-load rise. Staggered; reduced-motion zeros it later. */
 @keyframes nr-rise {

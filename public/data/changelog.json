@@ -6,7 +6,7 @@
       "version": "web-1.19",
       "tags": ["WEBSITE", "FIX"],
       "title": "Hall lights or falls back. Skip link stays off canvas.",
-      "body": "A failed WebGL context no longer leaves Lighting the hall covering the statue ring. Skip to content parks off-screen until focused. Vote is still support only."
+      "body": "A failed WebGL context no longer leaves Lighting the hall covering the statue ring. Skip to content parks off-screen until focused. The copy-IP toast stays hidden until it has something to say. Vote is still support only."
     },
     {
       "date": "2026-11-09",
