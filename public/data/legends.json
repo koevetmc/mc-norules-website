@@ -1,0 +1,754 @@
+{
+  "updated": "2026-11-09T06:40:25Z",
+  "sample": false,
+  "comment": "Top 10 per Hall of Legends category from live vanilla stats. KoevetMC excluded to match plugins/Legends/config.yml.",
+  "order": [
+    "kills",
+    "deaths",
+    "damage",
+    "mobs",
+    "crystals",
+    "totems",
+    "playtime",
+    "life",
+    "distance",
+    "pearls",
+    "mined",
+    "placed",
+    "jump",
+    "fish",
+    "trade",
+    "elytra",
+    "diamonds",
+    "debris",
+    "gapple",
+    "chests",
+    "breed",
+    "bosses",
+    "raids",
+    "climb"
+  ],
+  "categories": {
+    "kills": {
+      "title": "TOP KILLER",
+      "unit": "kills",
+      "format": "count",
+      "entries": [
+        {
+          "name": "YurevdB_",
+          "value": 5
+        },
+        {
+          "name": "Zed_The_Dead",
+          "value": 4
+        },
+        {
+          "name": "BGoldGolden",
+          "value": 4
+        },
+        {
+          "name": "33cruz33",
+          "value": 1
+        },
+        {
+          "name": "_NebL",
+          "value": 1
+        }
+      ]
+    },
+    "deaths": {
+      "title": "MOST DEATHS",
+      "unit": "deaths",
+      "format": "count",
+      "entries": [
+        {
+          "name": "33cruz33",
+          "value": 15
+        },
+        {
+          "name": ".Beynz_I",
+          "value": 10
+        },
+        {
+          "name": "Zed_The_Dead",
+          "value": 9
+        },
+        {
+          "name": "_NebL",
+          "value": 9
+        },
+        {
+          "name": "pazy312",
+          "value": 9
+        },
+        {
+          "name": "BGoldGolden",
+          "value": 7
+        },
+        {
+          "name": "Alejok0",
+          "value": 3
+        },
+        {
+          "name": "SportsMix",
+          "value": 2
+        },
+        {
+          "name": "ExploringSteve",
+          "value": 2
+        },
+        {
+          "name": "YurevdB_",
+          "value": 1
+        }
+      ]
+    },
+    "damage": {
+      "title": "MOST DAMAGE DEALT",
+      "unit": "hearts",
+      "format": "hearts",
+      "entries": [
+        {
+          "name": "Zed_The_Dead",
+          "value": 249495
+        },
+        {
+          "name": "YurevdB_",
+          "value": 206443
+        },
+        {
+          "name": "SportsMix",
+          "value": 60297
+        },
+        {
+          "name": "_NebL",
+          "value": 18933
+        },
+        {
+          "name": "BGoldGolden",
+          "value": 17157
+        },
+        {
+          "name": "Dnick29",
+          "value": 9784
+        },
+        {
+          "name": "Alejok0",
+          "value": 5264
+        },
+        {
+          "name": ".Beynz_I",
+          "value": 5176
+        },
+        {
+          "name": "33cruz33",
+          "value": 3416
+        },
+        {
+          "name": "pazy312",
+          "value": 424
+        }
+      ]
+    },
+    "mobs": {
+      "title": "MOB SLAYER",
+      "unit": "mobs",
+      "format": "count",
+      "entries": [
+        {
+          "name": "Zed_The_Dead",
+          "value": 3906
+        },
+        {
+          "name": "YurevdB_",
+          "value": 1572
+        },
+        {
+          "name": "SportsMix",
+          "value": 482
+        },
+        {
+          "name": "_NebL",
+          "value": 189
+        },
+        {
+          "name": "Dnick29",
+          "value": 170
+        },
+        {
+          "name": ".Beynz_I",
+          "value": 107
+        },
+        {
+          "name": "BGoldGolden",
+          "value": 89
+        },
+        {
+          "name": "Alejok0",
+          "value": 43
+        },
+        {
+          "name": "33cruz33",
+          "value": 20
+        },
+        {
+          "name": "WolestMC",
+          "value": 3
+        }
+      ]
+    },
+    "crystals": {
+      "title": "CRYSTAL PVPER",
+      "unit": "crystals",
+      "format": "count",
+      "entries": []
+    },
+    "totems": {
+      "title": "TOTEMS POPPED",
+      "unit": "totems",
+      "format": "count",
+      "entries": []
+    },
+    "playtime": {
+      "title": "MOST PLAYTIME",
+      "unit": "hours",
+      "format": "hours",
+      "entries": [
+        {
+          "name": "Zed_The_Dead",
+          "value": 3232601
+        },
+        {
+          "name": "YurevdB_",
+          "value": 1563990
+        },
+        {
+          "name": "SportsMix",
+          "value": 583637
+        },
+        {
+          "name": "Alejok0",
+          "value": 447502
+        },
+        {
+          "name": "BGoldGolden",
+          "value": 297202
+        },
+        {
+          "name": "33cruz33",
+          "value": 280484
+        },
+        {
+          "name": "Dnick29",
+          "value": 278938
+        },
+        {
+          "name": "_NebL",
+          "value": 185361
+        },
+        {
+          "name": "pazy312",
+          "value": 68372
+        },
+        {
+          "name": ".Beynz_I",
+          "value": 58280
+        }
+      ]
+    },
+    "life": {
+      "title": "LONGEST ALIVE",
+      "unit": "",
+      "format": "life",
+      "entries": [
+        {
+          "name": "SportsMix",
+          "value": 523872
+        },
+        {
+          "name": "YurevdB_",
+          "value": 497212
+        },
+        {
+          "name": "Zed_The_Dead",
+          "value": 454558
+        },
+        {
+          "name": "Dnick29",
+          "value": 278938
+        },
+        {
+          "name": "Alejok0",
+          "value": 165553
+        },
+        {
+          "name": "_NebL",
+          "value": 90500
+        },
+        {
+          "name": "33cruz33",
+          "value": 35374
+        },
+        {
+          "name": "X_Professor_YT",
+          "value": 23430
+        },
+        {
+          "name": "BGoldGolden",
+          "value": 9277
+        },
+        {
+          "name": "SoLucky_",
+          "value": 8794
+        }
+      ]
+    },
+    "distance": {
+      "title": "FARTHEST TRAVELED",
+      "unit": "km",
+      "format": "km",
+      "entries": [
+        {
+          "name": "Zed_The_Dead",
+          "value": 36709274
+        },
+        {
+          "name": "YurevdB_",
+          "value": 20670443
+        },
+        {
+          "name": "SportsMix",
+          "value": 6602094
+        },
+        {
+          "name": "Alejok0",
+          "value": 3310053
+        },
+        {
+          "name": "_NebL",
+          "value": 2478755
+        },
+        {
+          "name": "BGoldGolden",
+          "value": 2158538
+        },
+        {
+          "name": "33cruz33",
+          "value": 2048844
+        },
+        {
+          "name": "Dnick29",
+          "value": 2025388
+        },
+        {
+          "name": ".Beynz_I",
+          "value": 674444
+        },
+        {
+          "name": "pazy312",
+          "value": 444075
+        }
+      ]
+    },
+    "pearls": {
+      "title": "PEARL SPAMMER",
+      "unit": "pearls",
+      "format": "count",
+      "entries": [
+        {
+          "name": "Zed_The_Dead",
+          "value": 92
+        },
+        {
+          "name": "YurevdB_",
+          "value": 13
+        },
+        {
+          "name": ".Beynz_I",
+          "value": 1
+        }
+      ]
+    },
+    "mined": {
+      "title": "MOST BLOCKS MINED",
+      "unit": "blocks",
+      "format": "count",
+      "entries": [
+        {
+          "name": "Zed_The_Dead",
+          "value": 17709
+        },
+        {
+          "name": "YurevdB_",
+          "value": 12891
+        },
+        {
+          "name": "SportsMix",
+          "value": 4330
+        },
+        {
+          "name": "BGoldGolden",
+          "value": 2208
+        },
+        {
+          "name": "Dnick29",
+          "value": 1704
+        },
+        {
+          "name": "33cruz33",
+          "value": 1620
+        },
+        {
+          "name": "Alejok0",
+          "value": 1240
+        },
+        {
+          "name": "_NebL",
+          "value": 746
+        },
+        {
+          "name": "pazy312",
+          "value": 153
+        },
+        {
+          "name": ".Beynz_I",
+          "value": 148
+        }
+      ]
+    },
+    "placed": {
+      "title": "MOST BLOCKS PLACED",
+      "unit": "blocks",
+      "format": "count",
+      "entries": [
+        {
+          "name": "Zed_The_Dead",
+          "value": 7538
+        },
+        {
+          "name": "YurevdB_",
+          "value": 5576
+        },
+        {
+          "name": "SportsMix",
+          "value": 2322
+        },
+        {
+          "name": "Dnick29",
+          "value": 1148
+        },
+        {
+          "name": "BGoldGolden",
+          "value": 906
+        },
+        {
+          "name": "Alejok0",
+          "value": 645
+        },
+        {
+          "name": "_NebL",
+          "value": 563
+        },
+        {
+          "name": "33cruz33",
+          "value": 497
+        },
+        {
+          "name": ".Beynz_I",
+          "value": 83
+        },
+        {
+          "name": "pazy312",
+          "value": 54
+        }
+      ]
+    },
+    "jump": {
+      "title": "BUNNY HOPPER",
+      "unit": "jumps",
+      "format": "count",
+      "entries": [
+        {
+          "name": "YurevdB_",
+          "value": 25354
+        },
+        {
+          "name": "Zed_The_Dead",
+          "value": 24941
+        },
+        {
+          "name": "SportsMix",
+          "value": 10996
+        },
+        {
+          "name": "_NebL",
+          "value": 5309
+        },
+        {
+          "name": "BGoldGolden",
+          "value": 4051
+        },
+        {
+          "name": "Alejok0",
+          "value": 3614
+        },
+        {
+          "name": "Dnick29",
+          "value": 3591
+        },
+        {
+          "name": "33cruz33",
+          "value": 2162
+        },
+        {
+          "name": "pazy312",
+          "value": 1162
+        },
+        {
+          "name": ".Beynz_I",
+          "value": 934
+        }
+      ]
+    },
+    "fish": {
+      "title": "ANGLER",
+      "unit": "fish",
+      "format": "count",
+      "entries": []
+    },
+    "trade": {
+      "title": "VILLAGER TRADER",
+      "unit": "trades",
+      "format": "count",
+      "entries": [
+        {
+          "name": "Zed_The_Dead",
+          "value": 2090
+        },
+        {
+          "name": "YurevdB_",
+          "value": 570
+        },
+        {
+          "name": "_NebL",
+          "value": 51
+        }
+      ]
+    },
+    "elytra": {
+      "title": "ELYTRA PILOT",
+      "unit": "km",
+      "format": "km",
+      "entries": [
+        {
+          "name": "Zed_The_Dead",
+          "value": 16521159
+        },
+        {
+          "name": "YurevdB_",
+          "value": 7215803
+        }
+      ]
+    },
+    "diamonds": {
+      "title": "DIAMOND MINER",
+      "unit": "ores",
+      "format": "count",
+      "entries": [
+        {
+          "name": "YurevdB_",
+          "value": 112
+        },
+        {
+          "name": "SportsMix",
+          "value": 85
+        },
+        {
+          "name": "Zed_The_Dead",
+          "value": 57
+        },
+        {
+          "name": "_NebL",
+          "value": 49
+        },
+        {
+          "name": "Dnick29",
+          "value": 16
+        },
+        {
+          "name": "33cruz33",
+          "value": 4
+        },
+        {
+          "name": "BGoldGolden",
+          "value": 2
+        }
+      ]
+    },
+    "debris": {
+      "title": "ANCIENT DEBRIS",
+      "unit": "debris",
+      "format": "count",
+      "entries": [
+        {
+          "name": "Zed_The_Dead",
+          "value": 2
+        },
+        {
+          "name": "YurevdB_",
+          "value": 2
+        }
+      ]
+    },
+    "gapple": {
+      "title": "GOLDEN APPLES",
+      "unit": "eaten",
+      "format": "count",
+      "entries": [
+        {
+          "name": "YurevdB_",
+          "value": 8
+        },
+        {
+          "name": "Zed_The_Dead",
+          "value": 2
+        },
+        {
+          "name": ".Beynz_I",
+          "value": 2
+        },
+        {
+          "name": "SportsMix",
+          "value": 1
+        }
+      ]
+    },
+    "chests": {
+      "title": "CHEST LOOTER",
+      "unit": "chests",
+      "format": "count",
+      "entries": [
+        {
+          "name": "Zed_The_Dead",
+          "value": 1730
+        },
+        {
+          "name": "YurevdB_",
+          "value": 1089
+        },
+        {
+          "name": "SportsMix",
+          "value": 483
+        },
+        {
+          "name": "BGoldGolden",
+          "value": 176
+        },
+        {
+          "name": "33cruz33",
+          "value": 117
+        },
+        {
+          "name": "_NebL",
+          "value": 80
+        },
+        {
+          "name": "Alejok0",
+          "value": 55
+        },
+        {
+          "name": "Dnick29",
+          "value": 54
+        },
+        {
+          "name": ".Beynz_I",
+          "value": 12
+        }
+      ]
+    },
+    "breed": {
+      "title": "ANIMAL BREEDER",
+      "unit": "bred",
+      "format": "count",
+      "entries": [
+        {
+          "name": "Zed_The_Dead",
+          "value": 43
+        },
+        {
+          "name": "YurevdB_",
+          "value": 19
+        }
+      ]
+    },
+    "bosses": {
+      "title": "BOSS SLAYER",
+      "unit": "bosses",
+      "format": "count",
+      "entries": [
+        {
+          "name": "YurevdB_",
+          "value": 1
+        }
+      ]
+    },
+    "raids": {
+      "title": "RAID WINNER",
+      "unit": "raids",
+      "format": "count",
+      "entries": [
+        {
+          "name": "Zed_The_Dead",
+          "value": 1
+        },
+        {
+          "name": "YurevdB_",
+          "value": 1
+        }
+      ]
+    },
+    "climb": {
+      "title": "CLIMBER",
+      "unit": "km",
+      "format": "km",
+      "entries": [
+        {
+          "name": "Zed_The_Dead",
+          "value": 112476
+        },
+        {
+          "name": "SportsMix",
+          "value": 106398
+        },
+        {
+          "name": "YurevdB_",
+          "value": 33288
+        },
+        {
+          "name": ".Beynz_I",
+          "value": 6400
+        },
+        {
+          "name": "_NebL",
+          "value": 4458
+        },
+        {
+          "name": "Dnick29",
+          "value": 2679
+        },
+        {
+          "name": "Alejok0",
+          "value": 1371
+        },
+        {
+          "name": "33cruz33",
+          "value": 468
+        },
+        {
+          "name": "BGoldGolden",
+          "value": 336
+        }
+      ]
+    }
+  }
+}

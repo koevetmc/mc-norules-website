@@ -1,0 +1,106 @@
+{
+  "updated": "2026-11-09T06:40:25Z",
+  "sample": false,
+  "comment": "Server Firsts (/firsts) from plugins/ServerFirst. KoevetMC is excluded in-game so they will not appear here unless the yml already has a claim.",
+  "claims": [
+    {
+      "key": "diamond",
+      "title": "FIRST DIAMOND",
+      "name": "YurevdB_",
+      "uuid": "7d2de262-07c5-4817-a130-fce31364f106",
+      "when": "2026-10-29T23:57:46Z",
+      "time": 1793318266000,
+      "detail": ""
+    },
+    {
+      "key": "enchant",
+      "title": "FIRST ENCHANT",
+      "name": "Zed_The_Dead",
+      "uuid": "5cb37134-9756-403a-bb68-0d9069e297ff",
+      "when": "2026-10-31T19:39:43Z",
+      "time": 1793475583000,
+      "detail": ""
+    },
+    {
+      "key": "nether",
+      "title": "FIRST TO THE NETHER",
+      "name": "Zed_The_Dead",
+      "uuid": "5cb37134-9756-403a-bb68-0d9069e297ff",
+      "when": "2026-11-01T15:46:00Z",
+      "time": 1793547960000,
+      "detail": ""
+    },
+    {
+      "key": "debris",
+      "title": "FIRST ANCIENT DEBRIS",
+      "name": "YurevdB_",
+      "uuid": "7d2de262-07c5-4817-a130-fce31364f106",
+      "when": "2026-11-01T20:55:54Z",
+      "time": 1793566554000,
+      "detail": ""
+    },
+    {
+      "key": "end",
+      "title": "FIRST TO THE END",
+      "name": "YurevdB_",
+      "uuid": "7d2de262-07c5-4817-a130-fce31364f106",
+      "when": "2026-11-01T23:47:23Z",
+      "time": 1793576843000,
+      "detail": ""
+    },
+    {
+      "key": "dragon",
+      "title": "DRAGON SLAYER",
+      "name": "YurevdB_",
+      "uuid": "7d2de262-07c5-4817-a130-fce31364f106",
+      "when": "2026-11-01T23:58:01Z",
+      "time": 1793577481000,
+      "detail": ""
+    },
+    {
+      "key": "egg",
+      "title": "FIRST DRAGON EGG",
+      "name": "YurevdB_",
+      "uuid": "7d2de262-07c5-4817-a130-fce31364f106",
+      "when": "2026-11-01T23:59:06Z",
+      "time": 1793577546000,
+      "detail": ""
+    },
+    {
+      "key": "pvp",
+      "title": "FIRST BLOOD",
+      "name": "Stnkyz",
+      "uuid": "35f2570d-70fc-4c16-8b99-dd669e9946d8",
+      "when": "2026-11-02T03:05:50Z",
+      "time": 1793588750000,
+      "detail": "killed BGoldGolden"
+    },
+    {
+      "key": "city",
+      "title": "FIRST END CITY",
+      "name": "YurevdB_",
+      "uuid": "7d2de262-07c5-4817-a130-fce31364f106",
+      "when": "2026-11-03T12:45:33Z",
+      "time": 1793709933000,
+      "detail": ""
+    },
+    {
+      "key": "elytra",
+      "title": "FIRST WINGS",
+      "name": "Zed_The_Dead",
+      "uuid": "5cb37134-9756-403a-bb68-0d9069e297ff",
+      "when": "2026-11-03T12:46:00Z",
+      "time": 1793709960000,
+      "detail": ""
+    },
+    {
+      "key": "death",
+      "title": "FIRST DEATH",
+      "name": "Zed_The_Dead",
+      "uuid": "5cb37134-9756-403a-bb68-0d9069e297ff",
+      "when": "2026-11-04T21:02:39.140Z",
+      "time": 1793826159140,
+      "detail": ""
+    }
+  ]
+}

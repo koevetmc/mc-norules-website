@@ -1,0 +1,23 @@
+{
+  "comment": "Drop JPEGs in /gallery/ and append a line. file is a root-relative URL. No screenshots that show coordinates or private bases — spawn and public dimensions only.",
+  "items": [
+    {"file": "/gallery/hall-pavilion.jpg", "caption": "Hall of Legends pavilion over spawn — statues of the server's top players below", "date": "2026-11-02", "author": "KoevetMC"},
+    {"file": "/gallery/spawn-plaza.jpg", "caption": "Protected spawn plaza. Beyond the cobble ring there are no rules.", "date": "2026-10-30", "author": "KoevetMC"},
+    {"file": "/gallery/arena-pit.jpg", "caption": "The Arena — void-world practice pit south of spawn. Gear vaulted, kits only, no survival loot.", "date": "2026-11-04", "author": "KoevetMC"},
+    {"file": "/gallery/hall-interior.jpg", "caption": "Inside the Hall of Legends. Unclaimed pedestals wait for the first #1.", "date": "2026-11-02", "author": "KoevetMC"},
+    {"file": "/gallery/hall-stair.jpg", "caption": "The descent into the statue hall", "date": "2026-10-30", "author": "KoevetMC"},
+    {"file": "/gallery/spawn-lookout.jpg", "caption": "Lookout over the birch forest from spawn", "date": "2026-10-30", "author": "KoevetMC"},
+    {"file": "/gallery/spawn-night-path.jpg", "caption": "Nether-brick path through spawn at night", "date": "2026-10-30", "author": "KoevetMC"},
+    {"file": "/gallery/spawn-bridge.jpg", "caption": "Lantern bridge on the ravine at the edge of spawn", "date": "2026-10-30", "author": "KoevetMC"},
+    {"file": "/gallery/the-end.jpg", "caption": "The End after the dragon. Public dimension, still anarchy.", "date": "2026-11-02", "author": "KoevetMC"},
+    {"file": "/gallery/hall-aisle.jpg", "caption": "Hall of Legends aisle — the #1 in each vanilla stat stands here.", "date": "2026-11-06", "author": "KoevetMC"},
+    {"file": "/gallery/spawn-monument-night.jpg", "caption": "The anarchy-A monument at spawn, night. Protected plaza; beyond it there are no rules.", "date": "2026-11-06", "author": "KoevetMC"},
+    {"file": "/gallery/arena-gate.jpg", "caption": "ArenaMaster at the south spawn gate. Right-click to enter; gear is vaulted.", "date": "2026-11-06", "author": "KoevetMC"},
+    {"file": "/gallery/spawn-watchtower.jpg", "caption": "Watchtower and flower path on the east rim of protected spawn.", "date": "2026-11-06", "author": "KoevetMC"},
+    {"file": "/gallery/spawn-night-walk.jpg", "caption": "Nether-brick walk off spawn into the fog.", "date": "2026-11-06", "author": "KoevetMC"},
+    {"file": "/gallery/spawn-anarchy-a.jpg", "caption": "Walking the red path toward the circled-A over spawn.", "date": "2026-11-06", "author": "KoevetMC"},
+    {"file": "/gallery/spawn-market.jpg", "caption": "Scrap Market stalls at spawn — food and arms, still a safe zone.", "date": "2026-11-06", "author": "KoevetMC"},
+    {"file": "/gallery/spawn-cherry.jpg", "caption": "Cherry grove on the west rim of spawn.", "date": "2026-11-06", "author": "KoevetMC"},
+    {"file": "/gallery/spawn-barn.jpg", "caption": "Barn, pen, and pumpkin patch on the southwest of spawn.", "date": "2026-11-06", "author": "KoevetMC"}
+  ]
+}

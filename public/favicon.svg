@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <!-- 2026-11-09: 16px circled-A on charcoal. Matches header seal, not a grass cube. -->
+  <rect width="16" height="16" fill="#0a0908"/>
+  <circle cx="8" cy="8" r="7" fill="#14110e" stroke="#3a342e" stroke-width="0.8"/>
+  <circle cx="8" cy="8" r="5.1" fill="none" stroke="#c43a22" stroke-width="1.2"/>
+  <path d="M8 3.6 L5.4 12.2 M8 3.6 L10.6 12.2 M6.4 9 H9.6" fill="none" stroke="#ffba08" stroke-width="1.2" stroke-linejoin="round"/>
+</svg>

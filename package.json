@@ -1,0 +1,11 @@
+{
+  "name": "mc-norules-website",
+  "private": true,
+  "description": "Static Cloudflare Workers site for NO RULES SURVIVAL",
+  "scripts": {
+    "build": "python3 scripts/build_players.py",
+    "dev": "python3 -m http.server 8788 --directory public",
+    "preview": "npx wrangler dev",
+    "deploy": "npx wrangler deploy"
+  }
+}

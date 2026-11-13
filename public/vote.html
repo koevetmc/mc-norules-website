@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Vote · NO RULES SURVIVAL</title>
+  <meta name="description" content="Seven public list links. Voting is support only — no loot, crates, keys, ranks, or other in-game rewards.">
+  <meta name="theme-color" content="#e85d04">
+  <link rel="canonical" href="https://no-rules-survival.koevetmc.workers.dev/vote.html">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <link rel="manifest" href="/manifest.webmanifest">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="NO RULES SURVIVAL">
+  <meta property="og:title" content="Vote · NO RULES SURVIVAL">
+  <meta property="og:description" content="Seven public list links. Voting is support only — no loot, crates, keys, ranks, or other in-game rewards.">
+  <meta property="og:image" content="https://no-rules-survival.koevetmc.workers.dev/img/og-image.jpg">
+  <meta property="og:url" content="https://no-rules-survival.koevetmc.workers.dev/vote.html">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/style.css">
+  
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header">
+    <div class="wrap">
+      <a class="brand" href="/" aria-label="NO RULES SURVIVAL home">
+        <span class="logo-slot"><img src="/img/logo.svg" class="logo" width="42" height="42" alt=""></span>
+        <span class="brand-text">NO RULES SURVIVAL<small>true anarchy</small></span>
+      </a>
+      <nav class="site-nav" id="site-nav" aria-label="Primary">
+        <a href="/legends.html">Legends</a>
+        <a href="/rankings.html">Rankings</a>
+        <a href="/gallery.html">Gallery</a>
+        <a href="/join.html">Join</a>
+        <a href="/vote.html">Vote</a>
+        <div class="nav-more">
+          <button type="button" aria-expanded="false" aria-controls="nav-more-list">More</button>
+          <div class="nav-more-list" id="nav-more-list">
+        <a href="/players.html">Players</a>
+        <a href="/media.html">Media</a>
+        <a href="/changelog.html">Log</a>
+        <a href="/me.html">Account</a>
+          </div>
+        </div>
+      </nav>
+      <div class="header-cta">
+        <span class="status" data-status data-state="unknown">
+          <span class="status-dot" aria-hidden="true"></span>
+          <span data-count>—</span>
+          <span data-label>checking</span>
+        </span>
+        <button class="btn btn-play" type="button" data-copy-ip="auto">Play now</button>
+      </div>
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">Menu</button>
+    </div>
+  </header>
+  <main id="main">
+
+    <section class="page-hero wrap">
+      <div class="page-hero-copy">
+        <p class="kicker">Support the lists</p>
+        <h1>Vote</h1>
+        <p class="lede">These seven links keep NO RULES SURVIVAL on public server lists. Voting is support only. There is no loot table, no crate, no key, no rank, no in-game item. You get nothing back except the server staying findable.</p>
+        <p class="vote-banner">Support only — no loot, crates, keys, ranks, or advantage.</p>
+      </div>
+    </section>
+    <section class="section wrap">
+      <div class="vote-list">
+        <article class="vote-row"><div><h3>Minecraft-MP</h3><p>minecraft-mp.com</p></div><a class="btn" href="https://minecraft-mp.com/server/365985/vote/" rel="noopener">Vote</a></article>
+        <article class="vote-row"><div><h3>MinecraftServers.org</h3><p>minecraftservers.org</p></div><a class="btn" href="https://minecraftservers.org/vote/695286" rel="noopener">Vote</a></article>
+        <article class="vote-row"><div><h3>Minecraft Server List</h3><p>minecraft-server-list.com</p></div><a class="btn" href="https://minecraft-server-list.com/server/524473/vote/" rel="noopener">Vote</a></article>
+        <article class="vote-row"><div><h3>Minecraft Toplist</h3><p>minecraft-toplist.com</p></div><a class="btn" href="https://minecraft-toplist.com/server/no-rules-survival/vote/" rel="noopener">Vote</a></article>
+        <article class="vote-row"><div><h3>Minecraft.buzz</h3><p>minecraft.buzz</p></div><a class="btn" href="https://minecraft.buzz/vote/no-rules-survival" rel="noopener">Vote</a></article>
+        <article class="vote-row"><div><h3>TopMinecraftServers</h3><p>topminecraftservers.org</p></div><a class="btn" href="https://topminecraftservers.org/vote/44883" rel="noopener">Vote</a></article>
+        <article class="vote-row"><div><h3>TopG</h3><p>topg.org — click “Vote for server”</p></div><a class="btn" href="https://topg.org/minecraft-servers/server-687649" rel="noopener">Vote</a></article>
+      </div>
+    </section>
+    <section class="section wrap">
+      <h2>Who has listed us</h2>
+      <p class="lede">Public count of list-site votes. Not a rank, not a reward — just who clicked. Cheating vote sites is still cheating.</p>
+      <p class="lede" id="votetop-updated"></p>
+      <div class="board-panel" id="votetop"></div>
+    </section>
+    
+  </main>
+  <footer class="site-footer">
+    <div class="wrap footer-grid">
+      <div>
+        <p class="brand-text">NO RULES SURVIVAL<small>true anarchy</small></p>
+        <p class="ip-display ip-display-sm">76.176.218.251</p>
+        <p><button class="btn btn-play" type="button" data-copy-ip>Play now</button></p>
+      </div>
+      <nav class="footer-nav" aria-label="Footer">
+        <a href="/legends.html">Legends</a>
+        <a href="/rankings.html">Rankings</a>
+        <a href="/gallery.html">Gallery</a>
+        <a href="/join.html">Join</a>
+        <a href="/vote.html">Vote</a>
+        <a href="/players.html">Players</a>
+        <a href="/media.html">Media</a>
+        <a href="/changelog.html">Log</a>
+        <a href="/me.html">Account</a>
+      </nav>
+      <div>
+        <p>Java or Bedrock. No whitelist. Cheating is the only ban.</p>
+        <p><a href="/vote.html">Vote</a> is support only — no loot, crates, keys, ranks, or advantage.</p>
+        <p class="fairness-note">This site never shows coordinates, live location, or who is online by name. Leaderboards and clips are public in-game data posted after the fact.</p>
+        <p>© <span data-year>2026</span> NO RULES SURVIVAL</p>
+      </div>
+    </div>
+  </footer>
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+  <script src="/js/config.js"></script>
+  <script src="/js/site.js"></script>
+  <script src="/js/vote.js"></script>
+</body>
+</html>

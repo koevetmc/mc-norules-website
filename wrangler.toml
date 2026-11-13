@@ -1,0 +1,29 @@
+# 2026-11-06: static assets plus a Worker for /api/* only.
+# Public HTML still lives in public/. run_worker_first keeps /api off the 404 page.
+# Deploy: npx wrangler deploy
+# Local:  npx wrangler dev
+# First-time D1: npx wrangler d1 create norules-players
+#                paste the database_id below, then
+#                npx wrangler d1 execute norules-players --remote --file=schema.sql
+# Secrets (never in public/): npx wrangler secret put LINK_HMAC
+#                             npx wrangler secret put RESEND_API_KEY
+#                             npx wrangler secret put EMAIL_FROM
+
+name = "no-rules-survival"
+main = "src/index.js"
+compatibility_date = "2026-11-03"
+account_id = "ed2041d2fbf3588d641aa931df33107b"
+
+[assets]
+directory = "./public"
+binding = "ASSETS"
+html_handling = "auto-trailing-slash"
+not_found_handling = "404-page"
+run_worker_first = ["/api/*"]
+
+[[d1_databases]]
+binding = "DB"
+database_name = "norules-players"
+# Replaced by `wrangler d1 create` when Cloudflare auth is available.
+# Local `wrangler dev` uses this id only as a label for the sqlite file.
+database_id = "67edf0f5-9f96-4c4f-a889-5e197d27800e"
